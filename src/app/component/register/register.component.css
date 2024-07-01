@@ -1,134 +1,129 @@
 @import "../../styles/variables.css";
 
-
-
 :root {
-    --primary-color: #1B263B;
-    --text-color: #555555;
-    --gray-bg: #EEEEEE;
+  --primary-color: #1b263b;
+  --text-color: #555555;
+  --gray-bg: #eeeeee;
 }
 
-.main{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-.left-side{
-    background-color: #FFFFFF;
-    height: 100%;
-    flex-grow: 0.2;
-    padding: 0 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.left-side {
+  background-color: #ffffff;
+  height: 100%;
+  flex-grow: 0.2;
+  padding: 0 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .image {
-    width: auto;
-    height: auto;
+  width: auto;
+  height: auto;
 }
 
 .image-div {
-    display: flex;
-    align-items: center;
-
+  display: flex;
+  align-items: center;
 }
 
 .right-side {
-    background-color: #EEEEEE;
-    height: 100%;
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px    ;
+  background-color: #eeeeee;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .form-register {
-    width: 100%;
-    gap: 20px;
+  width: 100%;
+  gap: 20px;
 }
 
 .main-form {
-    width: 90%;
-    gap: 20px;
-
+  width: 90%;
+  gap: 20px;
 }
 
 label {
-    font-family: 'Poppins', sans-serif;
-    color: #555555;
-
+  font-family: "Poppins", sans-serif;
+  color: #555555;
 }
 
 input {
-    border: none;
-    border-radius: 8px;
-    background-color: #F1F3F6;
-    color: #555555;
-    font-size: 16px;
-    padding: 12px 12px 12px 12px;
-    width: 100%;
-    font-family: 'Poppins', sans-serif;
-    outline: none;
+  border: none;
+  border-radius: 8px;
+  background-color: #f1f3f6;
+  color: #555555;
+  font-size: 16px;
+  padding: 12px 12px 12px 12px;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  outline: none;
 }
 
 .span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Poppins', sans-serif;
-    color: #C2C2C2;
-    padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  color: #c2c2c2;
+  padding-bottom: 12px;
 }
 
 .input-wrapper {
-    width: 100%;
-    text-align: start;
-    gap: 20px;
-
+  width: 100%;
+  text-align: start;
+  gap: 20px;
 }
 
 .input-content {
-    display: flex;
-    padding-bottom: 20px;
-}
-
-.input-content img {
-    position: absolute;
-    left: 474px;
+  display: flex;
+  padding-bottom: 20px;
 }
 
 button {
-    width: 100%;
-    border-radius: 8px;
-    font-size: 16px;
-    border: none;
-    font-weight: 500;
-    background: transparent;
-    padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  font-weight: 500;
+  background: transparent;
+  padding: 12px;
 }
 
 #button-primary {
-    background-color: #1B263B;
-    color: white;
-    box-shadow:0px 8px 12px rgba(65.0000037252903, 90.00000223517418, 119.00000050663948, 0.20000000298023224);
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
+  background-color: #1b263b;
+  color: white;
+  box-shadow: 0px 8px 12px
+    rgba(
+      65.0000037252903,
+      90.00000223517418,
+      119.00000050663948,
+      0.20000000298023224
+    );
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
 }
 
 #button-secondary {
-    border: 1px solid #1B263B;
-    color: #1B263B;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
+  border: 1px solid #1b263b;
+  color: #1b263b;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
 }
 
 .button-submit {
-    padding-top: 20px;
+  padding-top: 20px;
 }

@@ -6,14 +6,13 @@ body {
 
 .main {
   display: flex;
-  position: relative;
 }
 
 .login {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50vh;
+  flex-grow: 0.2;
   height: 100vh;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -22,10 +21,8 @@ body {
 .img {
   display: flex;
   align-items: center;
-  position: absolute;
-  top: 38%;
-  left: 50%;
-  height: 30%;
+  justify-content: center;
+  flex-grow: 1.8;
 }
 
 .login-form {
@@ -39,26 +36,21 @@ body {
 }
 
 .login-form input {
-  border: 0;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  background-color: #f1f3f6;
-  width: 410px;
-  height: 49px;
+  border: none;
   border-radius: 8px;
+  background-color: #f1f3f6;
+  color: #555555;
+  font-size: 16px;
+  padding: 12px 12px 12px 12px;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  outline: none;
 }
 
 .email,
 .password {
-  display: block;
-}
-
-.email img,
-.password img {
-  margin-top: 10px;
-  margin-bottom: 30px;
-  position: absolute;
-  left: 394px;
+  padding-bottom: 20px;
+  display: flex;
 }
 
 .logo {
@@ -72,21 +64,46 @@ body {
   color: #ffffff;
   border-radius: 8px;
   height: 45px;
-  margin-top: 31px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }
 .buttomSignup {
-  border: none;
+  border: 1px solid #1b263b;
+  color: #1b263b;
   width: 410px;
   height: 45px;
   border-radius: 8px;
-  background-color: #ffffff;
-  border: solid 1px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  background: transparent;
 }
 
 .loginAndSignup {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 21px;
   color: #c2c2c2;
+}
+
+.link {
+  padding-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-wrapper {
+  width: 410px;
+  text-align: start;
+  gap: 20px;
+}
+
+label {
+  font-family: "Poppins", sans-serif;
+  color: #555555;
 }
