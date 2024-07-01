@@ -99,10 +99,7 @@ input {
     padding-bottom: 20px;
 }
 
-.input-content img {
-    position: absolute;
-    left: 474px;
-}
+.input-content img {}
 
 button {
     width: 100%;
