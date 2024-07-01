@@ -1,5 +1,7 @@
 @import "../../styles/variables.css";
 
+
+
 :root {
     --primary-color: #1B263B;
     --text-color: #555555;
@@ -16,9 +18,10 @@
 }
 
 .left-side{
-    background-color: red;
+    background-color: #FFFFFF;
     height: 100%;
-    flex-grow: 0.3;
+    flex-grow: 0.2;
+    padding: 0 35px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,9 +40,68 @@
 }
 
 .right-side {
-    background-color: blue;
+    background-color: #EEEEEE;
     height: 100%;
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px    ;
+}
+
+.form-register {
+    width: 100%;
+    gap: 20px;
+}
+
+.main-form {
+    width: 90%;
+    gap: 20px;
+
+}
+
+label {
+    font-family: 'Poppins', sans-serif;
+    color: #555555;
+
+}
+
+input {
+    border: none;
+    border-radius: 8px;
+    background-color: #F1F3F6;
+    color: #555555;
+    font-size: 16px;
+    padding: 12px 12px 12px 12px;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+.span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    color: #C2C2C2;
+    padding-bottom: 12px;
+}
+
+.input-wrapper {
+    width: 100%;
+    text-align: start;
+    gap: 20px;
+
+}
+
+.input-content {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.input-content img {
+    position: absolute;
+    left: 474px;
 }
 
 button {
@@ -56,9 +118,17 @@ button {
     background-color: #1B263B;
     color: white;
     box-shadow:0px 8px 12px rgba(65.0000037252903, 90.00000223517418, 119.00000050663948, 0.20000000298023224);
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
 
 #button-secondary {
     border: 1px solid #1B263B;
     color: #1B263B;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.button-submit {
+    padding-top: 20px;
 }
