@@ -1,3 +1,49 @@
-.sexo {
-  color: aqua;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eeeeee;
+}
+
+.main {
+  display: flex;
+  position: relative;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vh;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  height: 30%;
+}
+
+.login-form {
+  background-color: #ffffff;
+}
+
+.email,
+.password {
+  display: block;
+}
+
+.login-form input {
+  background-color: #f1f3f6;
+  width: 410px;
+  height: 49px;
+  border-radius: 8px;
+}
+
+.login-form img {
+  background-color: aqua;
 }
