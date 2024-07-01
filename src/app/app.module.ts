@@ -15,7 +15,6 @@ import { Route, Router } from '@angular/router';
   imports: [
     CommonModule,
     AppRoutingModule,
-    RegisterModule
   ]
 })
 export class AppModule {
