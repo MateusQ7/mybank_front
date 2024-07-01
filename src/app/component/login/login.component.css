@@ -22,7 +22,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-grow: 1.8;
+  flex-grow: 1.5;
 }
 
 .login-form {
