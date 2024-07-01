@@ -1,3 +1,92 @@
-.sexo {
-  color: aqua;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eeeeee;
+}
+
+.main {
+  display: flex;
+  position: relative;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vh;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  height: 30%;
+}
+
+.login-form {
+  padding-top: 100px;
+  background-color: #ffffff;
+}
+
+.login-form form a {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-form input {
+  border: 0;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background-color: #f1f3f6;
+  width: 410px;
+  height: 49px;
+  border-radius: 8px;
+}
+
+.email,
+.password {
+  display: block;
+}
+
+.email img,
+.password img {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  position: absolute;
+  left: 394px;
+}
+
+.logo {
+  margin-top: 130px;
+}
+
+.buttomLogin {
+  border: none;
+  background-color: #1b263b;
+  width: 410px;
+  color: #ffffff;
+  border-radius: 8px;
+  height: 45px;
+  margin-top: 31px;
+}
+.buttomSignup {
+  border: none;
+  width: 410px;
+  height: 45px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: solid 1px;
+}
+
+.loginAndSignup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 21px;
+  color: #c2c2c2;
 }

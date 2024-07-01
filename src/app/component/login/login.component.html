@@ -1,1 +1,38 @@
-<p class="sexo">login works!</p>
+<body>
+
+  <div class="main">
+
+    <div class="login">
+      <div class="logo">
+        <img src="../../../assets/logo_mybank.svg" alt="">
+      </div>
+      <div class="login-form">
+        <form action="">
+          <label for="email">Email Address:</label>
+          <div class="email">
+            <input type="text" id="email" name="email" required placeholder="alex@email.com">
+            <img src="../../../assets/email-icon.svg" alt="">
+          </div>
+          <label for="password">Password:</label>
+          <div class="password">
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+            <img src="../../../assets/password-icon.svg" alt="">
+          </div>
+          <a href="">Forgot Password?</a>
+
+        </form>
+      </div>
+      <div class="loginAndSignup">
+        <button class="buttomLogin" type="button">Login</button>
+        <p>Or</p>
+        <button [routerLink]="['/register']" class="buttomSignup" type="button">Signup</button>
+      </div>
+    </div>
+
+    <div class="img">
+      <img src="../../../assets/backGournd.svg" alt="">
+
+    </div>
+
+  </div>
+</body>
