@@ -1,0 +1,21 @@
+header {
+  background-color: #1b263b;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 92px;
+  gap: 670px;
+}
+
+.button-header {
+  border: none;
+  outline: none;
+  width: 163px;
+  height: 38px;
+  border-radius: 7px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #1b263b;
+  cursor: pointer;
+}
