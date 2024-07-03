@@ -1,0 +1,27 @@
+nav {
+  background-color: #778da9;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  border-bottom: solid 2px #1b263b;
+  border-top: #e0e1dd solid 1px;
+}
+
+button {
+  padding: 13px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #e0e1dd;
+  border-radius: 10px;
+}
+
+button:hover {
+  transition: 0.5s;
+  background-color: #607999;
+  color: #1b263b;
+}
