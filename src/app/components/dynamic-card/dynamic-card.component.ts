@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StateService } from '../../services/state.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dynamic-card',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dynamic-card.component.html',
   styleUrl: './dynamic-card.component.css'
 })
