@@ -29,6 +29,15 @@ export class AppComponent {
     } else if (url.includes('card')) {
       this.stateService.setName('Cartão')
       this.stateService.setImg('../assets/credit-card.svg')
+    } else if (url.includes('invoice')) {
+      this.stateService.setName('Fatura')
+      this.stateService.setImg('../assets/invoice.svg')
+    } else if (url.includes('transfer')) {
+      this.stateService.setName('Transferência')
+      this.stateService.setImg('../assets/transfer.svg')
+    } else if (url.includes('user-config')) {
+      this.stateService.setName('Configurações')
+      this.stateService.setImg('../assets/config.svg')
     }
   }
 
