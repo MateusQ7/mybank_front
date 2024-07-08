@@ -20,7 +20,4 @@ export class DynamicCardComponent implements OnInit {
     this.img$ = this.stateService.img$;
 
   }
-
-
-
 }
