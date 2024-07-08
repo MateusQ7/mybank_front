@@ -4,7 +4,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { HubComponent } from '../components/hub/hub.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
+import { HomeComponent } from '../components/home/home.component';
 
 @Component({
   selector: 'app-card',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../components/header/header.component';
-import { NavbarComponent } from '../components/navbar/navbar.component';
-import { FooterComponent } from '../components/footer/footer.component';
-import { HubComponent } from '../components/hub/hub.component';
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
+import { HubComponent } from '../hub/hub.component';
 
 @Component({
   selector: 'app-home',

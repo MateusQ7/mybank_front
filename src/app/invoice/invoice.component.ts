@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../components/header/header.component';
+import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { HomeComponent } from '../components/home/home.component';
-import { FooterComponent } from '../components/footer/footer.component';
 import { HubComponent } from '../components/hub/hub.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-account',
+  selector: 'app-invoice',
   standalone: true,
   imports: [
     HeaderComponent,
     NavbarComponent,
-    HomeComponent,
+    HubComponent,
     FooterComponent,
-    HubComponent
+    HomeComponent,
+    RouterModule
   ],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.css'
+  templateUrl: './invoice.component.html',
+  styleUrl: './invoice.component.css'
 })
-export class AccountComponent {
+export class InvoiceComponent {
 
 }
