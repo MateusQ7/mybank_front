@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../components/navbar/navbar.component';
-import { HeaderComponent } from '../components/header/header.component';
-import { FooterComponent } from '../components/footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { HubComponent } from '../components/hub/hub.component';
-import { HomeComponent } from '../components/home/home.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { HubComponent } from '../../components/hub/hub.component';
+import { HomeComponent } from '../../components/home/home.component';
+
 
 @Component({
   selector: 'app-user-config',
@@ -15,7 +16,6 @@ import { HomeComponent } from '../components/home/home.component';
     RouterModule,
     HubComponent,
     HomeComponent
-
   ],
   templateUrl: './user-config.component.html',
   styleUrl: './user-config.component.css'

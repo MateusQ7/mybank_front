@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../components/navbar/navbar.component';
-import { FooterComponent } from '../components/footer/footer.component';
-import { HomeComponent } from '../components/home/home.component';
-import { HubComponent } from '../components/hub/hub.component';
-import { HeaderComponent } from '../components/header/header.component';
+
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { HomeComponent } from '../../components/home/home.component';
+import { HubComponent } from '../../components/hub/hub.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-transfer',

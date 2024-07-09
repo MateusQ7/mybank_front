@@ -3,6 +3,7 @@ import { HeaderComponent } from '../header/header.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { HubComponent } from '../hub/hub.component';
+import { DynamicCardComponent } from '../dynamic-card/dynamic-card.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { HubComponent } from '../hub/hub.component';
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
-    HubComponent
+    HubComponent,
+    DynamicCardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
