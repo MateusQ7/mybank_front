@@ -1,0 +1,86 @@
+.main {
+  padding-top: 75px;
+  height: 100%;
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  border: solid 2px black;
+  width: 1020px;
+  height: 450px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.card-contain {
+  padding: 15px;
+  border-bottom: solid 2px black;
+  font-weight: bold;
+  color: #505050;
+  font-family: "Poppins", san-serifs;
+  display: flex;
+  justify-content: center;
+}
+
+.card-info {
+  display: flex;
+  border: 1px solid #ccc;
+  height: 100%;
+}
+
+.card-hist {
+  border: solid 2px black;
+  margin-top: 20px;
+  width: 546px;
+  height: 329px;
+  margin-right: 22px;
+  margin-left: 10px;
+  border-radius: 11px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.card-hist ul {
+  list-style-type: disc;
+  padding-left: 15px;
+  font-size: 25px;
+  font-family: "Poppins", san-serifs;
+}
+
+.card-hist li {
+  margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+}
+
+.btn button {
+  border-radius: 8px;
+  width: 410px;
+  height: 64px;
+  background-color: #1b263b;
+  border: none;
+  cursor: pointer;
+  margin-top: 140px;
+  font-family: "Poppins", san-serifs;
+  font-size: 24px;
+  color: white;
+}
+.list-items {
+  list-style-type: none;
+  color: #505050;
+}
+
+.list-items li p {
+  color: #505050;
+}
+
+.receiving {
+  color: #008000;
+  font-weight: bold;
+}
+
+.payment {
+  color: #d90606;
+  font-weight: bold;
+}
