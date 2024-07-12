@@ -1,0 +1,49 @@
+.container-main {
+  margin-top: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form {
+  margin-top: 59px;
+}
+
+.form-input {
+  outline: none;
+  width: 880px;
+  height: 48px;
+  border: 1px solid #ced4da;
+}
+
+.form-input::placeholder {
+  padding: 10px;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #525252;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", san-serifs;
+  font-size: 18px;
+}
+
+.btn button {
+  margin-top: 83px;
+  width: 410px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #1b263b;
+  color: #ffffff;
+  font-size: 20px;
+  font-family: "Poppins", san-serifs;
+  border-radius: 8px;
+}
