@@ -4,6 +4,8 @@ import { AccountDetailsComponent } from '../account-details/account-details.comp
 import { TransferComponent } from '../../pages/transfer/transfer.component';
 import { TransferDetailsComponent } from '../transfer-details/transfer-details.component';
 import { ConfgDetailsComponent } from '../confg-details/confg-details.component';
+import { InvoiceDetailsComponent } from '../invoice-details/invoice-details.component';
+
 
 @Component({
   selector: 'app-hub',
@@ -12,6 +14,7 @@ import { ConfgDetailsComponent } from '../confg-details/confg-details.component'
     AccountDetailsComponent,
     TransferDetailsComponent,
     ConfgDetailsComponent
+    InvoiceDetailsComponent
   ],
   templateUrl: './hub.component.html',
   styleUrl: './hub.component.css'
