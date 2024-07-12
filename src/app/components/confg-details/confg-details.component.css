@@ -13,13 +13,15 @@
 
 .form-input {
   outline: none;
+  border: none;
   width: 880px;
   height: 48px;
-  border: 1px solid #ced4da;
-}
-
-.form-input::placeholder {
-  padding: 10px;
+  font-size: 16px;
+  background-color: #f1f3f6;
+  border-radius: 8px;
+  padding: 12px 12px 12px 12px;
+  font-family: 'Poppins', sans-serif;
+  color: #555555;
 }
 
 label {

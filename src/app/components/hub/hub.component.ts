@@ -13,7 +13,7 @@ import { InvoiceDetailsComponent } from '../invoice-details/invoice-details.comp
   imports: [DynamicCardComponent,
     AccountDetailsComponent,
     TransferDetailsComponent,
-    ConfgDetailsComponent
+    ConfgDetailsComponent,
     InvoiceDetailsComponent
   ],
   templateUrl: './hub.component.html',
