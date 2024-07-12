@@ -1,0 +1,152 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    overflow: hidden;
+}
+
+.left-side {
+    flex: 1;
+    height: 64vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-side {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invoice-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 550px;
+}
+
+.invoice-top {
+    height: 40%;
+}
+
+.current-invoice{
+    width: 502px;
+    height: 504px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #1B263B;
+    border-radius: 5px;
+}
+
+.title-invoice {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.invoice-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #505050;
+}
+
+.invoice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invoice-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    height: 100px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.invoice-money-status {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #D90606;
+    font-size: 34px;
+}
+
+.maturity {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #8B8B8B;
+}
+
+.title-historic{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.historic-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #505050;
+}
+
+.historic-list {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.text-info-h {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #505050;
+}
+
+.historic-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-top: 2px solid #1B263B;
+    height: 70%;
+}
+
+.historic-list li .value-h {
+    font-weight: bold;
+    color: #D90606;
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 107px;
+    height: 504px;
+    width: 410px;
+    align-items: center;
+    justify-content: center;
+}
+
+.balance-buttom {
+    border: none;
+    background-color: #1b263b;
+    width: 410px;
+    color: #ffffff;
+    border-radius: 8px;
+    height: 64px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
