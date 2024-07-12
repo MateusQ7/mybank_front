@@ -183,7 +183,7 @@
 
 .historic-list {
     list-style-type: disc;
-    list-style-position: inside; /* Faz com que os marcadores fiquem dentro da área de conteúdo */
+    list-style-position: inside;
     padding-left: 20px;
 }
 
@@ -198,5 +198,5 @@
     color: #D90606;
     margin-left: 10px;
     font-size: 24px;
-  }
+}
 
