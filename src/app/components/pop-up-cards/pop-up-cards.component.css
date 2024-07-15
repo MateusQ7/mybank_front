@@ -1,0 +1,58 @@
+.main-pop-up {
+    width: auto;
+    height: auto;
+    background-color: red;
+}
+
+.title-div {
+    display: flex;
+    align-items: center;
+    padding: 22px 0 0 20px;
+    height: 7vh;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.card-form {
+    font-family: 'Poppins', sans-serif;
+    height: 45vh;
+    background-color: aliceblue;
+}
+
+.input-wrapper {
+    width: 410px;
+    text-align: start;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: "Poppins", sans-serif;
+    color: #555555;
+}
+
+input {
+    border: none;
+    border-radius: 8px;
+    color: #555555;
+    font-size: 16px;
+    padding: 12px 12px 12px 12px;
+    width: 500px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+}
+
+/*.buttons {
+    background-color: blue;
+    width: 29vw;
+    height: 15.6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+  
