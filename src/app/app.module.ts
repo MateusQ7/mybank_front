@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { Route, Router } from '@angular/router';
 import { DynamicCardModule } from './components/dynamic-card/dynamic-card.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -15,7 +17,10 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     AppRoutingModule,
-    DynamicCardModule
+    DynamicCardModule,
+    MatDialogModule,
+    MatButtonModule,
+    BrowserModule,
   ]
 })
 export class AppModule {
