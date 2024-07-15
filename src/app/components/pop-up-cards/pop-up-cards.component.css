@@ -1,58 +1,106 @@
 .main-pop-up {
-    width: auto;
-    height: auto;
-    background-color: red;
+  width: auto;
+  height: auto;
 }
 
 .title-div {
-    display: flex;
-    align-items: center;
-    padding: 22px 0 0 20px;
-    height: 7vh;
+  display: flex;
+  align-items: center;
+  padding: 22px 0 0 20px;
+  height: 7vh;
 }
 
 .title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 36px;
-    font-weight: bold;
+  color: #525252;
+
+  padding-left: 7px;
+  font-family: "Poppins", sans-serif;
+  font-size: 36px;
+  font-weight: bold;
 }
 
 .card-form {
-    font-family: 'Poppins', sans-serif;
-    height: 45vh;
-    background-color: aliceblue;
+  color: #525252;
+
+  padding-left: 29px;
+  font-family: "Poppins", sans-serif;
+  height: 45vh;
+  background-color: #ffffff;
+  padding-bottom: 500px;
 }
 
 .input-wrapper {
-    width: 410px;
-    text-align: start;
-    gap: 20px;
-    display: flex;
-    flex-direction: column;
+  color: #525252;
+  width: 410px;
+  text-align: start;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-    font-family: "Poppins", sans-serif;
-    color: #555555;
+  font-family: "Poppins", sans-serif;
+  color: #525252;
+  font-weight: bold;
+}
+
+.first-label {
+  margin-top: 16px;
 }
 
 input {
-    border: none;
-    border-radius: 8px;
-    color: #555555;
-    font-size: 16px;
-    padding: 12px 12px 12px 12px;
-    width: 500px;
-    font-family: "Poppins", sans-serif;
-    outline: none;
+  border: 1px solid #ced4da;
+  font-weight: lighter;
+  border-radius: 8px;
+  color: #818181;
+  font-size: 16px;
+  padding: 12px 12px 12px 12px;
+  width: 500px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
 }
 
-/*.buttons {
-    background-color: blue;
-    width: 29vw;
-    height: 15.6vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
-  
+.buttons {
+  display: flex;
+  gap: 30px;
+}
+
+.bar {
+  width: 1px;
+  height: 52px;
+  background-color: #1b263b;
+}
+
+.buttons-card {
+  border-radius: 5px;
+  width: 106px;
+  height: 52px;
+  background-color: #e0e1dd;
+  color: #1b263b;
+}
+
+.buttons-card:first-of-type {
+  color: #ffffff;
+  background-color: #1b263b;
+}
+
+.buttons-card2 {
+  border-radius: 7px;
+  width: 158px;
+  height: 52px;
+  background-color: #1b263b;
+  color: #f0f3fa;
+}
+
+.buttons-card2:first-of-type {
+  background-color: #ffffff;
+  color: #1b263b;
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 33px;
+  margin-top: 60px;
+}
