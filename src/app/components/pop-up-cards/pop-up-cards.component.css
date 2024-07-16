@@ -80,7 +80,7 @@ input {
   background-color: #e0e1dd;
   color: #1b263b;
   text-align: center;
-  line-height: 52px; /* Alinha o texto verticalmente */
+  line-height: 52px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
