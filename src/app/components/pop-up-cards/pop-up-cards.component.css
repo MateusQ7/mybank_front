@@ -24,7 +24,6 @@
   font-family: "Poppins", sans-serif;
   height: 45vh;
   background-color: #ffffff;
-  padding-bottom: 500px;
 }
 
 .input-wrapper {
@@ -90,12 +89,27 @@ input {
   color: white;
 }
 
-.buttons-card2 {
+.buttons-create {
+  border: #1b263b;
   border-radius: 7px;
+  font-weight: 400;
+  font-size: 18px;
   width: 158px;
   height: 52px;
   background-color: #1b263b;
   color: #f0f3fa;
+  cursor: pointer;
+}
+
+.buttons-close {
+  border: 1px solid #1b263b;
+  border-radius: 7px;
+  font-weight: 400;
+  font-size: 18px;
+  width: 158px;
+  height: 52px;
+  background-color: #ffffff;
+  color: #1b263b;
   cursor: pointer;
 }
 
@@ -109,5 +123,4 @@ input {
   justify-content: center;
   align-items: center;
   gap: 33px;
-  margin-top: 60px;
 }
