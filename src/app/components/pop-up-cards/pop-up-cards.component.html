@@ -6,22 +6,21 @@
     <div class="card-form">
       <div class="input-wrapper">
         <label class="first-label" for="card-name">Nome do cartão:</label>
-        <input type="text" placeholder="Nome do cartão">
+        <input type="text" placeholder="Nome do cartão" id="card-name">
         <label for="card-value">Limite da compra:</label>
-        <input type="text" placeholder="R$ 120.00">
-        <label for="card-value">Compra única:</label>
+        <input type="text" placeholder="R$ 120.00" id="card-value">
+        <label for="purchase-type">Compra única:</label>
         <div class="buttons">
-          <button class="buttons-card">SIM</button>
+          <input type="radio" id="button-sim" name="purchase" class="btn-choice" checked>
+          <label for="button-sim" class="buttons-card">SIM</label>
           <div class="bar"></div>
-          <button class="buttons-card">NÃO</button>
+          <input type="radio" id="button-nao" name="purchase" class="btn-choice">
+          <label for="button-nao" class="buttons-card">NÃO</label>
         </div>
-        <div class="buttons">
-        </div>
-
       </div>
       <div class="close">
-        <button class="buttons-card2">fechar</button>
-        <button class="buttons-card2">criar</button>
+        <button type="button" class="buttons-card2">fechar</button>
+        <button type="submit" class="buttons-card2">criar</button>
       </div>
     </div>
   </form>
