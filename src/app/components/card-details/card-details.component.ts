@@ -18,7 +18,7 @@ export class CardDetailsComponent {
   openDialog(): void {
     this.dialog.open(PopUpCardsComponent, {
       width: '557px',
-      height: '476px',
+      height: '564px',
       data: {name: 'Angular'},
       panelClass: 'custom-dialog'
     })

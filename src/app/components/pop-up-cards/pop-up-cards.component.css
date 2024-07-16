@@ -12,7 +12,6 @@
 
 .title {
   color: #525252;
-
   padding-left: 7px;
   font-family: "Poppins", sans-serif;
   font-size: 36px;
@@ -21,7 +20,6 @@
 
 .card-form {
   color: #525252;
-
   padding-left: 29px;
   font-family: "Poppins", sans-serif;
   height: 45vh;
@@ -50,7 +48,6 @@ label {
 
 input {
   border: 1px solid #ced4da;
-  font-weight: lighter;
   border-radius: 8px;
   color: #818181;
   font-size: 16px;
@@ -63,6 +60,7 @@ input {
 .buttons {
   display: flex;
   gap: 30px;
+  align-items: center;
 }
 
 .bar {
@@ -71,17 +69,25 @@ input {
   background-color: #1b263b;
 }
 
+.btn-choice {
+  display: none;
+}
+
 .buttons-card {
   border-radius: 5px;
   width: 106px;
   height: 52px;
   background-color: #e0e1dd;
   color: #1b263b;
+  text-align: center;
+  line-height: 52px; /* Alinha o texto verticalmente */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.buttons-card:first-of-type {
-  color: #ffffff;
+.btn-choice:checked + .buttons-card {
   background-color: #1b263b;
+  color: white;
 }
 
 .buttons-card2 {
@@ -90,6 +96,7 @@ input {
   height: 52px;
   background-color: #1b263b;
   color: #f0f3fa;
+  cursor: pointer;
 }
 
 .buttons-card2:first-of-type {
