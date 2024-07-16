@@ -1,0 +1,37 @@
+<div class="main">
+  <div class="title-div">
+    <p class="title">Nova Transferência</p>
+  </div>
+  <form action="">
+    <div class="card-form">
+      <div class="input-wrapper">
+        <label class="first-label" for="card-name">Escolha a chave:</label>
+        <select id="options" name="options">
+          <option value="opcao1">Ler qr code</option>
+          <option value="opcao2">Pix Copia e Cola</option>
+          <option value="opcao3">Celular</option>
+          <option value="opcao4">CPF</option>
+        </select>
+        <label for="card-value">Valor para a Transferência:</label>
+        <input type="text" placeholder="R$ 120.00" id="card-value">
+        <label for="purchase-type">Descrição da Transferência:</label>
+        <input type="text" placeholder="R$ 120.00" id="card-value">
+        <label for="purchase-type">Tipo da Transferência:</label>
+        <div class="buttons">
+          <input type="radio" id="button-sim" name="purchase" class="btn-choice" checked>
+          <label for="button-sim" class="buttons-card">PIX</label>
+          <input type="radio" id="button-nao" name="purchase" class="btn-choice">
+          <label for="button-nao" class="buttons-card">TED</label>
+          <input type="radio" id="button-doc" name="purchase" class="btn-choice">
+          <label for="button-doc" class="buttons-card">DOC</label>
+          <input type="radio" id="button-other" name="purchase" class="btn-choice">
+          <label for="button-other" class="buttons-card">OUTRO</label>
+        </div>
+      </div>
+    </div>
+    <div class="close">
+      <button type="button" class="buttons-close" (click)="onClose()">Fechar</button>
+      <button type="button" class="buttons-create">Criar</button>
+    </div>
+  </form>
+</div>
