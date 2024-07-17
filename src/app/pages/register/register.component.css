@@ -50,6 +50,7 @@ input {
   width: 100%;
   font-family: "Poppins", sans-serif;
   outline: none;
+  border: none;
 }
 
 .span {

@@ -1,4 +1,10 @@
 <div class="main-div">
   <app-dynamic-card></app-dynamic-card>
-  <app-card-details></app-card-details>
+  <ng-container *ngIf="component$ | async as component">
+    <account-details *ngIf="component === 'account-details'"></account-details>
+    <app-invoice-details *ngIf="component === 'app-invoice-details'"></app-invoice-details>
+    <app-card-details *ngIf="component === 'app-card-details'"></app-card-details>
+    <app-transfer-details *ngIf="component === 'app-transfer-details'"></app-transfer-details>
+    <app-config-details *ngIf="component === 'app-config-details'"></app-config-details>
+  </ng-container>
 </div>
