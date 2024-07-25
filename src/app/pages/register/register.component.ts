@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { FormatedForm } from '../../shared/models/formatedForm';
+import { RegisterService } from './register.service';
+import { BackResponse } from '../../shared/types/back-response.interface';
+import { RegisterModule } from './register.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, RegisterModule, HttpClientModule],
+  providers: [RegisterService, HttpClient],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -17,7 +22,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private FormBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private registerService: RegisterService
   ) {}
 
   ngOnInit(): void {
@@ -64,23 +70,33 @@ export class RegisterComponent implements OnInit {
   }
 
   async submit() {
-    if(this.form.valid){
-      const formatedForm: FormatedForm = {
-        name: this.form.value.name,
-        email: this.form.value.email,
-        password: this.form.value.password,
-        phone: this.form.value.phone,
-        cpf: this.form.value.cpf
-      }
-  
-      const formatedFormJson = JSON.stringify(formatedForm, null, 2);
-
-      console.log("Form: " + formatedFormJson)
-      this.goToLogin();
-    }else {
-      console.log("Algum campo inválido!")
+    const formatedForm: FormatedForm = {
+      name: this.form.value.name,
+      email: this.form.value.email,
+      password: this.form.value.password,
+      phone: this.form.value.phone,
+      cpf: this.form.value.cpf
     }
-
+    if(this.form.valid){
+      this.registerService.submit(formatedForm).subscribe(
+        (res) => {
+          console.log(res)
+          const backResponse: BackResponse = {
+            status: res.status,
+            message: res.message,
+            data: res.data
+          }
+          this.goToLogin()
+        },
+        (error) => {
+          const backResponse: BackResponse = {
+            status: error.status,
+            message: error.message
+          }
+        }
+      )
+    }
+    return
   }
 
   goToLogin() {
