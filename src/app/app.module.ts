@@ -8,6 +8,7 @@ import { DynamicCardModule } from './components/dynamic-card/dynamic-card.module
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { RegisterService } from './pages/register/register.service';
 
 
 
@@ -21,7 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     MatButtonModule,
     BrowserModule,
-  ]
+  ],
+  providers: [RegisterService]
 })
 export class AppModule {
 }
