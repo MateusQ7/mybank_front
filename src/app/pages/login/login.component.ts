@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Route, Router, RouterModule } from '@angular/router';
 import { FormatedFormLogin } from '../../shared/models/formatedFormLogin';
+import { LoginService } from './login.service';
+import { BackResponse } from '../../shared/types/back-response.interface';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  providers: [LoginService, HttpClient],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -15,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) { }
 
 
@@ -39,21 +44,32 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  async submit() {
-    if (this.form.valid) {
-      const formatedFormLogin: FormatedFormLogin = {
-        email: this.form.value.email,
-        password: this.form.value.password
-      }
-      const formatedFormJson = JSON.stringify(formatedFormLogin, null, 2);
-      console.log("login: " + formatedFormJson)
-      this.goToHome()
-    }
-    else {
-      console.log("Algum campo inválido!")
+  submit(){
+    const formatedFormLogin: FormatedFormLogin = {
+      email: this.form.value.email,
+      password: this.form.value.password
     }
 
-
+    if(this.form.valid){
+      this.loginService.login(formatedFormLogin).subscribe(
+        (res) => {
+          console.log(res)
+          const backResponse: BackResponse = {
+            status: res.status,
+            message: res.message,
+            data: res.data
+          }
+          this.goToHome()
+        },
+        (error) => {
+          const backResponse: BackResponse = {
+            status: error.status,
+            message: error.message
+          }
+        }
+      )
+    }
+    return
   }
 
 
