@@ -7,6 +7,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { TransferComponent } from './pages/transfer/transfer.component';
 import { UserConfigComponent } from './pages/user-config/user-config.component';
+import { AuthGuard} from './services/auth/auth-guard.service';
 
 export const routes: Routes = [
 
@@ -17,31 +18,36 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: 'account',
-    component: AccountComponent
+    component: AccountComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'card',
-    component: CardComponent
+    component: CardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'invoice',
-    component: InvoiceComponent
+    component: InvoiceComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'transfer',
-    component: TransferComponent
+    component: TransferComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-config',
-    component: UserConfigComponent
+    component: UserConfigComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

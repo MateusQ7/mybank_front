@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { RegisterService } from './pages/register/register.service';
+import { LoginService } from './pages/login/login.service';
 
 
 
@@ -23,7 +24,7 @@ import { RegisterService } from './pages/register/register.service';
     MatButtonModule,
     BrowserModule,
   ],
-  providers: [RegisterService]
+  providers: [RegisterService, LoginService]
 })
 export class AppModule {
 }
