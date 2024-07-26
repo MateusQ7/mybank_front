@@ -7,7 +7,7 @@
   
   .left-side {
     flex: 1; 
-    border-right: 2px solid #1B263B;
+    border-right: 1px solid #1B263B;
   }
   
   .right-side {
@@ -18,15 +18,13 @@
   
   .top-side{
     flex: 1;
-    background-color: #e0e0e0; 
     align-items: center;
     display: flex;
-    border-bottom: 2px solid #1B263B;
+    border-bottom: 1px solid #1B263B;
   }
 
   .bottom-side {
     flex: 1;
-    background-color: aliceblue;
   }
 
 .title-balance{
@@ -55,7 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #1B263B;
+    border: 1px solid #1B263B;
     border-radius: 5px;
     width: 50%;
     height: 168px;

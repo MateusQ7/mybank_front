@@ -1,9 +1,9 @@
 .main-div {
   background-color: #ffffff;
-  border: 2px solid #1b263b;
+  border: 1px solid #1b263b;
   border-radius: 8px;
   width: 70vw;
-  height: 70vh;
+  height: 69vh;
   display: flex;
   flex-direction: column;
   overflow: hidden; /* Para garantir que o conteúdo não extrapole a div */

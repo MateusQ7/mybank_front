@@ -8,7 +8,7 @@
 }
 
 .card {
-  border: solid 2px black;
+  border: solid 1px black;
   width: 1020px;
   height: 450px;
   overflow: hidden;
@@ -17,7 +17,7 @@
 
 .card-contain {
   padding: 15px;
-  border-bottom: solid 2px black;
+  border-bottom: solid 1px black;
   font-weight: bold;
   color: #505050;
   font-family: "Poppins", san-serifs;
@@ -32,7 +32,7 @@
 }
 
 .card-hist {
-  border: solid 2px black;
+  border: solid 1px black;
   margin-top: 20px;
   width: 546px;
   height: 329px;
