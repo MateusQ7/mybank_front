@@ -10,8 +10,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { RegisterService } from './pages/register/register.service';
 import { LoginService } from './pages/login/login.service';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,8 @@ import { LoginService } from './pages/login/login.service';
     MatDialogModule,
     MatButtonModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [RegisterService, LoginService]
 })

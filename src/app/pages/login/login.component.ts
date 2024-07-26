@@ -5,6 +5,7 @@ import { FormatedFormLogin } from '../../shared/models/formatedFormLogin';
 import { LoginService } from './login.service';
 import { BackResponse } from '../../shared/types/back-response.interface';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private toastr: ToastrService
   ) { }
 
 
@@ -44,13 +46,13 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  submit(){
+  submit() {
     const formatedFormLogin: FormatedFormLogin = {
       email: this.form.value.email,
       password: this.form.value.password
     }
 
-    if(this.form.valid){
+    if (this.form.valid) {
       this.loginService.login(formatedFormLogin).subscribe(
         (res) => {
           console.log(res)
@@ -59,6 +61,7 @@ export class LoginComponent implements OnInit {
             message: res.message,
             data: res.data
           }
+          this.toastr.success("Login feito com sucesso!");
           this.goToHome()
         },
         (error) => {
