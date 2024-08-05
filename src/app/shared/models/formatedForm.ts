@@ -4,4 +4,5 @@ export interface FormatedForm {
     password: string
     phone: string
     cpf: string
+    birthdate: string
 }
