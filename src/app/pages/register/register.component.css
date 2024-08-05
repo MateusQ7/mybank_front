@@ -4,6 +4,11 @@
   --gray-bg: #eeeeee;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
 .main {
   display: flex;
 }
@@ -18,7 +23,7 @@
 }
 
 .image-div {
-  margin-top: 130px;
+  margin-top: 50px;
 }
 
 .right-side {
