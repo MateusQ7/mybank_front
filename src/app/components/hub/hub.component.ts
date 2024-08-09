@@ -7,7 +7,7 @@ import { ConfigDetailsComponent } from '../config-details/config-details.compone
 import { InvoiceDetailsComponent } from '../invoice-details/invoice-details.component';
 import { CardDetailsComponent } from '../card-details/card-details.component';
 import { CommonModule } from '@angular/common';
-import { StateService } from '../../services/state.service';
+import { StateService } from '../../services/state/state.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Observable } from 'rxjs';
 
