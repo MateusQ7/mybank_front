@@ -7,9 +7,8 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   logout() {
-    sessionStorage.removeItem('auth-token'); // Remover o token ao sair
-    sessionStorage.removeItem('name'); // Remover o nome do usuário, se necessário
+    sessionStorage.removeItem('auth-token');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('cpf');
   }
-
-
 }
