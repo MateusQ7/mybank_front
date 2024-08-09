@@ -50,29 +50,38 @@ export class LoginComponent implements OnInit {
     const formatedFormLogin: FormatedFormLogin = {
       email: this.form.value.email,
       password: this.form.value.password
-    }
-
+    };
+  
     if (this.form.valid) {
       this.loginService.login(formatedFormLogin).subscribe(
         (res) => {
-          console.log(res)
-          const backResponse: BackResponse = {
-            status: res.status,
-            message: res.message,
-            data: res.data
+          console.log('Resposta da API:', res);
+          if (res.token && res.name) {
+            sessionStorage.setItem('auth-token', res.token);
+            sessionStorage.setItem('name', res.name);
+            sessionStorage.setItem('cpf', res.cpf);
+            this.toastr.success("Login feito com sucesso!");
+            this.goToHome();
+          } else {
+            console.error('Token ou nome ausente na resposta:', res);
+            this.toastr.error("Erro ao processar a resposta do login.");
           }
-          this.toastr.success("Login feito com sucesso!");
-          this.goToHome()
         },
         (error) => {
+          console.error('Erro ao fazer login:', error);
           const backResponse: BackResponse = {
             status: error.status,
             message: error.message
-          }
+          };
+          this.toastr.error("Erro ao fazer login.");
         }
-      )
+      );
+    } else {
+      console.warn('Formulário inválido:', this.form.errors);
+      this.toastr.warning("Por favor, preencha todos os campos corretamente.");
     }
-    return
+  
+    return;
   }
 
 
