@@ -30,7 +30,7 @@
   color: #525252;
   width: 410px;
   text-align: start;
-  gap: 20px;
+  gap: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -39,10 +39,6 @@ label {
   font-family: "Poppins", sans-serif;
   color: #525252;
   font-weight: bold;
-}
-
-.first-label {
-  margin-top: 16px;
 }
 
 input {
