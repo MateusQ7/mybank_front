@@ -18,14 +18,18 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const authToken = sessionStorage.getItem('auth-token');
-
-    if (authToken) {
+    const cpf = sessionStorage.getItem('cpf')
+    if (authToken && cpf) {
       return true
     } else {
-      this.toastr.error('Token expirado'); // Exibir mensagem de erro
+      this.toastr.error('Dados expirado'); // Exibir mensagem de erro
       this.router.navigate(['/login'])
       return false
     }
+
+
   }
 
 }
+
+
