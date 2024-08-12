@@ -16,11 +16,6 @@ export class LoginService {
   ) { }
 
   login(form: FormatedFormLogin){
-    return this.http.post<LoginResponse>(`${this.config.apiUrl}/auth/login`, form).pipe(
-      tap((value) => {
-        sessionStorage.setItem('auth-token', value.token)
-        sessionStorage.setItem('name', value.name)
-      })
-    )
+    return this.http.post<LoginResponse>(`${this.config.apiUrl}/auth/login`, form);
   }
 }

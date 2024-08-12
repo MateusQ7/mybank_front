@@ -5,22 +5,23 @@
         </div>
         <div class="balance">
             <div class="balance-main">
-                <p class="balance-money-status">R$ 10,50</p>
+                <p class="balance-money-status" *ngIf="account">R$ {{ account.accountValue | number: '1.2-2' }}</p>
+                <p class="balance-money-status" *ngIf="!account">Carregando...</p>
                 <p class="maturity">Vencimento dia 10</p>
             </div>
         </div>
         <div class="balance-info-user">
             <div class="info">
                 <p class="text-info">Nome:</p>
-                <p class="text-info-i">Dods</p>
+                <p class="text-info-i">{{ account?.user?.name || 'Não disponível' }}</p>
             </div>
             <div class="info">
                 <p class="text-info">CPF:</p>
-                <p class="text-info-i">01234567899</p>
+                <p class="text-info-i">{{ account?.user?.cpf || 'Não disponível'}}</p>
             </div>
             <div class="info">
                 <p class="text-info">Nascimento:</p>
-                <p class="text-info-i">05/12/2001</p>
+                <p class="text-info-i">{{ (account?.user?.birthdate ? (account?.user?.birthdate | date: 'dd/MM/yyyy') : 'Não disponível') }}</p>
             </div>
         </div>
         <div class="buttons">
@@ -33,11 +34,11 @@
             <div class="info-limit">
                 <div class="info-l">
                     <p class="text-info-l">Limite Utilizado:</p>
-                    <p class="limit-status-u">R$ 5010,50</p>
+                    <p class="limit-status-u">R$ {{ (account?.usedLimit ?? 0) | number: '1.2-2' }}</p>
                 </div>
                 <div class="info-l">
                     <p class="text-info-l">Limite Disponível:</p>
-                    <p class="limit-status-d">R$ 20010,50</p>
+                    <p class="limit-status-d">R$ {{ ((account?.creditLimit ?? 0) - (account?.usedLimit ?? 0)) | number: '1.2-2' }}</p>
                 </div>
                 <div class="info-l">
                     <p class="text-info-l">Última Fatura:</p>

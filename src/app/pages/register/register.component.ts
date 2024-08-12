@@ -66,6 +66,12 @@ export class RegisterComponent implements OnInit {
       },[
         Validators.required,
       ]],
+      birthdate: [{
+        value: '',
+        disabled: false
+      },[
+        Validators.required,
+      ]],
     })
   }
 
@@ -75,7 +81,8 @@ export class RegisterComponent implements OnInit {
       email: this.form.value.email,
       password: this.form.value.password,
       phone: this.form.value.phone,
-      cpf: this.form.value.cpf
+      cpf: this.form.value.cpf,
+      birthdate: this.form.value.birthdate
     }
     if(this.form.valid){
       this.registerService.submit(formatedForm).subscribe(
