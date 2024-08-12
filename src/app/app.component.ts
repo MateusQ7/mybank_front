@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
-import { StateService } from './services/state.service';
+import { StateService } from './services/state/state.service';
+
 
 @Component({
   selector: 'app-root',
