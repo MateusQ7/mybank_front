@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       email: this.form.value.email,
       password: this.form.value.password
     };
-  
+
     if (this.form.valid) {
       this.loginService.login(formatedFormLogin).subscribe(
         (res) => {
@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('auth-token', res.token);
             sessionStorage.setItem('name', res.name);
             sessionStorage.setItem('cpf', res.cpf);
+            sessionStorage.setItem('invoice-id', res.invoiceId);
             this.toastr.success("Login feito com sucesso!");
             this.goToHome();
           } else {
@@ -80,7 +81,7 @@ export class LoginComponent implements OnInit {
       console.warn('Formulário inválido:', this.form.errors);
       this.toastr.warning("Por favor, preencha todos os campos corretamente.");
     }
-  
+
     return;
   }
 
