@@ -1,40 +1,40 @@
 <div class="main">
-    <div class="left-side">
-        <div class="invoice-content">
-            <div class="current-invoice">
-                <div class="invoice-top">
-                    <div class="title-invoice">
-                        <p class="invoice-text">Fatura Atual:</p>
-                    </div>
-                    <div class="invoice">
-                        <div class="invoice-main">
-                            <p class="invoice-money-status">R$ 10710,50</p>
-                            <p class="maturity">Vencimento dia 10</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="historic-div">
-                    <div class="title-historic">
-                        <p class="historic-text">Histórico de Faturas:</p>
-                    </div>
-                    <div class="historic">
-                        <ul class="historic-list">
-                            <li class="text-info-h">RP League Of Legends = <span class="value-h">R$ 5000,90</span></li>
-                            <li class="text-info-h">Supermercado DODS = <span class="value-h">R$ 2000,00</span></li>
-                            <li class="text-info-h">Cursos de frescura = <span class="value-h">R$ 1028,00</span></li>
-                            <li class="text-info-h">SAMSUNNG BRASIL = <span class="value-h">R$ 2681,60</span></li>
-                        </ul>
-                    </div>
-                </div>
+  <div class="left-side">
+    <div class="invoice-content">
+      <div class="current-invoice">
+        <div class="invoice-top">
+          <div class="title-invoice">
+            <p class="invoice-text">Fatura Atual:</p>
+          </div>
+          <div class="invoice">
+            <div class="invoice-main">
+              <p class="invoice-money-status" *ngIf="invoice">R$ {{ invoice.amount| number: '1.2-2' }}</p>
+              <p class="maturity">Vencimento dia 10</p>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="right-side">
-        <div class="buttons">
-            <button class="balance-buttom" (click)="openDialog()">Pagar</button>
-            <button class="balance-buttom">Aumentar Limite</button>
-            <button class="balance-buttom">Antecipar</button>
-            <button class="balance-buttom">Mudar Vencimento</button>
+        <div class="historic-div">
+          <div class="title-historic">
+            <p class="historic-text">Histórico de Faturas:</p>
+          </div>
+          <div class="historic">
+            <ul class="historic-list">
+              <li class="text-info-h">RP League Of Legends = <span class="value-h">R$ 5000,90</span></li>
+              <li class="text-info-h">Supermercado DODS = <span class="value-h">R$ 2000,00</span></li>
+              <li class="text-info-h">Cursos de frescura = <span class="value-h">R$ 1028,00</span></li>
+              <li class="text-info-h">SAMSUNNG BRASIL = <span class="value-h">R$ 2681,60</span></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="right-side">
+    <div class="buttons">
+      <button class="balance-buttom" (click)="openDialog()">Pagar</button>
+      <button class="balance-buttom">Aumentar Limite</button>
+      <button class="balance-buttom">Antecipar</button>
+      <button class="balance-buttom">Mudar Vencimento</button>
+    </div>
+  </div>
 </div>
