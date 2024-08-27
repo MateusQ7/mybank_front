@@ -26,24 +26,16 @@ export class InvoiceDetailsComponent {
   }
 
   loadInvoiceById(): void {
-    const storedId = sessionStorage.getItem('invoice-id');
-    if (storedId) {
-      const invoiceId = Number(storedId); // Certifica-se de que é um número
-      
-      this.invoiceDetailsService.getInvoiceById(invoiceId.toString()).subscribe(
+      this.invoiceDetailsService.getInvoiceById(2).subscribe(
         (data: Invoice) => {
           this.invoice = data;
         },
         (error) => {
-          console.error('Erro ao buscar conta', error);
+          console.error('Erro ao buscar fatura', error);
           this.error = 'Conta não encontrada ou erro na requisição.';
         }
       );
-    } else {
-      this.error = 'CPF não encontrado no sessionStorage.';
-    }
   }
-
   openDialog(): void {
     this.dialog.open(PopUpInvoiceComponent, {
       width: '558px',

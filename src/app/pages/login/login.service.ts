@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from '../../services/config/config.service';
 import { FormatedFormLogin } from '../../shared/models/formatedFormLogin';
-import { Observable, tap } from 'rxjs';
 import { LoginResponse } from '../../shared/types/login-response.type';
 
 @Injectable({

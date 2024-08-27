@@ -3,7 +3,6 @@ import { ConfigService } from '../../services/config/config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { Invoice } from '../../shared/models/invoiceModel';
-import id from '@angular/common/locales/id';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class InvoiceDetailsService {
     private http: HttpClient
   ) { }
 
-  getInvoiceById(invoiceId: String): Observable<Invoice> {
+  getInvoiceById(invoiceId: number): Observable<Invoice> {
     const token = sessionStorage.getItem('auth-token');
 
     let headers = new HttpHeaders();
