@@ -22,20 +22,28 @@ export class InvoiceDetailsComponent {
   constructor(public dialog: MatDialog, private invoiceDetailsService: InvoiceDetailsService) { }
 
   ngOnInit(): void {
-    this.loadInvoiceById();
+    this.loadInvoiceByCpf();
   }
 
-  loadInvoiceById(): void {
-      this.invoiceDetailsService.getInvoiceById(2).subscribe(
+  loadInvoiceByCpf(): void {
+    const storageCpf = sessionStorage.getItem('cpf'); // Supondo que o ID do cartão esteja no sessionStorage
+    if (storageCpf) {
+      this.invoiceDetailsService.getInvoiceByCpf(storageCpf).subscribe(
         (data: Invoice) => {
           this.invoice = data;
         },
         (error) => {
-          console.error('Erro ao buscar fatura', error);
-          this.error = 'Conta não encontrada ou erro na requisição.';
+          console.error('Erro ao buscar faturas', error);
+          this.error = 'Faturas não encontradas ou erro na requisição.';
         }
       );
+    } else {
+      console.error('ID do cartão não encontrado no sessionStorage.');
+      this.error = 'ID do cartão não encontrado.';
+    }
   }
+
+
   openDialog(): void {
     this.dialog.open(PopUpInvoiceComponent, {
       width: '558px',

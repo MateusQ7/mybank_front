@@ -14,7 +14,7 @@ export class InvoiceDetailsService {
     private http: HttpClient
   ) { }
 
-  getInvoiceById(invoiceId: number): Observable<Invoice> {
+  getInvoiceByCpf(cpf: string): Observable<Invoice> {
     const token = sessionStorage.getItem('auth-token');
 
     let headers = new HttpHeaders();
@@ -22,7 +22,7 @@ export class InvoiceDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.get<Invoice>(`${this.config.apiUrl}/invoice/${invoiceId}`, { headers }).pipe(
+    return this.http.get<Invoice>(`${this.config.apiUrl}/invoice/account/${cpf}`, { headers }).pipe(
       catchError(error => {
         console.error('Erro ao buscar fatura', error);
         throw error;
