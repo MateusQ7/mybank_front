@@ -1,15 +1,19 @@
 <div class="container-main">
   <div class="form">
-    <form action="">
+    <form action="" [formGroup]="form">
       <label for="telefone">Telefone:</label>
-      <input class="form-input" id="telefone" type="tel" name="telefone" placeholder="(85) 6969696969" required>
+      <input class="form-input" id="telefone" type="tel" name="telefone" placeholder="(85) 6969696969"
+        formControlName="phone" required>
       <label for="email">Email:</label>
-      <input class="form-input" id="email" type="email" name="email" placeholder="dods@mybank.com" required>
+      <input class="form-input" id="email" type="email" name="email" placeholder="dods@mybank.com"
+        formControlName="email" required>
       <label for="password">Password:</label>
-      <input class="form-input" id="password" type="password" name="senha" placeholder="********" required>
+      <input class="form-input" id="password" type="password" name="senha" formControlName="password"
+        placeholder="********" required>
       <label for="confirm-password">Password Confirm:</label>
-      <input class="form-input" id="confirm-password" type="password" name="confirm-password" placeholder="********" required>
+      <input class="form-input" id="confirm-password" type="password" name="confirm-password"
+        formControlName="confirmPassword" placeholder="********" required>
     </form>
   </div>
-  <div class="btn"><button type="button">Confirmar</button></div>
+  <div class="btn"><button type="button" (click)="updateUser()">Confirmar</button></div>
 </div>
