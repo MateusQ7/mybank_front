@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Route, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { FormatedFormLogin } from '../../shared/models/formatedFormLogin';
 import { LoginService } from './login.service';
 import { BackResponse } from '../../shared/types/back-response.interface';
@@ -13,37 +13,32 @@ import { ToastrService } from 'ngx-toastr';
   imports: [RouterModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [LoginService, HttpClient],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form!: FormGroup
+  form!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private loginService: LoginService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute  
   ) { }
-
-
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      email: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.email
-      ]],
-      password: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.minLength(6)
-      ]
-      ]
-    }
-    )
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.minLength(6), Validators.required]]
+    });
+
+    //Lembra de mostrar pro mefius p ele saber oq eu fiz 
+    this.route.queryParams.subscribe(params => {
+      const successMessage = params['successMessage'];
+      if (successMessage) {
+        this.toastr.success(successMessage);
+      }
+    });
   }
 
   submit() {
@@ -81,14 +76,11 @@ export class LoginComponent implements OnInit {
       console.warn('Formulário inválido:', this.form.errors);
       this.toastr.warning("Por favor, preencha todos os campos corretamente.");
     }
-
-    return;
   }
-
 
   goToHome() {
     if (this.form.valid) {
-      this.router.navigate(['/account'])
+      this.router.navigate(['/account']);
     }
   }
 }
