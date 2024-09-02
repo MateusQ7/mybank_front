@@ -9,7 +9,7 @@
           <div class="invoice">
             <div class="invoice-main">
               <p class="invoice-money-status" *ngIf="invoice">R$ {{ invoice.amount | number: '1.2-2' }}</p>
-              <p class="invoice-money-status" *ngIf="!invoice">Carregando...</p>
+              <p class="invoice-money-status" *ngIf="!invoice">Fatura Inexistente</p>
               <p class="maturity">Vencimento dia 10</p>
             </div>
           </div>
