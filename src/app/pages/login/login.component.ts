@@ -3,14 +3,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { FormatedFormLogin } from '../../shared/models/formatedFormLogin';
 import { LoginService } from './login.service';
-import { BackResponse } from '../../shared/types/back-response.interface';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [RouterModule, FormsModule, ReactiveFormsModule],
   providers: [LoginService, HttpClient],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private toastr: ToastrService,
-    private route: ActivatedRoute  
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +31,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.minLength(6), Validators.required]]
     });
 
-    //Lembra de mostrar pro mefius p ele saber oq eu fiz 
     this.route.queryParams.subscribe(params => {
       const successMessage = params['successMessage'];
       if (successMessage) {
@@ -48,8 +46,8 @@ export class LoginComponent implements OnInit {
     };
 
     if (this.form.valid) {
-      this.loginService.login(formatedFormLogin).subscribe(
-        (res) => {
+      this.loginService.login(formatedFormLogin).subscribe({
+        next: (res) => {
           console.log('Resposta da API:', res);
           if (res.token && res.name) {
             sessionStorage.setItem('auth-token', res.token);
@@ -63,15 +61,15 @@ export class LoginComponent implements OnInit {
             this.toastr.error("Erro ao processar a resposta do login.");
           }
         },
-        (error) => {
+        error: (error) => {
           console.error('Erro ao fazer login:', error);
-          const backResponse: BackResponse = {
-            status: error.status,
-            message: error.message
-          };
           this.toastr.error("Erro ao fazer login.");
+        },
+        complete: () => {
+          console.log('Operação de login concluída.');
+          this.form.reset();
         }
-      );
+      });
     } else {
       console.warn('Formulário inválido:', this.form.errors);
       this.toastr.warning("Por favor, preencha todos os campos corretamente.");
