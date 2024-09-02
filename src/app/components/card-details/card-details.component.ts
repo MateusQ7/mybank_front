@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardModel } from '../../shared/models/cardModel'; // Certifique-se de ter o modelo `Card`
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CardDetailsService } from './card-details.service';
@@ -14,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./card-details.component.css'] // Corrigido: styleUrl -> styleUrls
 })
 export class CardDetailsComponent implements OnInit {
-  card: Card | undefined; // Para armazenar os detalhes do cartão retornados
+  card: CardModel | undefined; // Para armazenar os detalhes do cartão retornados
   error: string | undefined; // Para armazenar mensagens de erro, se houver
 
   constructor(private cardDetailsService: CardDetailsService, public dialog: MatDialog) { }
