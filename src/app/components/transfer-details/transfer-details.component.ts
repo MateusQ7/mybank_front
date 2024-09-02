@@ -15,7 +15,7 @@ export class TransferDetailsComponent {
   openDialog(): void {
     this.dialog.open(PopUpTransferComponent, {
       width: '580px',
-      height: '610px',
+      height: '660px',
       data: { name: 'Angular' },
       panelClass: 'custom-dialog'
     })
