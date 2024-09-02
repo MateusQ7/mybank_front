@@ -4,12 +4,12 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Invoice } from '../../shared/models/invoiceModel';
 import { InvoiceDetailsService } from './invoice-details.service';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-invoice-details',
   standalone: true,
-  imports: [MatDialogModule, CommonModule, HttpClientModule],
+  imports: [MatDialogModule, CommonModule],
   providers: [InvoiceDetailsService, HttpClient],
   templateUrl: './invoice-details.component.html',
   styleUrl: './invoice-details.component.css'
@@ -26,20 +26,24 @@ export class InvoiceDetailsComponent {
   }
 
   loadInvoiceByCpf(): void {
-    const storageCpf = sessionStorage.getItem('cpf'); // Supondo que o ID do cartão esteja no sessionStorage
+    const storageCpf = sessionStorage.getItem('cpf');
+  
     if (storageCpf) {
-      this.invoiceDetailsService.getInvoiceByCpf(storageCpf).subscribe(
-        (data: Invoice) => {
+      this.invoiceDetailsService.getInvoiceByCpf(storageCpf).subscribe({
+        next: (data: Invoice) => {
           this.invoice = data;
         },
-        (error) => {
+        error: (error) => {
           console.error('Erro ao buscar faturas', error);
           this.error = 'Faturas não encontradas ou erro na requisição.';
+        },
+        complete: () => {
+          console.log('Busca de faturas concluída.');
         }
-      );
+      });
     } else {
-      console.error('ID do cartão não encontrado no sessionStorage.');
-      this.error = 'ID do cartão não encontrado.';
+      console.error('CPF não encontrado no sessionStorage.');
+      this.error = 'CPF não encontrado.';
     }
   }
 
