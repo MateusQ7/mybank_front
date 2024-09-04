@@ -14,7 +14,7 @@ export class PopUpTransferService {
     private http: HttpClient
   ) { }
 
-  createTransaction(transactionModel: TransactionModel): Observable<string> {
+  createTransaction(transactionModel: TransactionModel): O  {
     const token = sessionStorage.getItem('auth-token');
 
     let headers = new HttpHeaders();

@@ -6,5 +6,6 @@ export interface Account {
     creditLimit: number,
     accountValue: number,
     usedLimit: number,
-    user?: User
+    user: User
+
 }
