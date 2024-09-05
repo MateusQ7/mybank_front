@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardModel } from '../../shared/models/cardModel'; // Certifique-se de ter o modelo `Card`
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CardDetailsService } from './card-details.service';
 import { PopUpCardsComponent } from '../pop-up-cards/pop-up-cards.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-card-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   providers: [CardDetailsService, HttpClient],
   templateUrl: './card-details.component.html',
   styleUrls: ['./card-details.component.css'] // Corrigido: styleUrl -> styleUrls
