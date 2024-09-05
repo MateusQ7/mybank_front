@@ -1,28 +1,47 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { PopUpCardsComponent } from '../pop-up-cards/pop-up-cards.component';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PopUpTransferService } from './pop-up-transfer.service';
+import { ToastrService } from 'ngx-toastr';
+import { TransactionModel } from '../../shared/models/transactionModel';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pop-up-transfer',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './pop-up-transfer.component.html',
-  styleUrl: './pop-up-transfer.component.css'
+  styleUrls: ['./pop-up-transfer.component.css']
 })
 export class PopUpTransferComponent {
+  transferForm: FormGroup;
+  senderCpf: string;
 
-  constructor(public dialogRef: MatDialogRef<PopUpCardsComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
-  selectedOption: string = '';
-  cpf: string = '';
-  transferValue: string = '';
-  description: string = '';
-  transferType: string = '';
+  constructor(
+    public dialogRef: MatDialogRef<PopUpTransferComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder,
+    private transferService: PopUpTransferService,
+    private toastr: ToastrService
+  ) {
+    this.senderCpf = sessionStorage.getItem('cpf') ?? '';
 
-  onOptionChange() {
-    if (this.selectedOption !== 'opcao4') {
-      this.cpf = ''; // Limpa o campo CPF se a opção selecionada não for CPF
+    this.transferForm = this.fb.group({
+      cpf: ['', [Validators.required, Validators.pattern('\\d{11}')]],
+      transferValue: ['', [Validators.required]],
+      description: [''],
+      transferType: ['PIX', [Validators.required]]
+    }, { validators: this.cpfMatcher });
+  }
+
+  private cpfMatcher(formGroup: FormGroup): void {
+    const cpfSender = sessionStorage.getItem('cpf') ?? '';
+    const cpfReceiver = formGroup.get('cpf')?.value;
+
+    if (cpfSender === cpfReceiver) {
+      formGroup.get('cpf')?.setErrors({ cpfMatch: true });
+    } else {
+      formGroup.get('cpf')?.setErrors(null);
     }
   }
 
@@ -30,10 +49,29 @@ export class PopUpTransferComponent {
     this.dialogRef.close();
   }
 
-  onCreate() {
-    // Lógica para criar a transferência
+  onCreate(): void {
+    if (this.transferForm.invalid) {
+      this.toastr.error('Por favor, preencha todos os campos obrigatórios e verifique se os CPFs são diferentes.');
+      return;
+    }
+
+    const transactionModel: TransactionModel = {
+      cpfSender: this.senderCpf,
+      cpfReceiver: this.transferForm.value.cpf,
+      amount: parseFloat(this.transferForm.value.transferValue),
+      paymentDescription: this.transferForm.value.description,
+      transactionType: this.transferForm.value.transferType
+    };
+
+    this.transferService.createTransaction(transactionModel).subscribe({
+      next: (response) => {
+        this.toastr.success('Transação criada com sucesso!');
+        this.dialogRef.close();
+      },
+      error: (err) => {
+        this.toastr.error('Erro ao criar a transação.');
+        console.error(err);
+      }
+    });
   }
-
-
-
 }

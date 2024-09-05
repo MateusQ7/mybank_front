@@ -8,8 +8,8 @@
         <ul class="list-items">
           <li *ngFor="let transaction of transactions">
             <p>
-              {{ transaction.senderName }} ({{ transaction.senderCpf }}) para
-              {{ transaction.receiverName || 'Desconhecido' }} ({{ transaction.receiverCpf }}):
+              {{ transaction.senderName }} ({{ transaction.cpfReceiver }}) para
+              {{ transaction.receiverName || 'Desconhecido' }} ({{ transaction.cpfReceiver }}):
               <span class="receiving">R$ {{ transaction.amount | number:'1.2-2' }}</span>
             </p>
             <p>Descrição: {{ transaction.paymentDescription }}</p>

@@ -1,14 +1,13 @@
-import { Account } from "./accountModel";
-import { User } from "./userModel";
+
 
 export interface TransactionModel {
-  id: number;
-  senderCpf: string;
-  senderName: string; // Adicione o nome do remetente
-  receiverCpf: string;
-  receiverName: string; // Adicione o nome do destinatário
+  id?: number;
+  cpfSender: string;
+  senderName?: string; 
+  cpfReceiver: string;
+  receiverName?: string; 
   amount: number;
   paymentDescription: string;
-  transactionDate: string;
+  transactionDate?: string;
   transactionType: string;
 }

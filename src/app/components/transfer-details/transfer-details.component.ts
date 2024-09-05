@@ -1,9 +1,10 @@
 import { Component, Inject, inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TransactionModel } from '../../shared/models/transactionModel';
-import { PopUpTransferComponent } from '../pop-up-transfer/pop-up-transfer.component';
 import { CommonModule, NgForOf } from '@angular/common';
 import { TransactionService } from './transfer-details.service';
+import { PopUpTransferComponent } from '../pop-up-transfer/pop-up-transfer.component';
+
 
 @Component({
   selector: 'app-transfer-details',
@@ -32,6 +33,10 @@ export class TransferDetailsComponent implements OnInit {
     if (cpf) {
       this.transactionService.getTransactions(cpf).subscribe(
         (transactions) => {
+          console.log('Transações recebidas:', transactions);
+          transactions.forEach(transaction => {
+            console.log('cpfSender:', transaction.cpfSender); 
+          });
           this.transactions = transactions;
         },
         (error) => {

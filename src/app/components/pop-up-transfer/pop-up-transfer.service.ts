@@ -14,15 +14,16 @@ export class PopUpTransferService {
     private http: HttpClient
   ) { }
 
-  createTransaction(transactionModel: TransactionModel): O  {
+  createTransaction(transactionModel: TransactionModel): Observable<TransactionModel> {
     const token = sessionStorage.getItem('auth-token');
 
     let headers = new HttpHeaders();
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
+    console.log('Requisição para criar transação:', transactionModel);
 
-    return this.http.post<string>(`${this.config.apiUrl}/transaction/create`, transactionModel, { headers }).pipe(
+    return this.http.post<TransactionModel>(`${this.config.apiUrl}/transaction/create`, transactionModel, { headers }).pipe(
       catchError(error => {
         console.error('Erro ao criar transação', error);
         throw error;
@@ -31,5 +32,3 @@ export class PopUpTransferService {
   }
 
 }
-
-
