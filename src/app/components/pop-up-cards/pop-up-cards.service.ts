@@ -1,27 +1,27 @@
-// card-details.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ConfigService } from '../../services/config/config.service';
-import { CardModel } from '../../shared/models/cardModel';
+import { CardModelCreate } from '../../shared/models/createdCardModel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CardDetailsService {
+export class PopUpCardService {
 
   constructor(private http: HttpClient, private config: ConfigService) { }
 
-  getCards(accountCpf: string): Observable<CardModel[]> {
+  createCard(cardModelCreate: CardModelCreate): Observable<CardModelCreate> {
     const token = sessionStorage.getItem('auth-token');
     let headers = new HttpHeaders();
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.get<CardModel[]>(`${this.config.apiUrl}/card/${accountCpf}`, { headers }).pipe(
+    return this.http.post<CardModelCreate>(`${this.config.apiUrl}/card/create`, cardModelCreate, { headers }).pipe(
       catchError(error => {
-        console.error('Erro ao buscar conta', error);
+        console.error('Erro ao criar cartão no pop-up', error);
         return throwError(error);
       })
     );

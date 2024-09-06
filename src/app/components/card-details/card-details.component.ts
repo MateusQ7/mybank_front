@@ -15,23 +15,49 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./card-details.component.css'] // Corrigido: styleUrl -> styleUrls
 })
 export class CardDetailsComponent implements OnInit {
-  card: CardModel | undefined; // Para armazenar os detalhes do cartão retornados
-  error: string | undefined; // Para armazenar mensagens de erro, se houver
+  cards: CardModel[] = []; // Armazena a lista de cartões
+  error: string | undefined;
 
-  constructor(private cardDetailsService: CardDetailsService, public dialog: MatDialog) { }
+  constructor(
+    private cardDetailsService: CardDetailsService,
+    private dialog: MatDialog // Injetando MatDialog
+  ) { }
 
   ngOnInit(): void {
-    this.openDialog(); // Carrega o cartão ao inicializar o componente
+    this.loadCards(); // Carrega os cartões ao inicializar o componente
   }
 
-  //lembrar de pegar os dados do popup estilo do register service e component, a diferença é q é no op up en  no form
+  loadCards(): void {
+    // Obtendo o cardId do sessionStorage ou de outro local
+    const cpf = sessionStorage.getItem('cpf');
+
+    if (!cpf) {
+      console.error('CPF do cartão não encontrado.');
+      return;
+    }
+
+    this.cardDetailsService.getCards(cpf).subscribe(
+      (data: CardModel[]) => {
+        this.cards = data;
+      },
+      (error) => {
+        console.error('Erro ao buscar cartões', error);
+        this.error = 'Erro ao buscar cartões.';
+      }
+    );
+  }
+
+
   openDialog(): void {
-    this.dialog.open(PopUpCardsComponent, {
-      width: '558px',
-      height: '564px',
-      data: { name: 'Angular' },
-      panelClass: 'custom-dialog'
-    })
-    console.log("FUI CLICADO")
+    const dialogRef = this.dialog.open(PopUpCardsComponent, {
+      width: '500px',
+
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('O diálogo foi fechado');
+      this.loadCards();
+    });
   }
 }
