@@ -19,9 +19,26 @@ export class CardDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
+
     return this.http.get<CardModel[]>(`${this.config.apiUrl}/card/${accountCpf}`, { headers }).pipe(
       catchError(error => {
         console.error('Erro ao buscar conta', error);
+        return throwError(error);
+      })
+    );
+  }
+
+
+  deleteCard(cardId: number): Observable<void> {
+    const token = sessionStorage.getItem('auth-token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.delete<void>(`${this.config.apiUrl}/card/${cardId}`, { headers }).pipe(
+      catchError(error => {
+        console.error('Erro ao deletar cartão', error);
         return throwError(error);
       })
     );
