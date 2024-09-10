@@ -1,14 +1,18 @@
 <div class="main">
-  <div class="cards">
-    <div class="card-details-left">
-      <p>Nome completo</p>
-      <p>1234 •••• •••• 7890</p>
-      <p>R$ 220,00</p>
-      <p>Fatura vence dia 14</p>
-    </div>
-    <div class="card-details-right">
-      <p>VISA</p>
-      <p>000</p>
+
+  <div class="cards-container">
+    <div class="cards" *ngFor="let card of cards">
+      <div class="card-details-left">
+        <p>{{ card.cardName }}</p>
+        <p>{{ card.cardNumber.slice(0, 4) }} •••• •••• {{ card.cardNumber.slice(-4) }}</p>
+        <p>Limite: R$ {{ card.cardValue | number:'1.2-2' }}</p>
+        <p> Fatura vence dia 14</p>
+
+      </div>
+      <div class="card-details-right">
+        <p>Visa</p>
+        <button class="btndelete" (click)="deleteCard(card.id)">Deletar cartao</button>
+      </div>
     </div>
   </div>
 

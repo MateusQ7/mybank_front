@@ -14,7 +14,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Limite da compra:</mat-label>
+          <mat-label>Limite de compra:</mat-label>
           <input matInput formControlName="cardValue" placeholder="R$ 120.00">
           <mat-error *ngIf="cardForm.get('cardValue')?.hasError('required')">
             Limite da compra é obrigatório
