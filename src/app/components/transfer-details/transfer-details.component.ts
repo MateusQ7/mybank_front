@@ -4,6 +4,7 @@ import { TransactionModel } from '../../shared/models/transactionModel';
 import { CommonModule, NgForOf } from '@angular/common';
 import { TransactionService } from './transfer-details.service';
 import { PopUpTransferComponent } from '../pop-up-transfer/pop-up-transfer.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class TransferDetailsComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -33,26 +35,37 @@ export class TransferDetailsComponent implements OnInit {
     if (cpf) {
       this.transactionService.getTransactions(cpf).subscribe(
         (transactions) => {
-          console.log('Transações recebidas:', transactions);
-          transactions.forEach(transaction => {
-            console.log('cpfSender:', transaction.cpfSender); 
-          });
-          this.transactions = transactions;
+          if (transactions && transactions.length > 0) {
+            transactions.forEach(transaction => {
+              console.log('cpfSender:', transaction.cpfSender);
+            });
+            this.transactions = transactions;
+          } else {
+            console.log('Não há transações.');
+          }
         },
         (error) => {
           console.error('Erro ao carregar transações:', error);
         }
       );
+    } else {
+      console.log('Não há transações.');
     }
   }
 
   openDialog(): void {
-    this.dialog.open(PopUpTransferComponent, {
+    const dialogRef = this.dialog.open(PopUpTransferComponent, {
       width: '580px',
       height: '660px',
       data: { name: 'Angular' },
       panelClass: 'custom-dialog'
     });
-    console.log("FUI CLICADO");
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.success) {
+        this.toastr.success('Transação realizada com sucesso!');
+        this.loadTransactions();
+      }
+    });
   }
 }

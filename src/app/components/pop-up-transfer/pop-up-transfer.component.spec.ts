@@ -22,4 +22,3 @@ describe('PopUpTransferComponent', () => {
   });
 });
 
-//pra qunado clicar no botao do pix/etc preencher com o valor do enum

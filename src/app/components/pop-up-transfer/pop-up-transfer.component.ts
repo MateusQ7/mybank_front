@@ -65,8 +65,7 @@ export class PopUpTransferComponent {
 
     this.transferService.createTransaction(transactionModel).subscribe({
       next: (response) => {
-        this.toastr.success('Transação criada com sucesso!');
-        this.dialogRef.close();
+        this.dialogRef.close({ success: true });
       },
       error: (err) => {
         this.toastr.error('Erro ao criar a transação.');
