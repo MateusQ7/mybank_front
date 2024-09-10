@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicCardComponent } from '../dynamic-card/dynamic-card.component';
 import { AccountDetailsComponent } from '../account-details/account-details.component';
-import { TransferComponent } from '../../pages/transfer/transfer.component';
 import { TransferDetailsComponent } from '../transfer-details/transfer-details.component';
 import { ConfigDetailsComponent } from '../config-details/config-details.component';
 import { InvoiceDetailsComponent } from '../invoice-details/invoice-details.component';
 import { CardDetailsComponent } from '../card-details/card-details.component';
 import { CommonModule } from '@angular/common';
 import { StateService } from '../../services/state/state.service';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 

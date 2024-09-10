@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TransactionModel } from '../../shared/models/transactionModel';
 import { CommonModule, NgForOf } from '@angular/common';
@@ -33,8 +33,8 @@ export class TransferDetailsComponent implements OnInit {
     const cpf = sessionStorage.getItem('cpf');
 
     if (cpf) {
-      this.transactionService.getTransactions(cpf).subscribe(
-        (transactions) => {
+      this.transactionService.getTransactions(cpf).subscribe({
+        next: (transactions) => {
           if (transactions && transactions.length > 0) {
             transactions.forEach(transaction => {
               console.log('cpfSender:', transaction.cpfSender);
@@ -44,10 +44,13 @@ export class TransferDetailsComponent implements OnInit {
             console.log('Não há transações.');
           }
         },
-        (error) => {
+        error: (error) => {
           console.error('Erro ao carregar transações:', error);
+        },
+        complete: () => {
+          console.log('Carregamento de transações concluído.');
         }
-      );
+      });
     } else {
       console.log('Não há transações.');
     }

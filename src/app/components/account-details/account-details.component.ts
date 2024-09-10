@@ -3,12 +3,11 @@ import { AccountDetailsService } from './account-details.service';
 import { Account } from '../../shared/models/accountModel';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { AccountDetailsModule } from './account-details.module';
 
 @Component({
   selector: 'account-details',
   standalone: true,
-  imports: [CommonModule, AccountDetailsModule],
+  imports: [CommonModule],
   providers: [AccountDetailsService, HttpClient],
   templateUrl: './account-details.component.html',
   styleUrl: './account-details.component.css'
