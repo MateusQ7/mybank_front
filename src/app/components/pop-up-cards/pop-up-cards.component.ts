@@ -25,7 +25,7 @@ export class PopUpCardsComponent {
   ) {
     this.cardForm = this.fb.group({
       cardName: ['', Validators.required],
-      cardValue: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      cardValue: ['', [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$')]],
       cardPassword: ['', Validators.required]
     });
   }
@@ -42,7 +42,6 @@ export class PopUpCardsComponent {
         cardPassword: this.cardForm.value.cardPassword,
         cardValue: this.cardForm.value.cardValue
       };
-      console.log('JSON a ser enviado:', JSON.stringify(cardModelCreate)); // Exibe o JSON no console
 
 
       this.popUpCardService.createCard(cardModelCreate).subscribe({

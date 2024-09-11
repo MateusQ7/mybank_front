@@ -22,7 +22,7 @@
   color: #525252;
   padding-left: 29px;
   font-family: "Poppins", sans-serif;
-  height: 45vh;
+  height: 42vh;
   background-color: #ffffff;
 }
 
@@ -39,6 +39,7 @@ label {
   font-family: "Poppins", sans-serif;
   color: #525252;
   font-weight: bold;
+  margin-bottom: 5px; /* Ajuste */
 }
 
 input {
@@ -46,15 +47,24 @@ input {
   border-radius: 8px;
   color: #818181;
   font-size: 16px;
-  padding: 12px 12px 12px 12px;
-  width: 500px;
+  padding: 12px;
+  width: 400px;
   font-family: "Poppins", sans-serif;
   outline: none;
 }
 
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
 .buttons {
+  width: 500px;
   display: flex;
-  gap: 30px;
+  gap: 35px;
   align-items: center;
 }
 
@@ -107,11 +117,6 @@ input {
   background-color: #ffffff;
   color: #1b263b;
   cursor: pointer;
-}
-
-.buttons-card2:first-of-type {
-  background-color: #ffffff;
-  color: #1b263b;
 }
 
 .close {

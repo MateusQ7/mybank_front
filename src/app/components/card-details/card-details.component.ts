@@ -32,12 +32,12 @@ export class CardDetailsComponent implements OnInit {
 
   loadCards(): void {
     const cpf = sessionStorage.getItem('cpf');
-  
+
     if (!cpf) {
       console.error('CPF do cartão não encontrado.');
       return;
     }
-  
+
     this.cardDetailsService.getCards(cpf).subscribe({
       next: (data: CardModel[]) => {
         this.cards = data;
@@ -55,11 +55,12 @@ export class CardDetailsComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpCardsComponent, {
       width: '500px',
+      height: '530px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('O diálogo foi fechado');
-      this.loadCards(); 
+      this.loadCards();
     });
   }
 
@@ -68,7 +69,7 @@ export class CardDetailsComponent implements OnInit {
     if (confirm('Você tem certeza que deseja deletar este cartão?')) {
       this.cardDetailsService.deleteCard(cardId).subscribe(
         () => {
-          this.loadCards(); 
+          this.loadCards();
           this.snackBar.open('Cartão deletado com sucesso!', 'Fechar', { duration: 3000 });
         },
         (error) => {
