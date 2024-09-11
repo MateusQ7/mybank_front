@@ -2,49 +2,41 @@
   <div class="title-div">
     <p class="title">Novo Cartão</p>
   </div>
-  <form [formGroup]="cardForm">
+  <form [formGroup]="cardForm" (ngSubmit)="onCreate()">
     <div class="card-form">
       <div class="input-wrapper">
-        <mat-form-field appearance="fill">
-          <mat-label>Nome do cartão:</mat-label>
-          <input matInput formControlName="cardName" placeholder="Nome do cartão">
-          <mat-error *ngIf="cardForm.get('cardName')?.hasError('required')">
-            Nome do cartão é obrigatório
-          </mat-error>
-        </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Limite de compra:</mat-label>
-          <input matInput formControlName="cardValue" placeholder="R$ 120.00">
-          <mat-error *ngIf="cardForm.get('cardValue')?.hasError('required')">
-            Limite da compra é obrigatório
-          </mat-error>
-          <mat-error *ngIf="cardForm.get('cardValue')?.hasError('pattern')">
-            Deve ser um número válido com até duas casas decimais
-          </mat-error>
-        </mat-form-field>
+        <label for="cardName">Nome do cartão:</label>
+        <input id="cardName" formControlName="cardName" placeholder="Nome do cartão" class="custom-input" />
+        <div *ngIf="cardForm.get('cardName')?.hasError('required') && cardForm.get('cardName')?.touched" class="error">
+          Nome do cartão é obrigatório
+        </div>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Crie uma senha para o cartão:</mat-label>
-          <input matInput type="password" formControlName="cardPassword" placeholder="••••">
-          <mat-error *ngIf="cardForm.get('cardPassword')?.hasError('required')">
-            Senha é obrigatória
-          </mat-error>
-        </mat-form-field>
+        <label for="cardValue">Limite de compra:</label>
+        <input id="cardValue" formControlName="cardValue" placeholder="R$ 120.00" class="custom-input" />
+        <div *ngIf="cardForm.get('cardValue')?.hasError('required') && cardForm.get('cardValue')?.touched"
+          class="error">
+          Limite da compra é obrigatório
+        </div>
+        <div *ngIf="cardForm.get('cardValue')?.hasError('pattern') && cardForm.get('cardValue')?.touched" class="error">
+          Deve ser um número válido com até duas casas decimais
+        </div>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Compra única:</mat-label>
-          <mat-select>
-            <mat-option value="SIM">SIM</mat-option>
-            <mat-option value="NÃO">NÃO</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <label for="cardPassword">Crie uma senha para o cartão:</label>
+        <input id="cardPassword" type="password" formControlName="cardPassword" placeholder="••••"
+          class="custom-input" />
+        <div *ngIf="cardForm.get('cardPassword')?.hasError('required') && cardForm.get('cardPassword')?.touched"
+          class="error">
+          Senha é obrigatória
+        </div>
+
+
       </div>
     </div>
 
     <div class="close">
       <button type="button" class="buttons-close" (click)="onClose()">Fechar</button>
-      <button type="button" class="buttons-create" (click)="onCreate()">Criar</button>
+      <button type="submit" class="buttons-create">Criar</button>
     </div>
   </form>
 </div>

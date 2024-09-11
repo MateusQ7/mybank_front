@@ -1,4 +1,3 @@
-/* Contêiner principal */
 .main {
   display: flex;
   flex-direction: column;
@@ -7,8 +6,10 @@
 
 .cards-container {
   display: flex;
-  overflow-x: auto;
-  width: 100%;
+  flex-wrap: wrap;
+  width: 65%;
+  max-height: 400px;
+  overflow-y: auto;
   padding: 20px;
   gap: 20px;
   margin-bottom: 20px;
@@ -16,13 +17,14 @@
   border-radius: 8px;
   scrollbar-width: thin;
   scrollbar-color: #888 #ddd;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .cards {
+  flex: 0 1 calc(50% - 20px); /* Ocupa 50% da largura menos o espaçamento (para 2 colunas) */
   color: #e0e1dd;
-  min-width: 400px;
-  min-height: 100px;
+  max-width: 400px;
+  max-height: 200px;
   border: 1px solid #ddd;
   background-color: #1b263b;
   padding: 15px;
@@ -35,12 +37,13 @@
 .card-details-right {
   display: flex;
   flex-direction: column;
+  word-wrap: break-word; /* Quebra palavras longas para não sair da div */
+  word-break: break-word; /* Quebra palavras longas para não sair da div */
 }
 
 .card-details-right {
-  padding-top: 20px;
-  padding-right: 10px;
   gap: 80px;
+  align-items: end;
 }
 
 .btndelete {
@@ -75,17 +78,4 @@
 
 .plus-button:hover {
   background-color: #0056b3;
-}
-
-.cards-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.cards-container::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 10px;
-}
-
-.cards-container::-webkit-scrollbar-track {
-  background-color: #ddd;
 }
