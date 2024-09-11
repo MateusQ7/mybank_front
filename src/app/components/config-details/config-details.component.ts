@@ -3,21 +3,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigDetailsService } from './config-details.service';
 import { FormatedFormUser } from '../../shared/models/FormatedFormUser';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-config-details',
   standalone: true,
-  imports: [RouterModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [RouterModule, FormsModule, ReactiveFormsModule],
   providers: [ConfigDetailsService, HttpClient],
   templateUrl: './config-details.component.html',
   styleUrl: './config-details.component.css',
@@ -30,7 +24,7 @@ export class ConfigDetailsComponent implements OnInit {
     private router: Router,
     private configDetailsService: ConfigDetailsService,
     private toastr: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -41,8 +35,9 @@ export class ConfigDetailsComponent implements OnInit {
         confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       },
       {
-        validator: this.passwordMatchValidator,
-      }
+        validators: this.passwordMatchValidator as ValidatorFn | ValidatorFn[],
+        updateOn: 'change'
+      } as AbstractControlOptions
     );
 
     const errorMessage: string | null = sessionStorage.getItem('errorMessage');
@@ -67,14 +62,20 @@ export class ConfigDetailsComponent implements OnInit {
 
   updateUser(): void {
     if (this.form.invalid) {
-      sessionStorage.setItem('errorMessage', 'Por favor, preencha todos os campos corretamente.');
+      sessionStorage.setItem(
+        'errorMessage',
+        'Por favor, preencha todos os campos corretamente.'
+      );
       window.location.reload();
       return;
     }
 
     const storageCpf = sessionStorage.getItem('cpf');
     if (!storageCpf) {
-      sessionStorage.setItem('errorMessage', 'CPF não encontrado no sessionStorage.');
+      sessionStorage.setItem(
+        'errorMessage',
+        'CPF não encontrado no sessionStorage.'
+      );
       window.location.reload();
       return;
     }
@@ -87,15 +88,20 @@ export class ConfigDetailsComponent implements OnInit {
       cpf: storageCpf,
     };
 
-    this.configDetailsService.updateUser(formatedFormUser).subscribe(
-      (response) => {
-        this.router.navigate(['/login'], { queryParams: { successMessage: 'Usuário atualizado com sucesso!' } });
+    this.configDetailsService.updateUser(formatedFormUser).subscribe({
+      next: (response) => {
+        this.router.navigate(['/login'], {
+          queryParams: { successMessage: 'Usuário atualizado com sucesso!' },
+        });
       },
-      (error) => {
+      error: (error) => {
         console.error('Erro ao atualizar usuário', error);
         sessionStorage.setItem('errorMessage', 'Erro ao atualizar usuário.');
         window.location.reload();
+      },
+      complete: () => {
+        console.log('Atualização de usuário concluída.');
       }
-    );
+    });
   }
 }

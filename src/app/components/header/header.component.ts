@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(private authService: AuthService, private router: Router) { }
   onLogout() {
-    this.authService.logout(); // Chama o método de logout
-    this.router.navigate(['/login']); // Redireciona para a página de login
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

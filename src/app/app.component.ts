@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { StateService } from './services/state/state.service';
 
 
@@ -23,6 +23,7 @@ export class AppComponent {
     });
   }
 
+  //Seta o Name, a Img do component e abre o component a partir da url
   updatePageState(url: string) {
     if (url.includes('account')) {
       this.stateService.setName('Conta')

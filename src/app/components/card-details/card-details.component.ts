@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardModel } from '../../shared/models/cardModel';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CardDetailsService } from './card-details.service';
 import { PopUpCardsComponent } from '../pop-up-cards/pop-up-cards.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-card-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   providers: [CardDetailsService, HttpClient],
   templateUrl: './card-details.component.html',
   styleUrls: ['./card-details.component.css']
@@ -32,21 +32,24 @@ export class CardDetailsComponent implements OnInit {
 
   loadCards(): void {
     const cpf = sessionStorage.getItem('cpf');
-
+  
     if (!cpf) {
       console.error('CPF do cartão não encontrado.');
       return;
     }
-
-    this.cardDetailsService.getCards(cpf).subscribe(
-      (data: CardModel[]) => {
+  
+    this.cardDetailsService.getCards(cpf).subscribe({
+      next: (data: CardModel[]) => {
         this.cards = data;
       },
-      (error) => {
+      error: (error) => {
         console.error('Erro ao buscar cartões', error);
         this.error = 'Erro ao buscar cartões.';
+      },
+      complete: () => {
+        console.log('Busca de cartões concluída.');
       }
-    );
+    });
   }
 
   openDialog(): void {

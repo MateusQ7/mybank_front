@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { CardDetailsService } from '../card-details/card-details.service';
 import { PopUpCardService } from './pop-up-cards.service';
 import { CardModelCreate } from '../../shared/models/createdCardModel';
 
@@ -20,7 +19,6 @@ export class PopUpCardsComponent {
 
   constructor(
     private fb: FormBuilder,
-    private cardDetailsService: CardDetailsService,
     private popUpCardService: PopUpCardService,
     public dialogRef: MatDialogRef<PopUpCardsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -37,7 +35,7 @@ export class PopUpCardsComponent {
 
   onCreate(): void {
     if (this.cardForm.valid) {
-      const strCpf = sessionStorage.getItem('cpf') || "";
+      const strCpf = sessionStorage.getItem('cpf') ?? "";
       const cardModelCreate: CardModelCreate = {
         accountCpf: strCpf,
         cardName: this.cardForm.value.cardName,

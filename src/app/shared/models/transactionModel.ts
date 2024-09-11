@@ -1,5 +1,3 @@
-
-
 export interface TransactionModel {
   id?: number;
   cpfSender: string;
