@@ -34,7 +34,6 @@ export class InvoiceDetailsComponent {
           this.invoice = data;
         },
         error: (error) => {
-          console.error('Erro ao buscar faturas', error);
           this.error = 'Faturas não encontradas ou erro na requisição.';
         },
         complete: () => {

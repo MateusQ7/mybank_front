@@ -24,7 +24,7 @@ export class InvoiceDetailsService {
 
     return this.http.get<Invoice>(`${this.config.apiUrl}/invoice/account/${cpf}`, { headers }).pipe(
       catchError(error => {
-        console.error('Erro ao buscar fatura', error);
+        console.error('Invoice not found');
         throw error;
       })
     );
