@@ -18,6 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CardDetailsComponent implements OnInit {
   cards: CardModel[] = [];
   error: string | undefined;
+  userName: string | undefined;
 
   constructor(
     private cardDetailsService: CardDetailsService,
@@ -28,6 +29,9 @@ export class CardDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCards();
+
+    this.userName = sessionStorage.getItem('userName') || 'Não disponível';  // Pegando o nome do usuário do sessionStorage
+
   }
 
   loadCards(): void {

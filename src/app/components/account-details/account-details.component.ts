@@ -13,24 +13,30 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './account-details.component.css'
 })
 export class AccountDetailsComponent implements OnInit {
-  
+
   accounts: Account[] = [];
   account: Account | undefined;
   error: string | undefined;
 
-  constructor(private accountService: AccountDetailsService) {}
+  constructor(private accountService: AccountDetailsService) { }
 
   ngOnInit(): void {
     this.loadAccountByCpf();
+
+
   }
 
   loadAccountByCpf(): void {
     const storedCpf = sessionStorage.getItem('cpf');
-  
+
     if (storedCpf) {
       this.accountService.getAccountByCpf(storedCpf).subscribe({
         next: (data: Account) => {
           this.account = data;
+
+          sessionStorage.setItem('userName', data.user.name || 'Não disponível');
+
+
         },
         error: (error) => {
           console.error('Erro ao buscar conta', error);
