@@ -3,6 +3,7 @@ import { AccountDetailsService } from './account-details.service';
 import { Account } from '../../shared/models/accountModel';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'account-details',
@@ -18,12 +19,15 @@ export class AccountDetailsComponent implements OnInit {
   account: Account | undefined;
   error: string | undefined;
 
-  constructor(private accountService: AccountDetailsService) { }
+  constructor(private accountService: AccountDetailsService,
+    private toastr: ToastrService
+
+  ) { }
 
   ngOnInit(): void {
     this.loadAccountByCpf();
 
-
+    
   }
 
   loadAccountByCpf(): void {
@@ -35,6 +39,7 @@ export class AccountDetailsComponent implements OnInit {
           this.account = data;
 
           sessionStorage.setItem('userName', data.user.name || 'Não disponível');
+          sessionStorage.setItem('NOME', data.user.cpf || 'Não disponível');
 
 
         },

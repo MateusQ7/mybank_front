@@ -1,87 +1,86 @@
 .main-pop-up {
-    width: auto;
-    height: auto;
-  }
-  
-.title-div {
-    display: flex;
-    align-items: center;
-    padding: 22px 0 0 20px;
-    height: 8vh;
+  width: auto;
+  height: auto;
 }
-  
+
+.title-div {
+  display: flex;
+  align-items: center;
+  padding: 22px 0 0 20px;
+  height: 8vh;
+}
+
 .title {
-    color: #525252;
-    font-family: "Poppins", sans-serif;
-    font-size: 36px;
-    font-weight: bold;
+  color: #525252;
+  font-family: "Poppins", sans-serif;
+  font-size: 36px;
+  font-weight: bold;
 }
 
 label {
-    font-family: "Poppins", sans-serif;
-    color: #525252;
-    font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  color: #525252;
+  font-weight: bold;
 }
 
 .text-name {
-    font-weight: lighter;
-    color: #505050;
+  font-weight: lighter;
+  color: #505050;
 }
 
 .content {
-    padding-left: 23px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 27vh;
+  padding-left: 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 27vh;
 }
 
-.details{
-    display: flex;
-    gap: 10px;
+.details {
+  display: flex;
+  gap: 10px;
 }
 
 .invoice-value {
-    gap: 20px;
-    display: flex;
-    flex-direction: column;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .value {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    color: #D90606;
-    font-size: 34px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #d90606;
+  font-size: 34px;
 }
 
 .buttons-confirm {
-    border: #1b263b;
-    border-radius: 7px;
-    font-weight: 400;
-    font-size: 18px;
-    width: 158px;
-    height: 52px;
-    background-color: #1b263b;
-    color: #f0f3fa;
-    cursor: pointer;
+  border: #1b263b;
+  border-radius: 7px;
+  font-weight: 400;
+  font-size: 18px;
+  width: 158px;
+  height: 52px;
+  background-color: #1b263b;
+  color: #f0f3fa;
+  cursor: pointer;
 }
-  
+
 .buttons-close {
-    border: 1px solid #1b263b;
-    border-radius: 7px;
-    font-weight: 400;
-    font-size: 18px;
-    width: 158px;
-    height: 52px;
-    background-color: #ffffff;
-    color: #1b263b;
-    cursor: pointer;
+  border: 1px solid #1b263b;
+  border-radius: 7px;
+  font-weight: 400;
+  font-size: 18px;
+  width: 158px;
+  height: 52px;
+  background-color: #ffffff;
+  color: #1b263b;
+  cursor: pointer;
 }
-  
-  
+
 .close {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 33px;
 }

@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
+  userName: string | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,6 +38,9 @@ export class LoginComponent implements OnInit {
         this.toastr.success(successMessage);
       }
     });
+
+    this.userName = sessionStorage.getItem('userName') || 'Não disponível';  // Pegando o nome do usuário do sessionStorage
+
   }
 
   submit() {
@@ -54,7 +58,9 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('name', res.name);
             sessionStorage.setItem('cpf', res.cpf);
             sessionStorage.setItem('invoice-id', res.invoiceId);
-            this.toastr.success("Login feito com sucesso!");
+            this.toastr.success(`Seja bem-vindo! ${this.userName}, ao myBank`, '', {
+              timeOut: 2500,  // Duração em milissegundos (5000 ms = 5 segundos)
+            });
             this.goToHome();
           } else {
             console.error('Token ou nome ausente na resposta:', res);

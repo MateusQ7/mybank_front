@@ -19,11 +19,12 @@ export class CardDetailsComponent implements OnInit {
   cards: CardModel[] = [];
   error: string | undefined;
   userName: string | undefined;
+  cpf: string | undefined;
 
   constructor(
     private cardDetailsService: CardDetailsService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar // Lemnrar de mostrar p mefius essa coisa ai q é tipo uma notificação
+    private snackBar: MatSnackBar 
 
   ) { }
 
@@ -31,6 +32,7 @@ export class CardDetailsComponent implements OnInit {
     this.loadCards();
 
     this.userName = sessionStorage.getItem('userName') || 'Não disponível';  // Pegando o nome do usuário do sessionStorage
+    this.userName = sessionStorage.getItem('cpf') || 'Não disponível';  // Pegando o nome do usuário do sessionStorage
 
   }
 
