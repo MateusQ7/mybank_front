@@ -13,25 +13,25 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   imports: [CommonModule],
   providers: [CardDetailsService, HttpClient],
   templateUrl: './card-details.component.html',
-  styleUrls: ['./card-details.component.css']
+  styleUrls: ['./card-details.component.css'],
 })
 export class CardDetailsComponent implements OnInit {
   cards: CardModel[] = [];
   error: string | undefined;
   userName: string | undefined;
+  cpf: string | undefined;
 
   constructor(
     private cardDetailsService: CardDetailsService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar // Lemnrar de mostrar p mefius essa coisa ai q é tipo uma notificação
-
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.loadCards();
 
-    this.userName = sessionStorage.getItem('userName') || 'Não disponível';  // Pegando o nome do usuário do sessionStorage
-
+    this.userName = sessionStorage.getItem('userName') || 'Não disponível';
+    this.cpf = sessionStorage.getItem('cpf') || 'Não disponível';
   }
 
   loadCards(): void {
@@ -52,36 +52,38 @@ export class CardDetailsComponent implements OnInit {
       },
       complete: () => {
         console.log('Busca de cartões concluída.');
-      }
+      },
     });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpCardsComponent, {
       width: '500px',
-      height: '530px'
+      height: '530px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('O diálogo foi fechado');
       this.loadCards();
     });
   }
-
 
   deleteCard(cardId: number): void {
     if (confirm('Você tem certeza que deseja deletar este cartão?')) {
       this.cardDetailsService.deleteCard(cardId).subscribe(
         () => {
           this.loadCards();
-          this.snackBar.open('Cartão deletado com sucesso!', 'Fechar', { duration: 3000 });
+          this.snackBar.open('Cartão deletado com sucesso!', 'Fechar', {
+            duration: 3000,
+          });
         },
         (error) => {
           console.error('Erro ao deletar cartão', error);
-          this.snackBar.open('Erro ao deletar cartão.', 'Fechar', { duration: 3000 });
+          this.snackBar.open('Erro ao deletar cartão.', 'Fechar', {
+            duration: 3000,
+          });
         }
       );
     }
   }
 }
-

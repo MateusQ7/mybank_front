@@ -1,5 +1,10 @@
 <div class="container-main">
+
   <div class="form">
+    <div class="data">
+      <label for="">Nome: {{userName}}</label>
+      <label for="">CPF: {{maskedCPF}}</label>
+    </div>
     <form action="" [formGroup]="form">
       <label for="telefone">Telefone:</label>
       <input class="form-input" id="telefone" type="tel" name="telefone" placeholder="(85) 6969696969"

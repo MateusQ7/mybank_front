@@ -18,15 +18,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConfigDetailsComponent implements OnInit {
   form!: FormGroup;
+  userName: string | undefined;
+  cpf: string | undefined;
+  maskedCPF: string | undefined;
+
+
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private configDetailsService: ConfigDetailsService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    this.userName = sessionStorage.getItem('userName') || 'Não disponível';
+    this.cpf = sessionStorage.getItem('cpf') || 'Não disponível';
+    this.maskedCPF = this.getMaskedCPF();
+
+
+
     this.form = this.formBuilder.group(
       {
         phone: ['', [Validators.required]],
@@ -104,4 +115,11 @@ export class ConfigDetailsComponent implements OnInit {
       }
     });
   }
+  getMaskedCPF(): string {
+    if (this.cpf && this.cpf.length === 11) {
+      return this.cpf.slice(0, 3) + '.***.***-' + this.cpf.slice(9);
+    }
+    return 'CPF inválido';
+  }
 }
+
