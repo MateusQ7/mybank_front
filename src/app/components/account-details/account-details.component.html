@@ -1,66 +1,96 @@
 <div class="main">
-    <div class="left-side">
+  <div class="left-side">
+    <div class="title-balance">
+      <h2 class="balance-title">Saldo da Conta</h2>
+    </div>
+    <div class="balance">
+      <div class="balance-main">
+        <p class="balance-money-status" *ngIf="account">
+          R$ {{ account.accountValue | number : "1.2-2" }}
+        </p>
+        <p class="balance-money-status" *ngIf="!account">Carregando...</p>
+        <p class="maturity">Vencimento dia 10</p>
+      </div>
+    </div>
+    <div class="balance-info-user">
+      <div class="info">
+        <span class="text-info">Nome:</span>
+        <span class="text-info-i">{{
+          account?.user?.name || "Não disponível"
+        }}</span>
+      </div>
+      <div class="info">
+        <span class="text-info">CPF:</span>
+        <span class="text-info-i">{{
+          account?.user?.cpf || "Não disponível"
+        }}</span>
+      </div>
+      <div class="info">
+        <span class="text-info">Nascimento:</span>
+        <span class="text-info-i">
+          {{
+            account?.user?.birthdate
+              ? (account?.user?.birthdate | date : "dd/MM/yyyy")
+              : "Não disponível"
+          }}
+        </span>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="balance-button">Guardar Dinheiro</button>
+      <button class="balance-button">Investir</button>
+    </div>
+  </div>
+  <div class="right-side">
+    <div class="top-side">
+      <div class="info-limit">
         <div class="title-balance">
-            <p class="balance-text">SALDO DA CONTA:</p>
+          <h2 class="balance-title">Limites da Conta</h2>
         </div>
-        <div class="balance">
-            <div class="balance-main">
-                <p class="balance-money-status" *ngIf="account">R$ {{ account.accountValue | number: '1.2-2' }}</p>
-                <p class="balance-money-status" *ngIf="!account">Carregando...</p>
-                <p class="maturity">Vencimento dia 10</p>
-            </div>
+        <div class="info-l">
+          <span class="text-info-l">Limite Utilizado:</span>
+          <span class="limit-status-u">
+            R$ {{ account?.usedLimit ?? 0 | number : "1.2-2" }}
+          </span>
         </div>
-        <div class="balance-info-user">
-            <div class="info">
-                <p class="text-info">Nome:</p>
-                <p class="text-info-i">{{ account?.user?.name || 'Não disponível' }}</p>
-            </div>
-            <div class="info">
-                <p class="text-info">CPF:</p>
-                <p class="text-info-i">{{ account?.user?.cpf || 'Não disponível'}}</p>
-            </div>
-            <div class="info">
-                <p class="text-info">Nascimento:</p>
-                <p class="text-info-i">{{ (account?.user?.birthdate ? (account?.user?.birthdate | date: 'dd/MM/yyyy') : 'Não disponível') }}</p>
-            </div>
+        <div class="info-l">
+          <span class="text-info-l">Limite Disponível:</span>
+          <span class="limit-status-d">
+            R$
+            {{
+              (account?.creditLimit ?? 0) - (account?.usedLimit ?? 0)
+                | number : "1.2-2"
+            }}
+          </span>
         </div>
-        <div class="buttons">
-            <button class="balance-buttom">Guardar Dinheiro</button>
-            <button class="balance-buttom">Investir</button>
+        <div class="info-l">
+          <span class="text-info-l">Última Fatura:</span>
+          <span class="limit-status-f">R$ 8710,50</span>
         </div>
+      </div>
     </div>
-    <div class="right-side">
-        <div class="top-side">
-            <div class="info-limit">
-                <div class="info-l">
-                    <p class="text-info-l">Limite Utilizado:</p>
-                    <p class="limit-status-u">R$ {{ (account?.usedLimit ?? 0) | number: '1.2-2' }}</p>
-                </div>
-                <div class="info-l">
-                    <p class="text-info-l">Limite Disponível:</p>
-                    <p class="limit-status-d">R$ {{ ((account?.creditLimit ?? 0) - (account?.usedLimit ?? 0)) | number: '1.2-2' }}</p>
-                </div>
-                <div class="info-l">
-                    <p class="text-info-l">Última Fatura:</p>
-                    <p class="limit-status-f">R$ 8710,50</p>
-                </div>
-            </div>
+    <div class="bottom-side">
+      <div class="historic-div">
+        <div class="title-historic">
+          <h2 class="historic-title">Histórico de Faturas</h2>
         </div>
-        <div class="bottom-side">
-            <div class="historic-div">
-                <div class="title-historic">
-                    <p class="historic-text">Histórico de Faturas:</p>
-                </div>
-                <div class="historic">
-                    <ul class="historic-list">
-                        <li class="text-info-h">Fevereiro = <span class="value-h">R$ 9000,50</span></li>
-                        <li class="text-info-h">Janeiro = <span class="value-h">R$ 1010,60</span></li>
-                        <li class="text-info-h">Dezembro = <span class="value-h">R$ 4060,40</span></li>
-                        <li class="text-info-h">Novembro = <span class="value-h">R$ 5000,90</span></li>
-                      </ul>
-                </div>
-            </div>
+        <div class="historic">
+          <ul class="historic-list">
+            <li class="text-info-h">
+              Fevereiro = <span class="value-h">R$ 9000,50</span>
+            </li>
+            <li class="text-info-h">
+              Janeiro = <span class="value-h">R$ 1010,60</span>
+            </li>
+            <li class="text-info-h">
+              Dezembro = <span class="value-h">R$ 4060,40</span>
+            </li>
+            <li class="text-info-h">
+              Novembro = <span class="value-h">R$ 5000,90</span>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
