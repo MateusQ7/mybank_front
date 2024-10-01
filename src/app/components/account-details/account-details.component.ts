@@ -3,7 +3,8 @@ import { AccountDetailsService } from './account-details.service';
 import { Account } from '../../shared/models/accountModel';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
+import { InvoiceDetailsService } from '../invoice-details/invoice-details.service';
+import { Invoice } from '../../shared/models/invoiceModel';
 
 @Component({
   selector: 'account-details',
@@ -17,17 +18,17 @@ export class AccountDetailsComponent implements OnInit {
 
   accounts: Account[] = [];
   account: Account | undefined;
+  invoices: Invoice[] = [];
+  invoice: Invoice | undefined;
   error: string | undefined;
 
-  constructor(private accountService: AccountDetailsService,
-    private toastr: ToastrService
-
+  constructor(private readonly accountService: AccountDetailsService,
+    private readonly invoiceDetailsService: InvoiceDetailsService
   ) { }
 
   ngOnInit(): void {
     this.loadAccountByCpf();
-
-    
+    this.loadInvoiceByCpf();
   }
 
   loadAccountByCpf(): void {
@@ -54,6 +55,27 @@ export class AccountDetailsComponent implements OnInit {
     } else {
       console.error('CPF não encontrado no sessionStorage.');
       this.error = 'CPF não encontrado no sessionStorage.';
+    }
+  }
+
+  loadInvoiceByCpf(): void {
+    const storageCpf = sessionStorage.getItem('cpf');
+  
+    if (storageCpf) {
+      this.invoiceDetailsService.getInvoiceByCpf(storageCpf).subscribe({
+        next: (data: Invoice) => {
+          this.invoice = data;
+        },
+        error: (error) => {
+          this.error = 'Faturas não encontradas ou erro na requisição.';
+        },
+        complete: () => {
+          console.log('Busca de faturas concluída.');
+        }
+      });
+    } else {
+      console.error('CPF não encontrado no sessionStorage.');
+      this.error = 'CPF não encontrado.';
     }
   }
 }
