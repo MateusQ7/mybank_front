@@ -37,9 +37,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .form-register {
   background-color: #ffffff;
 }
-/*.main-form {
-  width: 90%;
-}*/
 
 label {
   font-family: "Poppins", sans-serif;
@@ -89,7 +86,7 @@ button {
 }
 
 #button-primary {
-  background-color: #1b263b;
+  background-color: #212529;
   color: white;
   box-shadow: 0px 8px 12px
     rgba(
@@ -103,8 +100,8 @@ button {
 }
 
 #button-secondary {
-  border: 1px solid #1b263b;
-  color: #1b263b;
+  border: 1px solid #212529;
+  color: #212529;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
 }

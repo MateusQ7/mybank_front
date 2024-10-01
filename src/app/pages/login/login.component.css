@@ -60,7 +60,7 @@ body {
   cursor: pointer;
 
   border: none;
-  background-color: #1b263b;
+  background-color: #212529;
   width: 410px;
   color: #ffffff;
   border-radius: 8px;
@@ -69,8 +69,8 @@ body {
   font-size: 16px;
 }
 .buttomSignup {
-  border: 1px solid #1b263b;
-  color: #1b263b;
+  border: 1px solid #212529;
+  color: #212529;
   width: 410px;
   height: 45px;
   border-radius: 8px;
