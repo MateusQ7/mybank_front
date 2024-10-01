@@ -22,16 +22,16 @@ export class CardDetailsComponent implements OnInit {
   cpf: string | undefined;
 
   constructor(
-    private cardDetailsService: CardDetailsService,
-    private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private readonly cardDetailsService: CardDetailsService,
+    private readonly dialog: MatDialog,
+    private readonly snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.loadCards();
 
-    this.userName = sessionStorage.getItem('userName') || 'Não disponível';
-    this.cpf = sessionStorage.getItem('cpf') || 'Não disponível';
+    this.userName = sessionStorage.getItem('userName') ?? 'Não disponível';
+    this.cpf = sessionStorage.getItem('cpf') ?? 'Não disponível';
   }
 
   loadCards(): void {
