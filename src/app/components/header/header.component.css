@@ -1,5 +1,5 @@
 header {
-  background-color: #1565c0;
+  background-color: #212529;
   width: 100%;
   display: flex;
   align-items: center;
@@ -16,6 +16,6 @@ header {
   border-radius: 7px;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
-  color: #1565c0;
+  color: #495057;
   cursor: pointer;
 }

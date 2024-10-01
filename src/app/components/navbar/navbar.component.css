@@ -1,5 +1,5 @@
 nav {
-  background-color: #1565c0;
+  background-color: #495057;
   height: 57px;
   display: flex;
   align-items: center;
@@ -22,6 +22,6 @@ button {
 
 button:hover {
   transition: 0.5s;
-  background-color: #607999;
+  background-color: #6c757d;
   color: #1b263b;
 }
