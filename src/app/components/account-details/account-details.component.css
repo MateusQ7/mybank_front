@@ -26,6 +26,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.bottom-side {
+  margin-top:70px;
+}
+
 .balance-title,
 .historic-title {
   font-size: 1.5rem;
@@ -44,8 +48,12 @@
 .balance-info-user .info {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 20px 0;
   font-family: "Poppins", sans-serif;
+}
+
+.balance-info-user {
+  padding-top: 20px;
 }
 
 .text-info,
@@ -70,7 +78,7 @@
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff; /* Azul */
+  background-color: #495057;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -78,7 +86,7 @@
 }
 
 .balance-button:hover {
-  background-color: #0056b3; /* Azul escuro */
+  background-color: #6c757d;
 }
 
 .info-l {
@@ -104,5 +112,5 @@
 
 .value-h {
   font-weight: bold;
-  color: #007bff; /* Azul */
+  color:#212529;
 }

@@ -1,81 +1,106 @@
 .main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
 }
 
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 65%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-bottom: 20px;
   max-height: 400px;
   overflow-y: auto;
+  padding-right: 10px;
+}
+
+.card {
+  display: flex;
   padding: 20px;
-  gap: 20px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: #888 #ddd;
-  justify-content: flex-start;
+  width: 100%;
+  max-width: 320px;
+  height: 180px; 
+  border-radius: 15px;
+  background-color: #212529;
+  color: #f8f8f8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-.cards {
-  flex: 0 1 calc(50% - 20px); /* Ocupa 50% da largura menos o espaçamento (para 2 colunas) */
-  color: #e0e1dd;
-  max-width: 400px;
-  max-height: 200px;
-  border: 1px solid #ddd;
-  background-color: #1b263b;
-  padding: 15px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-details-left,
-.card-details-right {
-  display: flex;
-  flex-direction: column;
-  word-wrap: break-word; /* Quebra palavras longas para não sair da div */
-  word-break: break-word; /* Quebra palavras longas para não sair da div */
+.card-details-left {
+  flex-grow: 1;
 }
 
 .card-details-right {
-  gap: 80px;
+  display: flex;
   align-items: end;
+  flex-direction: column;
+}
+
+.card-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-number,
+.card-limit,
+.card-due {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.card-brand {
+  font-size: 1rem;
 }
 
 .btndelete {
-  color: rgb(248, 53, 53);
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 8px 12px;
   border: none;
-  background-color: #1b263b;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition-duration: 0.2s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btndelete:hover {
-  background-color: red;
-  color: white;
+  background-color: #c82333;
+  transform: scale(1.05);
 }
 
-.cards-add {
+.card-add {
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  padding-top: 30px;
+  align-items: center;
 }
 
 .plus-button {
-  background-color: #778da9;
-  color: white;
-  border: none;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
+  background-color: #495057;
+  color: white;
+  font-size: 36px;
+  border: none;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .plus-button:hover {
-  background-color: #0056b3;
+  background-color: #218838;
+  transform: scale(1.1);
 }
