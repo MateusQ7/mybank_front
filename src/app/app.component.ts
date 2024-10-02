@@ -13,7 +13,7 @@ import { StateService } from './services/state/state.service';
 export class AppComponent {
   title = 'mybank_frontend';
 
-  constructor(private router: Router, private stateService: StateService) { }
+  constructor(private readonly router: Router, private readonly stateService: StateService) { }
 
   ngOnInit() {
     this.router.events.subscribe(event => {
@@ -23,7 +23,6 @@ export class AppComponent {
     });
   }
 
-  //Seta o Name, a Img do component e abre o component a partir da url
   updatePageState(url: string) {
     if (url.includes('account')) {
       this.stateService.setName('Conta')
