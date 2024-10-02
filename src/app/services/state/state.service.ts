@@ -7,9 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class StateService {
   
-  private imgSource = new BehaviorSubject<string>('../../../assets/info-icon.svg')
-  private nameSource = new BehaviorSubject<string>('Conta')
-  private componentSource = new BehaviorSubject<string>('account-details')
+  private readonly imgSource = new BehaviorSubject<string>('../../../assets/info-icon.svg')
+  private readonly nameSource = new BehaviorSubject<string>('Conta')
+  private readonly componentSource = new BehaviorSubject<string>('account-details')
 
   name$ = this.nameSource.asObservable()
   img$ = this.imgSource.asObservable()
