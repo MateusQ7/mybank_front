@@ -1,11 +1,11 @@
-export interface TransactionModel {
+export interface TransferenceModel {
   id?: number;
-  cpfSender: string;
+  cpfSender?: string ;
   senderName?: string; 
   cpfReceiver: string;
   receiverName?: string; 
   amount: number;
   paymentDescription: string;
-  transactionDate?: string;
-  transactionType: string;
+  transferenceDate?: string;
+  transferenceType: string;
 }

@@ -1,24 +1,40 @@
 <div class="main">
-  <div class="card">
-    <div class="card-contain">
-      <p>HISTÓRICO DE TRANSFERÊNCIA:</p>
+  <div class="left-side">
+    <div class="title-transfer">
+      <h2 class="title">Histórico de Transferência:</h2>
     </div>
     <div class="card-info">
       <div class="card-hist">
         <ul class="list-items">
-          <li *ngFor="let transaction of transactions">
-            <p>
-              {{ transaction.senderName }} ({{ transaction.cpfReceiver }}) para
-              {{ transaction.receiverName || 'Desconhecido' }} ({{ transaction.cpfReceiver }}):
-              <span class="receiving">R$ {{ transaction.amount | number:'1.2-2' }}</span>
+          <li *ngFor="let transference of transferences" class="li-transfers">
+            <p class="text">
+              {{ transference.senderName }} ({{ transference.cpfSender }}) para
+              {{ transference.receiverName || "Desconhecido" }} ({{
+                transference.cpfReceiver
+              }}): <br />
+              <span class="receiving"
+                >R$ {{ transference.amount | number : "1.2-2" }}</span
+              >
             </p>
-            <p>Descrição: {{ transaction.paymentDescription }}</p>
+            <p>Descrição: {{ transference.paymentDescription }}</p>
           </li>
         </ul>
       </div>
-      <div class="btn">
-        <button type="button" (click)="openDialog()">Nova Transferência</button>
+      <div class="buttons">
+        <button class="balance-button" type="button" (click)="openDialog()">
+          Nova Transferência
+        </button>
       </div>
+    </div>
+  </div>
+
+  <div class="right-side">
+    <div class="account-info">
+      <h2 class="title">Chaves para Transferência:</h2>
+    </div>
+    <p class="text">CPF: ({{ transference?.cpfSender }})</p>
+    <div class="buttons">
+      <button class="balance-button" type="button">Adicionar Chave</button>
     </div>
   </div>
 </div>

@@ -20,12 +20,30 @@
   padding-right: 10px;
 }
 
+.cards-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cards-container::-webkit-scrollbar-thumb {
+  background-color: #495057;
+  border-radius: 10px;
+}
+
+.cards-container::-webkit-scrollbar-thumb:hover {
+  background-color: #6c757d;
+}
+
+.cards-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
 .card {
   display: flex;
   padding: 20px;
   width: 100%;
   max-width: 320px;
-  height: 180px; 
+  height: 180px;
   border-radius: 15px;
   background-color: #212529;
   color: #f8f8f8;
@@ -101,6 +119,5 @@
 }
 
 .plus-button:hover {
-  background-color: #218838;
-  transform: scale(1.1);
+  background-color: #495057be;
 }

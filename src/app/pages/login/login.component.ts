@@ -19,11 +19,11 @@ export class LoginComponent implements OnInit {
   userName: string | undefined;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private loginService: LoginService,
-    private toastr: ToastrService,
-    private route: ActivatedRoute
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router,
+    private readonly loginService: LoginService,
+    private readonly toastr: ToastrService,
+    private readonly route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       }
     });
 
-    this.userName = sessionStorage.getItem('userName') || 'Não disponível';  // Pegando o nome do usuário do sessionStorage
+    this.userName = sessionStorage.getItem('userName') ?? 'Não disponível';
 
   }
 

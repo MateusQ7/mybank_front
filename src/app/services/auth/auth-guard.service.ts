@@ -9,8 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private router: Router,
-    private toastr: ToastrService
+    private readonly router: Router,
+    private readonly toastr: ToastrService
 
   ) { }
 
@@ -26,10 +26,7 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/login'])
       return false
     }
-
-
   }
-
 }
 
 

@@ -1,54 +1,84 @@
 <div class="main">
-    <div class="left-side">
-        <div class="image-div">
-            <img class="image" src="../../../assets/logo_mybank.svg" alt="">
+  <div class="left-side">
+    <div class="image-div">
+      <img class="image" src="../../../assets/logo_mybank.svg" alt="" />
+    </div>
+    <form class="main-form" [formGroup]="form">
+      <div class="form-register">
+        <div class="input-wrapper">
+          <label for="name">Nome:</label>
+          <div class="input-content">
+            <input
+              type="text"
+              placeholder="Junin Silva"
+              formControlName="name"
+            />
+            <img src="../../../assets/person-icon.svg" alt="" />
+          </div>
+          <label for="email">Email:</label>
+          <div class="input-content">
+            <input
+              type="email"
+              placeholder="alex@email.com"
+              formControlName="email"
+            />
+            <img src="../../../assets/email-icon.svg" alt="" />
+          </div>
+          <label for="telefone">Telefone:</label>
+          <div class="input-content">
+            <input
+              type="tel"
+              placeholder="(85)922345678"
+              formControlName="phone"
+            />
+            <img src="../../../assets/phone-icon.svg" alt="" />
+          </div>
+          <label for="name">Senha:</label>
+          <div class="input-content">
+            <input
+              type="password"
+              placeholder="Digite sua senha"
+              formControlName="password"
+            />
+            <img src="../../../assets/password-icon.svg" alt="" />
+          </div>
+          <label for="name">Confirme sua senha:</label>
+          <div class="input-content">
+            <input
+              type="password"
+              placeholder="Confirme sua senha"
+              formControlName="password_confirm"
+            />
+            <img src="../../../assets/password-icon.svg" alt="" />
+          </div>
+          <label for="name">CPF:</label>
+          <div class="input-content">
+            <input
+              type="text"
+              placeholder="01234567899"
+              formControlName="cpf"
+            />
+            <img src="../../../assets/cpf-icon.svg" alt="" />
+          </div>
+          <label for="name">Data de Nascimento:</label>
+          <div class="input-content">
+            <input
+              type="date"
+              placeholder="01/01/1901"
+              formControlName="birthdate"
+            />
+            <img src="../../../assets/calendar.svg" alt="" />
+          </div>
         </div>
-        <form class="main-form" [formGroup]="form">
-            <div class="form-register">
-                <div class="input-wrapper">
-                    <label for="name">Nome:</label>
-                    <div class="input-content">
-                        <input type="text" placeholder="Junin Silva" formControlName="name">
-                        <img src="../../../assets/person-icon.svg" alt="">
-                    </div>
-                    <label for="email">Email:</label>
-                    <div class="input-content">
-                        <input type="email" placeholder="alex@email.com" formControlName="email">
-                        <img src="../../../assets/email-icon.svg" alt="">
-                    </div>
-                    <label for="telefone">Telefone:</label>
-                    <div class="input-content">
-                        <input type="tel" placeholder="(85)922345678" formControlName="phone">
-                        <img src="../../../assets/phone-icon.svg" alt="">
-                    </div>
-                    <label for="name">Senha:</label>
-                    <div class="input-content">
-                        <input type="password" placeholder="Digite sua senha" formControlName="password">
-                        <img src="../../../assets/password-icon.svg" alt="">
-                    </div>
-                    <label for="name">Confirme sua senha:</label>
-                    <div class="input-content">
-                        <input type="password" placeholder="Confirme sua senha" formControlName="password_confirm">
-                        <img src="../../../assets/password-icon.svg" alt="">
-                    </div>
-                    <label for="name">CPF:</label>
-                    <div class="input-content">
-                        <input type="text" placeholder="01234567899" formControlName="cpf">
-                        <img src="../../../assets/cpf-icon.svg" alt="">
-                    </div>
-                    <label for="name">Data de Nascimento:</label>
-                    <div class="input-content">
-                        <input type="date" placeholder="01/01/1901" formControlName="birthdate">
-                        <img src="../../../assets/calendar.svg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="button-submit">
-                <button type="button" id="button-primary" (click)="submit()">Cadastrar</button>
-            </div>
-        </form>
-    </div>
-    <div class="right-side">
-        <img src="../../../assets/backGournd.svg" alt="">
-    </div>
+      </div>
+      <div class="button-submit">
+        <button type="button" id="button-primary" (click)="submit()">
+          Cadastrar
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="right-side">
+    <img src="../../../assets/img_slogan.svg" alt="" />
+  </div>
 </div>

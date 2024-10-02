@@ -11,11 +11,11 @@ import { BackResponse } from '../../shared/types/back-response.interface';
 export class RegisterService {
 
   constructor(
-    private http: HttpClient,
-    private config: ConfigService
+    private readonly http: HttpClient,
+    private readonly config: ConfigService
   ) { }
 
-  submit(formData: FormatedForm): Observable<BackResponse>{
+  submit(formData: FormatedForm): Observable<BackResponse> {
     return this.http.post<BackResponse>(`${this.config.apiUrl}/auth/register`, formData)
   }
 }
