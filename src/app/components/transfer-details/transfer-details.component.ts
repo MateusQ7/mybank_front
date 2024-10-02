@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { TransactionModel } from '../../shared/models/transactionModel';
+import { TransferenceModel } from '../../shared/models/transferenceModel';
 import { CommonModule, NgForOf } from '@angular/common';
-import { TransactionService } from './transfer-details.service';
+import { TransferDetailsService } from './transfer-details.service';
 import { PopUpTransferComponent } from '../pop-up-transfer/pop-up-transfer.component';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,14 +15,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./transfer-details.component.css']
 })
 export class TransferDetailsComponent implements OnInit {
-  transactions: TransactionModel[] = [];
-  transaction: TransactionModel | undefined;
+  transferences: TransferenceModel[] = [];
+  transference: TransferenceModel | undefined;
   error: string | undefined;
 
   constructor(
     public dialog: MatDialog,
-    private transactionService: TransactionService,
-    private toastr: ToastrService
+    private readonly transferenceDetailsService: TransferDetailsService,
+    private readonly toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -33,13 +33,13 @@ export class TransferDetailsComponent implements OnInit {
     const cpf = sessionStorage.getItem('cpf');
 
     if (cpf) {
-      this.transactionService.getTransactions(cpf).subscribe({
-        next: (transactions) => {
-          if (transactions && transactions.length > 0) {
-            transactions.forEach(transaction => {
-              console.log('cpfSender:', transaction.cpfSender);
+      this.transferenceDetailsService.getTransactions(cpf).subscribe({
+        next: (transferences) => {
+          if (transferences && transferences.length > 0) {
+            transferences.forEach(transference => {
+              console.log('cpfSender:', transference.cpfSender);
             });
-            this.transactions = transactions;
+            this.transferences = transferences;
           } else {
             console.log('Não há transações.');
           }
@@ -59,7 +59,7 @@ export class TransferDetailsComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpTransferComponent, {
       width: '580px',
-      height: '660px',
+      height: '620px',
       data: { name: 'Angular' },
       panelClass: 'custom-dialog'
     });
