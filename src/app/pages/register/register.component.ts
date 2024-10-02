@@ -3,14 +3,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { FormatedForm } from '../../shared/models/formatedForm';
 import { RegisterService } from './register.service';
-import { RegisterModule } from './register.module';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, RegisterModule],
+  imports: [RouterModule, ReactiveFormsModule],
   providers: [RegisterService, HttpClient],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -21,10 +20,10 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(
-    private FormBuilder: FormBuilder,
-    private router: Router,
-    private registerService: RegisterService,
-    private toastr: ToastrService,
+    private readonly FormBuilder: FormBuilder,
+    private readonly router: Router,
+    private readonly registerService: RegisterService,
+    private readonly toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
