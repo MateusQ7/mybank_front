@@ -10,8 +10,8 @@ import { Account } from '../../shared/models/accountModel';
 export class AccountDetailsService {
 
   constructor(
-    private config: ConfigService,
-    private http: HttpClient
+    private readonly config: ConfigService,
+    private readonly http: HttpClient
   ) { }
 
   getAccountByCpf(cpf: string): Observable<Account> {

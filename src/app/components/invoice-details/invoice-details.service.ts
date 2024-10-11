@@ -10,8 +10,8 @@ import { Invoice } from '../../shared/models/invoiceModel';
 export class InvoiceDetailsService {
 
   constructor(
-    private config: ConfigService,
-    private http: HttpClient
+    private readonly config: ConfigService,
+    private readonly http: HttpClient
   ) { }
 
   getInvoiceByCpf(cpf: string): Observable<Invoice> {
