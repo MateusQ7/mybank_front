@@ -1,87 +1,88 @@
 <div class="main">
   <div class="left-side">
     <div class="title-balance">
-      <h2 class="balance-title">Saldo da Conta</h2>
+      <h2 class="balance-title" translate>Saldo da Conta</h2>
     </div>
+
     <div class="balance">
       <div class="balance-main">
         <p class="balance-money-status" *ngIf="account">
-          R$ {{ account.accountValue | number : "1.2-2" }}
+          {{ formatCurrency(account.accountValue) }}
         </p>
-        <p class="balance-money-status" *ngIf="!account">Carregando...</p>
+        <p class="balance-money-status" *ngIf="!account" translate>Carregando...</p>
       </div>
     </div>
+
     <div class="balance-info-user">
       <div class="info">
-        <span class="text-info">Nome:</span>
+        <span class="text-info" translate>Nome:</span>
         <span class="text-info-i">{{
-          account?.user?.name || "Não disponível"
+          account?.user?.name || ('Não disponível' | translate)
         }}</span>
       </div>
       <div class="info">
-        <span class="text-info">CPF:</span>
+        <span class="text-info" translate>CPF:</span>
         <span class="text-info-i">{{
-          account?.user?.cpf || "Não disponível"
+          account?.user?.cpf || ('Não disponível' | translate)
         }}</span>
       </div>
       <div class="info">
-        <span class="text-info">Nascimento:</span>
+        <span class="text-info" translate>Nascimento:</span>
         <span class="text-info-i">
           {{
             account?.user?.birthdate
               ? (account?.user?.birthdate | date : "dd/MM/yyyy")
-              : "Não disponível"
+              : ('Não disponível' | translate)
           }}
         </span>
       </div>
     </div>
+
     <div class="buttons">
-      <button class="balance-button">Guardar Dinheiro</button>
-      <button class="balance-button">Investir</button>
+      <button class="balance-button" translate>Guardar Dinheiro</button>
+      <button class="balance-button" translate>Investir</button>
     </div>
   </div>
+
   <div class="right-side">
     <div class="top-side">
       <div class="info-limit">
         <div class="title-balance">
-          <h2 class="balance-title">Limites da Conta</h2>
+          <h2 class="balance-title" translate>Limites da Conta</h2>
         </div>
         <div class="info-l">
-          <span class="text-info-l">Limite Utilizado:</span>
+          <span class="text-info-l" translate>Limite Utilizado:</span>
           <span class="limit-status-u">
-            R$ {{ account?.usedLimit ?? 0 | number : "1.2-2" }}
+            {{ formatCurrency(account?.usedLimit ?? 0) }}
           </span>
         </div>
         <div class="info-l">
-          <span class="text-info-l">Limite Disponível:</span>
+          <span class="text-info-l" translate>Limite Disponível:</span>
           <span class="limit-status-d">
-            R$
-            {{
-              (account?.creditLimit ?? 0) - (account?.usedLimit ?? 0)
-                | number : "1.2-2"
-            }}
+            {{ formatCurrency((account?.creditLimit ?? 0) - (account?.usedLimit ?? 0)) }}
           </span>
         </div>
       </div>
     </div>
+
     <div class="bottom-side">
       <div class="historic-div">
         <div class="title-historic">
-          <h2 class="historic-title">Histórico de Faturas</h2>
+          <h2 class="historic-title" translate>Histórico de Faturas</h2>
         </div>
         <div class="historic">
           <ul class="historic-list">
             <li class="text-info-h">
-              Fevereiro = <span class="value-h">R$ 9000,50</span>
+              Fevereiro = <span class="value-h">{{ formatCurrency(9000.50) }}</span>
             </li>
             <li class="text-info-h">
-              Janeiro = <span class="value-h">R$ 1010,60</span>
+              Janeiro = <span class="value-h">{{ formatCurrency(1010.60) }}</span>
             </li>
             <li class="text-info-h">
-              Dezembro = <span class="value-h">R$ 4060,40</span>
+              Dezembro = <span class="value-h">{{ formatCurrency(4060.40) }}</span>
             </li>
             <li class="text-info-h">
-              Novembro = <span class="value-h">R$ 5000,90</span>
+              Novembro = <span class="value-h">{{ formatCurrency(5000.90) }}</span>
             </li>
           </ul>
         </div>
