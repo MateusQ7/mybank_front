@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ConfigService } from '../../services/config/config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { Account } from '../../shared/models/accountModel';
@@ -11,7 +10,6 @@ import { environment } from '../../../environments/environment';
 export class AccountDetailsService {
 
   constructor(
-    private readonly config: ConfigService,
     private readonly http: HttpClient
   ) { }
 
