@@ -1,9 +1,9 @@
 export interface TransferenceModel {
   id?: number;
   cpfSender?: string ;
-  senderName?: string; 
+  senderName?: string;
   cpfReceiver: string;
-  receiverName?: string; 
+  receiverName?: string;
   amount: number;
   paymentDescription: string;
   transferenceDate?: string;
