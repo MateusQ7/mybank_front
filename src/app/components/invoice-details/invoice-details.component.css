@@ -10,11 +10,20 @@
   font-family: "Poppins", sans-serif;
 }
 
-.left-side, .right-side {
+.left-side {
   flex: 1;
   padding: 20px;
   margin: 10px;
   border-radius: 8px;
+  background: #f8f8f8;
+}
+
+.right-side {
+  flex: 1;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  padding-top: 30px;
   background: #f8f8f8;
 }
 
@@ -28,11 +37,13 @@
   padding-top: 15px;
 }
 
-.title-invoice, .title-historic {
+.title-invoice,
+.title-historic {
   margin-bottom: 20px;
 }
 
-.invoice-text, .historic-text {
+.invoice-text,
+.historic-text {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
@@ -49,17 +60,19 @@
 .invoice-money-status {
   font-size: 2rem;
   font-weight: bold;
-  color: #4caf50; /* Cor verde */
+  color: #4caf50;
 }
 
 .maturity {
   font-weight: bold;
-  color: #8B8B8B;
+  color: #8b8b8b;
   font-size: 0.9rem;
 }
 
 .historic-div {
   margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .historic-list {
@@ -79,8 +92,10 @@
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: center;
+  height: 30vh;
+  align-items: center;
+  gap: 20px;
 }
 
 .balance-button {
@@ -90,6 +105,7 @@
   background-color: #495057;
   color: white;
   font-size: 16px;
+  width: 200px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
