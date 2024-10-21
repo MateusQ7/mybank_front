@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ConfigService } from '../../services/config/config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { Invoice } from '../../shared/models/invoiceModel';
 import { TransactionModel } from '../../shared/models/transactionModel';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,6 @@ import { TransactionModel } from '../../shared/models/transactionModel';
 export class InvoiceDetailsService {
 
   constructor(
-    private readonly config: ConfigService,
     private readonly http: HttpClient
   ) { }
 
@@ -23,7 +22,7 @@ export class InvoiceDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.get<Invoice>(`${this.config.apiUrl}/invoice/account/${cpf}`, { headers }).pipe(
+    return this.http.get<Invoice>(`${environment.apiUrl}/invoice/account/${cpf}`, { headers }).pipe(
       catchError(error => {
         console.error('Invoice not found');
         throw error;
@@ -39,7 +38,7 @@ export class InvoiceDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.get<Invoice[]>(`${this.config.apiUrl}/invoice/${cpf}`, { headers }).pipe(
+    return this.http.get<Invoice[]>(`${environment.apiUrl}/invoice/${cpf}`, { headers }).pipe(
       catchError(error => {
         console.error('Invoices not found');
         throw error;
@@ -55,7 +54,7 @@ export class InvoiceDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.get<TransactionModel[]>(`${this.config.apiUrl}/transaction/${cpf}`, { headers }).pipe(
+    return this.http.get<TransactionModel[]>(`${environment.apiUrl}/transaction/${cpf}`, { headers }).pipe(
       catchError(error => {
         console.error('Invoices not found');
         throw error;

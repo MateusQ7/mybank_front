@@ -1,16 +1,15 @@
-// card-details.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { ConfigService } from '../../services/config/config.service';
 import { CardModel } from '../../shared/models/cardModel';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardDetailsService {
 
-  constructor(private http: HttpClient, private config: ConfigService) { }
+  constructor(private readonly http: HttpClient) { }
 
   getCards(accountCpf: string): Observable<CardModel[]> {
     const token = sessionStorage.getItem('auth-token');
@@ -20,10 +19,10 @@ export class CardDetailsService {
     }
 
 
-    return this.http.get<CardModel[]>(`${this.config.apiUrl}/card/${accountCpf}`, { headers }).pipe(
+    return this.http.get<CardModel[]>(`${environment.apiUrl}/card/${accountCpf}`, { headers }).pipe(
       catchError(error => {
         console.error('Erro ao buscar conta', error);
-        return throwError(error);
+        return throwError(() => new Error(error));
       })
     );
   }
@@ -36,10 +35,10 @@ export class CardDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.delete<void>(`${this.config.apiUrl}/card/${cardId}`, { headers }).pipe(
+    return this.http.delete<void>(`${environment.apiUrl}/card/${cardId}`, { headers }).pipe(
       catchError(error => {
         console.error('Erro ao deletar cartão', error);
-        return throwError(error);
+        return throwError(() => new Error(error));
       })
     );
   }
