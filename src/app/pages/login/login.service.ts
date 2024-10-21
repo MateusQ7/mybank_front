@@ -10,8 +10,8 @@ import { LoginResponse } from '../../shared/types/login-response.type';
 export class LoginService {
 
   constructor(
-    private http: HttpClient,
-    private config: ConfigService,
+    private readonly http: HttpClient,
+    private readonly config: ConfigService,
   ) { }
 
   login(form: FormatedFormLogin){

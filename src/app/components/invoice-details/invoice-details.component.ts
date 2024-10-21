@@ -4,56 +4,80 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Invoice } from '../../shared/models/invoiceModel';
 import { InvoiceDetailsService } from './invoice-details.service';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { TransactionModel } from '../../shared/models/transactionModel';
 
 @Component({
   selector: 'app-invoice-details',
   standalone: true,
   imports: [MatDialogModule, CommonModule],
-  providers: [InvoiceDetailsService, HttpClient],
+  providers: [InvoiceDetailsService],
   templateUrl: './invoice-details.component.html',
-  styleUrl: './invoice-details.component.css'
+  styleUrls: ['./invoice-details.component.css']
 })
 export class InvoiceDetailsComponent {
   invoices: Invoice[] = [];
   invoice: Invoice | undefined;
   error: string | undefined;
+  transactions: TransactionModel[] = [];
+  transaction: TransactionModel | undefined;
 
-  constructor(public dialog: MatDialog, private invoiceDetailsService: InvoiceDetailsService) { }
+  constructor(public dialog: MatDialog, private readonly invoiceDetailsService: InvoiceDetailsService) {}
 
   ngOnInit(): void {
     this.loadInvoiceByCpf();
+    this.loadTransactionsByCpf();
   }
 
   loadInvoiceByCpf(): void {
     const storageCpf = sessionStorage.getItem('cpf');
-  
     if (storageCpf) {
       this.invoiceDetailsService.getInvoiceByCpf(storageCpf).subscribe({
         next: (data: Invoice) => {
           this.invoice = data;
         },
-        error: (error) => {
-          this.error = 'Faturas não encontradas ou erro na requisição.';
+        error: () => {
+          this.error = 'Invoice not found or request error.';
         },
         complete: () => {
-          console.log('Busca de faturas concluída.');
+          console.log('Invoice search completed.');
         }
       });
     } else {
-      console.error('CPF não encontrado no sessionStorage.');
-      this.error = 'CPF não encontrado.';
+      this.handleMissingCpf();
     }
   }
 
+  loadTransactionsByCpf(): void {
+    const storageCpf = sessionStorage.getItem('cpf');
+    if (storageCpf) {
+      this.invoiceDetailsService.getTransactionsByCpf(storageCpf).subscribe({
+        next: (transactions: TransactionModel[]) => {
+          this.transactions = transactions;
+        },
+        error: () => {
+          this.error = 'Transactions not found.';
+        },
+        complete: () => {
+          console.log('Transactions search completed.');
+        }
+      });
+    } else {
+      this.handleMissingCpf();
+    }
+  }
 
   openDialog(): void {
     this.dialog.open(PopUpInvoiceComponent, {
       width: '558px',
-      height: '412px',
+      height: '462px',
       data: { name: 'Angular' },
       panelClass: 'custom-dialog'
-    })
-    console.log("FUI CLICADO")
+    });
+    console.log('Dialog opened');
+  }
+
+  private handleMissingCpf(): void {
+    console.error('CPF not found in sessionStorage.');
+    this.error = 'CPF not found.';
   }
 }

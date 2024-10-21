@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountDetailsService } from './account-details.service';
 import { Account } from '../../shared/models/accountModel';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { InvoiceDetailsService } from '../invoice-details/invoice-details.service';
 import { Invoice } from '../../shared/models/invoiceModel';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'account-details',
   standalone: true,
-  imports: [CommonModule],
-  providers: [AccountDetailsService, HttpClient],
+  imports: [CommonModule, TranslateModule],
+  providers: [AccountDetailsService, HttpClient, CurrencyPipe],
   templateUrl: './account-details.component.html',
-  styleUrl: './account-details.component.css'
+  styleUrls: ['./account-details.component.css']
 })
 export class AccountDetailsComponent implements OnInit {
 
@@ -22,9 +23,15 @@ export class AccountDetailsComponent implements OnInit {
   invoice: Invoice | undefined;
   error: string | undefined;
 
-  constructor(private readonly accountService: AccountDetailsService,
-    private readonly invoiceDetailsService: InvoiceDetailsService
-  ) { }
+  constructor(
+    private readonly accountService: AccountDetailsService,
+    private readonly invoiceDetailsService: InvoiceDetailsService,
+    private readonly translate: TranslateService,
+    private readonly currencyPipe: CurrencyPipe
+  ) {
+    this.translate.setDefaultLang('pt');
+    this.translate.use('pt');
+  }
 
   ngOnInit(): void {
     this.loadAccountByCpf();
@@ -41,8 +48,6 @@ export class AccountDetailsComponent implements OnInit {
 
           sessionStorage.setItem('userName', data.user.name || 'Não disponível');
           sessionStorage.setItem('NOME', data.user.cpf || 'Não disponível');
-
-
         },
         error: (error) => {
           console.error('Erro ao buscar conta', error);
@@ -60,7 +65,7 @@ export class AccountDetailsComponent implements OnInit {
 
   loadInvoiceByCpf(): void {
     const storageCpf = sessionStorage.getItem('cpf');
-  
+
     if (storageCpf) {
       this.invoiceDetailsService.getInvoiceByCpf(storageCpf).subscribe({
         next: (data: Invoice) => {
@@ -77,5 +82,14 @@ export class AccountDetailsComponent implements OnInit {
       console.error('CPF não encontrado no sessionStorage.');
       this.error = 'CPF não encontrado.';
     }
+  }
+
+  setLanguage(lang: string): void {
+    this.translate.use(lang);
+  }
+
+  formatCurrency(value: number): string | null {
+    const currentLang = this.translate.currentLang;
+    return this.currencyPipe.transform(value, currentLang === 'pt' ? 'BRL' : 'USD', 'symbol', '1.2-2');
   }
 }

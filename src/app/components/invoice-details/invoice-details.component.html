@@ -21,17 +21,14 @@
         </div>
         <div class="historic">
           <ul class="historic-list">
-            <li class="text-info-h">
-              RP League Of Legends = <span class="value-h">R$ 5000,90</span>
+            <li class="text-info-h" *ngFor="let transaction of transactions">
+              {{ transaction.paymentDescription }} =
+              <span class="value-h"
+                >R$ {{ transaction.amount | number : "1.2-2" }}</span
+              >
             </li>
-            <li class="text-info-h">
-              Supermercado DODS = <span class="value-h">R$ 2000,00</span>
-            </li>
-            <li class="text-info-h">
-              Cursos de frescura = <span class="value-h">R$ 1028,00</span>
-            </li>
-            <li class="text-info-h">
-              SAMSUNNG BRASIL = <span class="value-h">R$ 2681,60</span>
+            <li class="text-info-h" *ngIf="transactions.length === 0">
+              Nenhuma compra encontrada
             </li>
           </ul>
         </div>
@@ -39,11 +36,11 @@
     </div>
   </div>
   <div class="right-side">
+    <div class="title-invoice">
+      <p class="invoice-text">Pagar Fatura:</p>
+    </div>
     <div class="buttons">
       <button class="balance-button" (click)="openDialog()">Pagar</button>
-      <button class="balance-button">Aumentar Limite</button>
-      <button class="balance-button">Antecipar</button>
-      <button class="balance-button">Mudar Vencimento</button>
     </div>
   </div>
 </div>

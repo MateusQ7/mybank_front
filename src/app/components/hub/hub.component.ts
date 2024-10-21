@@ -29,7 +29,7 @@ export class HubComponent implements OnInit{
 
   component$!: Observable<string>
 
-  constructor(private stateService: StateService) {}
+  constructor(private readonly stateService: StateService) {}
 
   ngOnInit(): void {
     this.component$ = this.stateService.component$

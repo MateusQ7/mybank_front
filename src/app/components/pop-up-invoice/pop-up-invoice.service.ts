@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ConfigService } from '../../services/config/config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PayInvoiceModel } from '../../shared/models/payInvoiceModel';
 import { catchError, Observable } from 'rxjs';
-import { Account } from '../../shared/models/accountModel';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AccountDetailsService {
+export class PopUpInvoiceService {
 
   constructor(
     private readonly config: ConfigService,
-    private readonly http: HttpClient
-  ) { }
+    private readonly http: HttpClient) { }
 
-  getAccountByCpf(cpf: string): Observable<Account> {
+  payInvoice(payModel: PayInvoiceModel): Observable<PayInvoiceModel> {
     const token = sessionStorage.getItem('auth-token');
 
     let headers = new HttpHeaders();
@@ -22,9 +21,9 @@ export class AccountDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.get<Account>(`${this.config.apiUrl}/account/${cpf}`, { headers }).pipe(
+    return this.http.post<PayInvoiceModel>(`${this.config.apiUrl}/invoice/pay`, payModel, { headers }).pipe(
       catchError(error => {
-        console.error('Erro ao buscar conta', error);
+        console.error('Error pay Invoice!', error);
         throw error;
       })
     );
