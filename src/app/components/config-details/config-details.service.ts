@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { UpdatedUser } from '../../shared/models/updatedUser';
-import { ConfigService } from '../../services/config/config.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,7 @@ import { ConfigService } from '../../services/config/config.service';
 
 
 export class ConfigDetailsService {
-  constructor(private http: HttpClient,
-    private config: ConfigService
+  constructor(private readonly http: HttpClient,
   ) { }
 
   updateUser(updatedUser: UpdatedUser): Observable<UpdatedUser> {
@@ -22,7 +21,7 @@ export class ConfigDetailsService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.put<UpdatedUser>(`${this.config.apiUrl}/user/update`, updatedUser, { headers }).pipe(
+    return this.http.put<UpdatedUser>(`${environment.apiUrl}/user/update`, updatedUser, { headers }).pipe(
       catchError(error => {
         console.error('Erro ao da conta', error);
         throw error;

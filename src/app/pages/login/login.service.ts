@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ConfigService } from '../../services/config/config.service';
 import { FormatedFormLogin } from '../../shared/models/formatedFormLogin';
 import { LoginResponse } from '../../shared/types/login-response.type';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,9 @@ export class LoginService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly config: ConfigService,
   ) { }
 
   login(form: FormatedFormLogin){
-    return this.http.post<LoginResponse>(`${this.config.apiUrl}/auth/login`, form);
+    return this.http.post<LoginResponse>(`${environment.apiUrl}/auth/login`, form);
   }
 }
