@@ -5,6 +5,8 @@ import { CommonModule, NgForOf } from '@angular/common';
 import { TransferDetailsService } from './transfer-details.service';
 import { PopUpTransferComponent } from '../pop-up-transfer/pop-up-transfer.component';
 import { ToastrService } from 'ngx-toastr';
+import { AccountDetailsService } from '../account-details/account-details.service';
+import { Account } from '../../shared/models/accountModel';
 
 
 @Component({
@@ -18,15 +20,18 @@ export class TransferDetailsComponent implements OnInit {
   transferences: TransferenceModel[] = [];
   transference: TransferenceModel | undefined;
   error: string | undefined;
+  account: Account | undefined;
 
   constructor(
     public dialog: MatDialog,
     private readonly transferenceDetailsService: TransferDetailsService,
-    private readonly toastr: ToastrService
+    private readonly toastr: ToastrService,
+    private readonly accountService: AccountDetailsService
   ) { }
 
   ngOnInit(): void {
     this.loadTransactions();
+    this.loadAccountByCpf();
   }
 
   loadTransactions(): void {
@@ -70,5 +75,30 @@ export class TransferDetailsComponent implements OnInit {
         this.loadTransactions();
       }
     });
+  }
+
+  loadAccountByCpf(): void {
+    const storedCpf = sessionStorage.getItem('cpf');
+
+    if (storedCpf) {
+      this.accountService.getAccountByCpf(storedCpf).subscribe({
+        next: (data: Account) => {
+          this.account = data;
+
+          sessionStorage.setItem('userName', data.user.name || 'Não disponível');
+          sessionStorage.setItem('NOME', data.user.cpf || 'Não disponível');
+        },
+        error: (error) => {
+          console.error('Erro ao buscar conta', error);
+          this.error = 'Conta não encontrada ou erro na requisição.';
+        },
+        complete: () => {
+          console.log('Busca de conta concluída.');
+        }
+      });
+    } else {
+      console.error('CPF não encontrado no sessionStorage.');
+      this.error = 'CPF não encontrado no sessionStorage.';
+    }
   }
 }
