@@ -64,7 +64,6 @@
         </div>
       </div>
     </div>
-
     <div class="bottom-side">
       <div class="historic-div">
         <div class="title-historic">
@@ -72,19 +71,12 @@
         </div>
         <div class="historic">
           <ul class="historic-list">
-            <li class="text-info-h">
-              Fevereiro = <span class="value-h">{{ formatCurrency(9000.50) }}</span>
-            </li>
-            <li class="text-info-h">
-              Janeiro = <span class="value-h">{{ formatCurrency(1010.60) }}</span>
-            </li>
-            <li class="text-info-h">
-              Dezembro = <span class="value-h">{{ formatCurrency(4060.40) }}</span>
-            </li>
-            <li class="text-info-h">
-              Novembro = <span class="value-h">{{ formatCurrency(5000.90) }}</span>
+            <li class="text-info-h" *ngFor="let invoice of invoices">
+              {{ invoice.dueDate }} =
+              <span class="value-h">{{ formatCurrency(invoice.amount) }}</span>
             </li>
           </ul>
+          <p *ngIf="invoices.length === 0" translate>Sem faturas disponíveis</p>
         </div>
       </div>
     </div>
