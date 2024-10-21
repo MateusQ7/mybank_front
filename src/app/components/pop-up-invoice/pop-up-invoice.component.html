@@ -1,23 +1,33 @@
 <div class="main-pop-up">
-    <div class="title-div">
-      <p class="title">Confirmar Pagamento</p>
-    </div>
-    <div class="content">
-        <div class="invoice-value">
-            <label class="title-text">Valor:</label>
-            <p class="value">R$ 10710,00</p>
+  <div class="title-div">
+    <p class="title">Confirmar Pagamento</p>
+  </div>
+  <form [formGroup]="paymentConfirmationForm">
+    <div class="card-form">
+      <div class="input-wrapper">
+        <label for="cpf">Confirme o seu CPF:</label>
+        <input type="text" placeholder="Digite o CPF" id="cpf" formControlName="cpf">
+        <div *ngIf="paymentConfirmationForm.get('cpf')?.invalid && (paymentConfirmationForm.get('cpf')?.touched || paymentConfirmationForm.get('cpf')?.dirty)">
+          <small *ngIf="paymentConfirmationForm.get('cpf')?.errors?.['required']">CPF é obrigatório.</small>
+          <small *ngIf="paymentConfirmationForm.get('cpf')?.errors?.['pattern']">CPF inválido.</small>
         </div>
+
+        <label for="payment-value">Valor do Pagamento:</label>
+        <input type="text" placeholder="Digite o valor" id="payment-value" formControlName="paymentValue">
+        <div *ngIf="paymentConfirmationForm.get('paymentValue')?.invalid && (paymentConfirmationForm.get('paymentValue')?.touched || paymentConfirmationForm.get('paymentValue')?.dirty)">
+          <small *ngIf="paymentConfirmationForm.get('paymentValue')?.errors?.['required']">Valor é obrigatório.</small>
+          <small *ngIf="paymentConfirmationForm.get('paymentValue')?.errors?.['pattern']">Valor inválido.</small>
+        </div>
+
         <div class="details">
-            <label class="title-text">Nome:</label>
-            <p class="text-name">Dods</p>
+          <label for="payment-date">Data do Pagamento:</label>
+          <input type="text" id="payment-date" formControlName="paymentDate" value="{{ currentDate | date:'dd/MM/yyyy' }}" readonly>
         </div>
-        <div class="details">
-            <label class="title-text">Data do Pagamento:</label>
-            <p class="text-name">10/10/2024</p>
-        </div>
+      </div>
     </div>
     <div class="close">
-        <button type="button" class="buttons-close" (click)="onClose()">Fechar</button>
-        <button type="button" class="buttons-confirm">Confirmar</button>
+      <button type="button" class="buttons-close" (click)="onClose()">Fechar</button>
+      <button type="button" class="buttons-create" (click)="payInvoice()">Confirmar</button>
     </div>
+  </form>
 </div>
