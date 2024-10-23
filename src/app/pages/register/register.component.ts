@@ -5,11 +5,12 @@ import { FormatedForm } from '../../shared/models/formatedForm';
 import { RegisterService } from './register.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe],
   providers: [RegisterService, HttpClient],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
