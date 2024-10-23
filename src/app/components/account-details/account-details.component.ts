@@ -92,4 +92,25 @@ export class AccountDetailsComponent implements OnInit {
     const currentLang = this.translate.currentLang;
     return this.currencyPipe.transform(value, currentLang === 'pt' ? 'BRL' : 'USD', 'symbol', '1.2-2');
   }
+
+  addValueToAccount(value: number){
+    const storageCpf = sessionStorage.getItem('cpf');
+
+    if (storageCpf) {
+      this.accountService.addValueToAccount(storageCpf, value).subscribe({
+        next: (data: Account) => {
+          this.account = data;
+        },
+        error: (error) => {
+          this.error = 'Deu não encontradas ou erro na requisição.';
+        },
+        complete: () => {
+          console.log('Deu certo.');
+        }
+      });
+    } else {
+      console.error('CPF não encontrado no sessionStorage.');
+      this.error = 'CPF não encontrado.';
+    }
+  }
 }
