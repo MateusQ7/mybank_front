@@ -6,87 +6,42 @@ import { RegisterService } from './register.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe],
+  imports: [RouterModule, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe, CommonModule],
   providers: [RegisterService, HttpClient],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
-  form!: FormGroup
-
+  form!: FormGroup;
 
   constructor(
-    private readonly FormBuilder: FormBuilder,
+    private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly registerService: RegisterService,
     private readonly toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
-    this.form = this.FormBuilder.group({
-      name: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.required,
-      ]],
-      email: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.email
-      ]],
-      phone: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.required
-      ]],
-      password: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.required,
-        Validators.minLength(6)
-      ]],
-      password_confirm: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.required,
-        Validators.minLength(6)
-      ]],
-      cpf: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.required,
-      ]],
-      birthdate: [{
-        value: '',
-        disabled: false
-      }, [
-        Validators.required,
-      ]],
-    })
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      phone: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password_confirm: ['', [Validators.required, Validators.minLength(6)]],
+      cpf: ['', Validators.required],
+      birthdate: ['', Validators.required],
+    });
   }
 
   async submit(): Promise<void> {
-    const formatedForm: FormatedForm = {
-      name: this.form.value.name,
-      email: this.form.value.email,
-      password: this.form.value.password,
-      phone: this.form.value.phone,
-      cpf: this.form.value.cpf,
-      birthdate: this.form.value.birthdate
-    };
-
     if (this.form.valid) {
+      const formatedForm: FormatedForm = this.form.value;
       this.registerService.submit(formatedForm).subscribe({
         next: (res) => {
           console.log(res);
@@ -95,7 +50,9 @@ export class RegisterComponent implements OnInit {
         },
         error: (error) => {
           console.error('Erro ao enviar registro', error);
-          this.toastr.error('Erro ao enviar registro.');
+
+          const errorMessage = error.error?.token;
+          this.toastr.error(errorMessage);
         },
         complete: () => {
           console.log('Envio de registro concluído.');
@@ -103,13 +60,43 @@ export class RegisterComponent implements OnInit {
       });
     } else {
       console.warn('Formulário inválido:', this.form.errors);
-      this.toastr.warning('Por favor, preencha todos os campos corretamente.');
+      this.handleFormErrors();
     }
   }
 
-  goToLogin() {
+  goToLogin(): void {
     if (this.form.valid) {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
+  }
+
+  private handleFormErrors(): void {
+    Object.keys(this.form.controls).forEach(field => {
+      const control = this.form.get(field);
+      if (control?.invalid) {
+        if (control.errors?.['required']) {
+          this.toastr.warning(`O campo ${this.getFieldName(field)} é obrigatório.`);
+        }
+        if (control.errors?.['email']) {
+          this.toastr.warning(`O campo email está inválido.`);
+        }
+        if (control.errors?.['minlength']) {
+          this.toastr.warning(`O campo ${this.getFieldName(field)} deve ter pelo menos ${control.errors['minlength'].requiredLength} caracteres.`);
+        }
+      }
+    });
+  }
+
+  private getFieldName(field: string): string {
+    const fieldNames: { [key: string]: string } = {
+      name: 'Nome',
+      email: 'Email',
+      phone: 'Telefone',
+      password: 'Senha',
+      password_confirm: 'Confirmação de Senha',
+      cpf: 'CPF',
+      birthdate: 'Data de Nascimento'
+    };
+    return fieldNames[field] || field;
   }
 }

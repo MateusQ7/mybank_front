@@ -108,3 +108,85 @@ label {
   font-family: "Poppins", sans-serif;
   color: #555555;
 }
+
+@media (max-width: 1024px) {
+  .main {
+    display: flex;
+  }
+
+  .login {
+    width: 100%;
+  }
+
+  .img {
+    display: flex;
+    width: 100%;
+  }
+
+  .img-bank {
+    width: 400px;
+    height: 500px;
+  }
+
+  .form-register {
+    width: 90%;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+  .button-submit {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .img {
+    display: none;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginAndSignup {
+    width: 390px;
+  }
+
+  .buttomLogin {
+    width: 390px;
+  }
+
+  .buttomSignup {
+    width: 390px;
+  }
+
+  .input-wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .loginAndSignup {
+    width: 300px;
+  }
+
+  .buttomLogin {
+    width: 300px;
+  }
+
+  .buttomSignup {
+    width: 300px;
+  }
+
+  .input-wrapper {
+    width: 300px;
+  }
+}

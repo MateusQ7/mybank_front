@@ -6,69 +6,87 @@
     <form class="main-form" [formGroup]="form">
       <div class="form-register">
         <div class="input-wrapper">
-          <label for="name">Nome:</label>
-          <div class="input-content">
-            <input
-              type="text"
-              placeholder="Junin Silva"
-              formControlName="name"
-            />
+          <div class="top-input">
+            <label for="name">Nome:</label>
+            <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid" class="error-message">
+              <small *ngIf="form.get('name')?.errors?.['required']">O nome é obrigatório.</small>
+            </div>
+          </div>
+          <div class="input-content" [ngClass]="{'has-error': form.get('name')?.touched && form.get('name')?.invalid}">
+            <input type="text" placeholder="Junin Silva" formControlName="name" />
             <img src="../../../assets/person-icon.svg" alt="" />
           </div>
-          <label for="email">Email:</label>
-          <div class="input-content">
-            <input
-              type="email"
-              placeholder="alex@email.com"
-              formControlName="email"
-            />
+        </div>
+        <div class="input-wrapper">
+          <div class="top-input">
+            <label for="email">Email:</label>
+            <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="error-message">
+              <small *ngIf="form.get('email')?.errors?.['required']">O email é obrigatório.</small>
+              <small *ngIf="form.get('email')?.errors?.['email']">Email inválido.</small>
+            </div>
+          </div>
+          <div class="input-content" [ngClass]="{'has-error': form.get('email')?.touched && form.get('email')?.invalid}">
+            <input type="email" placeholder="alex@email.com" formControlName="email" />
             <img src="../../../assets/email-icon.svg" alt="" />
           </div>
-          <label for="telefone">Telefone:</label>
-          <div class="input-content">
-            <input
-              type="tel"
-              placeholder="(85)922345678"
-              formControlName="phone"
-              mask="(00) 00000-0000"
-            />
+        </div>
+        <div class="input-wrapper">
+          <div class="top-input">
+            <label for="telefone">Telefone:</label>
+            <div *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid" class="error-message">
+              <small *ngIf="form.get('phone')?.errors?.['required']">O telefone é obrigatório.</small>
+            </div>
+          </div>
+          <div class="input-content" [ngClass]="{'has-error': form.get('phone')?.touched && form.get('phone')?.invalid}">
+            <input type="tel" placeholder="(85)922345678" formControlName="phone" mask="(00) 00000-0000" />
             <img src="../../../assets/phone-icon.svg" alt="" />
           </div>
-          <label for="name">Senha:</label>
-          <div class="input-content">
-            <input
-              type="password"
-              placeholder="Digite sua senha"
-              formControlName="password"
-            />
+        </div>
+        <div class="input-wrapper">
+          <div class="top-input">
+            <label for="password">Senha:</label>
+            <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" class="error-message">
+              <small *ngIf="form.get('password')?.errors?.['required']">A senha é obrigatória.</small>
+              <small *ngIf="form.get('password')?.errors?.['minlength']">A senha deve ter pelo menos 6 caracteres.</small>
+            </div>
+          </div>
+          <div class="input-content" [ngClass]="{'has-error': form.get('password')?.touched && form.get('password')?.invalid}">
+            <input type="password" placeholder="Digite sua senha" formControlName="password" />
             <img src="../../../assets/password-icon.svg" alt="" />
           </div>
-          <label for="name">Confirme sua senha:</label>
-          <div class="input-content">
-            <input
-              type="password"
-              placeholder="Confirme sua senha"
-              formControlName="password_confirm"
-            />
+        </div>
+        <div class="input-wrapper">
+          <div class="top-input">
+            <label for="password_confirm">Confirme sua senha:</label>
+            <div *ngIf="form.get('password_confirm')?.touched && form.get('password_confirm')?.invalid" class="error-message">
+              <small *ngIf="form.get('password_confirm')?.errors?.['required']">A confirmação é obrigatória.</small>
+              <small *ngIf="form.get('password_confirm')?.errors?.['minlength']">A confirmação deve ter pelo menos 6 caracteres.</small>
+            </div>
+          </div>
+          <div class="input-content" [ngClass]="{'has-error': form.get('password_confirm')?.touched && form.get('password_confirm')?.invalid}">
+            <input type="password" placeholder="Confirme sua senha" formControlName="password_confirm" />
             <img src="../../../assets/password-icon.svg" alt="" />
           </div>
-          <label for="cpf">CPF:</label>
-          <div class="input-content">
-            <input
-              type="text"
-              placeholder="012.345.678-99"
-              formControlName="cpf"
-              mask="000.000.000-00"
-            />
+        </div>
+        <div class="input-wrapper">
+          <div class="top-input">
+            <label for="cpf">CPF:</label>
+            <div *ngIf="form.get('cpf')?.touched && form.get('cpf')?.invalid" class="error-message">
+              <small *ngIf="form.get('cpf')?.errors?.['required']">O CPF é obrigatório.</small>
+            </div>
+          </div>
+          <div class="input-content" [ngClass]="{'has-error': form.get('cpf')?.touched && form.get('cpf')?.invalid}">
+            <input type="text" placeholder="012.345.678-99" formControlName="cpf" mask="000.000.000-00" />
             <img src="../../../assets/cpf-icon.svg" alt="" />
           </div>
-          <label for="name">Data de Nascimento:</label>
-          <div class="input-content">
-            <input
-              type="date"
-              placeholder="01/01/1901"
-              formControlName="birthdate"
-            />
+        </div>
+        <div class="input-wrapper">
+            <label for="birthdate">Data de Nascimento:</label>
+            <div *ngIf="form.get('birthdate')?.touched && form.get('birthdate')?.invalid" class="error-message-date">
+              <small *ngIf="form.get('birthdate')?.errors?.['required']">A data de nascimento é obrigatória.</small>
+            </div>
+          <div class="input-content" [ngClass]="{'has-error': form.get('birthdate')?.touched && form.get('birthdate')?.invalid}">
+            <input type="date" placeholder="01/01/1901" formControlName="birthdate" />
             <img src="../../../assets/calendar.svg" alt="" />
           </div>
         </div>
