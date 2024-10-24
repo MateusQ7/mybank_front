@@ -1,12 +1,31 @@
-:root {
-  --primary-color: #1b263b;
-  --text-color: #555555;
-  --gray-bg: #eeeeee;
-}
-
 input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
+}
+
+.input-content .has-error {
+  height: 50px;
+}
+
+.has-error input {
+  border: 2px solid red;
+  margin: 0;
+}
+
+.top-input {
+  display: flex;
+  height: 24px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.error-message small {
+  display: block;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
 .main {
@@ -73,6 +92,7 @@ input {
 .input-content {
   display: flex;
   padding-bottom: 20px;
+  height: 70px;
 }
 
 button {
@@ -106,6 +126,148 @@ button {
   cursor: pointer;
 }
 
-.button-submit {
-  padding-top: 20px;
+@media (max-width: 1024px) {
+  .main {
+    display: flex;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+  }
+
+  .form-register {
+    width: 90%;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+  .button-submit {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-side {
+    display: none;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .form-register {
+    width: 100%;
+  }
+  .button-submit {
+    padding-top: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-div {
+    margin-top: 20px;
+  }
+
+  .input-wrapper {
+    width: 100%;
+  }
+
+  .right-side {
+    display: none;
+  }
+
+  .left-side {
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  .form-register {
+    padding: 5px;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  button {
+    padding: 8px;
+    width: 100%;
+    margin-top: 20px;
+    height: 45px;
+  }
+
+  .button-submit {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .main {
+    width: 100%S;
+  }
+
+  .image-div {
+    margin-bottom: 20px;
+  }
+
+  .form-register {
+    padding: 5px;
+  }
+
+  .input-wrapper {
+    width: 100%;
+  }
+
+  input {
+    font-size: 13px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  button {
+    padding: 8px;
+    width: 100%;
+    margin-top: 20px;
+    height: 45px;
+  }
+
+  .top-input{
+    height: 20px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 8px;
+  }
+
+  .error-message small {
+    display: block;
+    font-size: 9px;
+    margin-left: 10px;
+  }
+
+  .error-message-date{
+    color: red;
+    font-size: 14px;
+  }
+
+  .input-content {
+    padding-bottom: 12px;
+    height: 60px;
+    width: 260px;
+  }
+
+  .button-submit {
+    padding-top: 0;
+  }
 }
