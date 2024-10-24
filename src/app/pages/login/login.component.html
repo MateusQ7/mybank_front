@@ -1,23 +1,37 @@
 <body>
-
   <div class="main">
-
     <div class="login">
       <div class="logo">
-        <img src="../../../assets/logo_mybank.svg" alt="">
+        <img src="../../../assets/logo_mybank.svg" alt="" />
       </div>
       <form action="" [formGroup]="form">
         <div class="login-form">
           <div class="input-wrapper">
             <label for="email">Email:</label>
             <div class="email">
-              <input type="text" id="email" name="email" required placeholder="alex@email.com" formControlName="email" (keydown.enter)="submit()">
-              <img src="../../../assets/email-icon.svg" alt="">
+              <input
+                type="text"
+                id="email"
+                name="email"
+                required
+                placeholder="alex@email.com"
+                formControlName="email"
+                (keydown.enter)="submit()"
+              />
+              <img src="../../../assets/email-icon.svg" alt="" />
             </div>
             <label for="password">Senha:</label>
             <div class="password">
-              <input type="password" id="password" name="password" required placeholder="Digite sua senha" formControlName="password" (keydown.enter)="submit()">
-              <img src="../../../assets/password-icon.svg" alt="">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="Digite sua senha"
+                formControlName="password"
+                (keydown.enter)="submit()"
+              />
+              <img src="../../../assets/password-icon.svg" alt="" />
             </div>
             <div class="link">
               <a href="">Esqueceu a senha?</a>
@@ -26,16 +40,17 @@
         </div>
       </form>
       <div class="loginAndSignup">
-        <button (click)="submit()" class="buttomLogin" type="button" >Login</button>
+        <button (click)="submit()" class="buttomLogin" type="button">
+          Login
+        </button>
         <p>OR</p>
-        <button [routerLink]="['/register']" class="buttomSignup" type="button">Cadastro</button>
+        <button [routerLink]="['/register']" class="buttomSignup" type="button">
+          Cadastro
+        </button>
       </div>
     </div>
-
     <div class="img">
-      <img src="../../../assets/img_slogan.svg" alt="">
-
+      <img class="img-bank" src="../../../assets/img_slogan.svg" alt="" />
     </div>
-
   </div>
 </body>
