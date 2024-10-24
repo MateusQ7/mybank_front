@@ -5,7 +5,7 @@
   <form [formGroup]="transferForm">
     <div class="card-form">
       <div class="input-wrapper">
-        <label for="cpf">CPF:</label>
+        <label for="cpf">CPF do Destinatário:</label>
         <input type="text" placeholder="Digite o CPF" id="cpf" formControlName="cpf">
         <div
           *ngIf="transferForm.get('cpf')?.invalid && (transferForm.get('cpf')?.touched || transferForm.get('cpf')?.dirty)">
