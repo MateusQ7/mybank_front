@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 53px;
+  height: 53px; /* Altura fixa padrão */
   margin-bottom: 20px;
   border-bottom: 1px solid #505050;
 }
@@ -12,48 +12,71 @@
   align-items: center;
   justify-content: center;
   width: 62px;
-  height: 53px;
+  height: 53px; /* Altura fixa padrão */
 }
 
 .name {
   display: flex;
   align-items: center;
   width: auto;
-  height: 53px;
+  height: 53px; /* Altura fixa padrão */
   padding-left: 10px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   color: #505050;
-  flex: 1; /* Adiciona flexibilidade para ocupar o espaço restante */
+  flex: 1; /* Flexível para ocupar espaço restante */
+}
+
+@media (max-width: 1024px) {
+  .info-div {
+    height: auto; /* Altura adaptável */
+    margin-bottom: 15px; /* Ajusta a margem inferior */
+  }
+
+  .img {
+    width: 100%; /* Ocupa 100% da largura */
+    height: auto; /* Altura adaptável */
+    justify-content: center; /* Centraliza imagem */
+    padding: 5px 0; /* Ajusta padding */
+  }
+
+  .name {
+    width: 100%; /* Ocupa 100% da largura */
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+    padding: 5px 0; /* Ajusta o padding */
+    text-align: center; /* Centraliza o texto */
+  }
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   .info-div {
-    flex-direction: column; /* Ajusta para coluna em telas menores */
-    height: auto;
-    margin-bottom: 15px;
+    flex-direction: column; /* Muda para coluna em telas menores */
+    height: auto; /* Altura adaptável */
+    margin-bottom: 15px; /* Ajusta a margem inferior */
   }
 
-  .img,
-  .name {
-    width: 100%; /* Ajusta para 100% da largura */
-    justify-content: center;
-    height: auto;
-    padding: 5px 0;
+  .img {
+    width: 100%; /* Ocupa 100% da largura */
+    height: auto; /* Altura adaptável */
+    justify-content: center; /* Centraliza imagem */
+    padding: 5px 0; /* Ajusta padding */
   }
 
   .name {
+    width: 100%; /* Ocupa 100% da largura */
     font-size: 14px; /* Ajusta o tamanho da fonte */
+    padding: 5px 0; /* Ajusta o padding */
+    text-align: center; /* Centraliza o texto */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
   .info-div {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Ajusta a margem inferior */
   }
 
   .name {
-    font-size: 12px;
+    font-size: 12px; /* Ajusta o tamanho da fonte */
   }
 }

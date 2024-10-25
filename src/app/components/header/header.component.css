@@ -35,9 +35,8 @@ header {
 @media (max-width: 768px) {
   header {
     padding: 0 10px;
-    flex-direction: column;
     gap: 10px;
-    height: auto;
+    height: 13vh;
   }
   .button-header {
     width: 120px;
@@ -54,12 +53,13 @@ header {
     width: 100px;
     height: 32px;
     font-size: 12px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }
 
 @media (max-width: 400px) {
   header {
-    flex-direction: column;
     gap: 8px;
     padding: 0 10px;
   }

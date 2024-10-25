@@ -10,6 +10,23 @@ nav {
   padding: 0 15px;
 }
 
+.close-button {
+  display: none;
+}
+
+.burger {
+  display: none; /* Oculta por padrão */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.line {
+  width: 25px;
+  height: 3px;
+  background-color: #e0e1dd;
+  margin: 4px 0;
+}
+
 button {
   padding: 13px;
   border: none;
@@ -45,7 +62,7 @@ button:hover {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   nav {
     flex-direction: column;
     height: auto;
@@ -56,6 +73,27 @@ button:hover {
     width: 100%;
     text-align: center;
     font-size: 13px;
+  }
+  .burger {
+    display: flex; /* Mostra o botão burger */
+  }
+  .close-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none; /* Oculta links por padrão */
+    flex-direction: column; /* Empilha os links */
+    position: absolute; /* Coloca os links em uma posição absoluta */
+    top: 57px; /* Ajusta para ficar abaixo do navbar */
+    background-color: #495057; /* Fundo igual ao navbar */
+    width: 100%; /* Largura total */
+    z-index: 1; /* Coloca acima de outros elementos */
+  }
+
+  .nav-links.show {
+    display: flex; /* Mostra os links quando a classe 'show' é adicionada */
+    margin-top: 100px;
   }
 }
 

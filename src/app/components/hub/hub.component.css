@@ -2,31 +2,31 @@
   background-color: #ffffff;
   border-radius: 8px;
   width: 70vw;
-  height: 69vh;
+  height: auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  padding: 20px;
+  padding-bottom: 40px;
 }
 
 /* Responsividade */
 @media (max-width: 1024px) {
   .main-div {
     width: 80vw;
-    height: 60vh;
+    height: auto;
     padding: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .main-div {
+    height: 100vh;
     width: 90vw;
-    height: 55vh;
-    padding: 10px;
+    height: auto;
+    padding-top: 50px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
   .main-div {
     width: 95vw;
     height: auto;
