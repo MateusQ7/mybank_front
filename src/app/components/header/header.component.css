@@ -3,9 +3,9 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 20px;
   height: 92px;
-  gap: 670px;
 }
 
 .button-header {
@@ -18,4 +18,54 @@ header {
   font-weight: bold;
   color: #495057;
   cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  header {
+    padding: 0 15px;
+    height: 80px;
+  }
+  .button-header {
+    width: 140px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 10px;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+  }
+  .button-header {
+    width: 120px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0 5px;
+    gap: 5px;
+  }
+  .button-header {
+    width: 100px;
+    height: 32px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+  }
+  .button-header {
+    width: 90px;
+    font-size: 11px;
+    height: 30px;
+  }
 }

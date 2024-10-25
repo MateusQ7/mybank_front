@@ -5,4 +5,36 @@
   justify-content: center;
   width: 100%;
   height: 75vh;
+  padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .main-home {
+    height: 70vh;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-home {
+    height: 65vh;
+    flex-direction: column; /* Muda para coluna para facilitar a organização em telas menores */
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-home {
+    height: auto; /* Adapta à altura do conteúdo */
+    padding: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .main-home {
+    height: auto;
+    padding: 0;
+    align-items: flex-start; /* Alinha ao topo para melhorar a visualização em telas muito pequenas */
+  }
 }

@@ -18,10 +18,42 @@
 .name {
   display: flex;
   align-items: center;
-  width: 62px;
+  width: auto;
   height: 53px;
   padding-left: 10px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   color: #505050;
+  flex: 1; /* Adiciona flexibilidade para ocupar o espaço restante */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .info-div {
+    flex-direction: column; /* Ajusta para coluna em telas menores */
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .img,
+  .name {
+    width: 100%; /* Ajusta para 100% da largura */
+    justify-content: center;
+    height: auto;
+    padding: 5px 0;
+  }
+
+  .name {
+    font-size: 14px; /* Ajusta o tamanho da fonte */
+  }
+}
+
+@media (max-width: 480px) {
+  .info-div {
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 12px;
+  }
 }

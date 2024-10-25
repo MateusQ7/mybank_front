@@ -7,6 +7,7 @@ nav {
   gap: 80px;
   border-bottom: solid 2px #1b263b;
   border-top: #e0e1dd solid 1px;
+  padding: 0 15px;
 }
 
 button {
@@ -24,4 +25,47 @@ button:hover {
   transition: 0.5s;
   background-color: #6c757d;
   color: #1b263b;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  nav {
+    gap: 40px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    gap: 20px;
+    padding: 0 5px;
+  }
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  button {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  nav {
+    width: 100%;
+    padding: 5px;
+  }
+  button {
+    padding: 10px;
+    font-size: 12px;
+  }
 }
