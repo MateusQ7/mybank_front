@@ -8,7 +8,6 @@
   padding-bottom: 40px;
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   .main-div {
     width: 80vw;
