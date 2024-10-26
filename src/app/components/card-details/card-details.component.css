@@ -11,7 +11,10 @@
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); /* Cards com largura mínima de 320px */
   gap: 20px;
   justify-items: center;
   margin-bottom: 20px;
@@ -43,6 +46,7 @@
   padding: 20px;
   width: 100%;
   max-width: 320px;
+  min-width: 320px; /* Define largura mínima e máxima como 320px */
   height: 180px;
   border-radius: 15px;
   background-color: #212529;
@@ -120,4 +124,68 @@
 
 .plus-button:hover {
   background-color: #495057be;
+}
+
+/* Responsividade */
+
+/* Ajuste para tablets */
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding-right: 0;
+  }
+
+  .card {
+    max-width: 90%;
+  }
+}
+
+/* Ajuste para celulares */
+@media (max-width: 950px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-width: 320px;
+    max-width: 320px;
+  }
+
+  .plus-button {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  .card-add {
+    min-height: 15vh; /* Garante que o body ocupe a altura total da viewport */
+  }
+
+  @media (max-width: 350px) {
+    .cards-container {
+      grid-template-columns: 1fr;
+    }
+
+    .card-number,
+    .card-limit,
+    .card-due {
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+
+    .card {
+      min-width: 250px;
+      max-width: 250px;
+    }
+
+    .plus-button {
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+    }
+
+    .card-add {
+      min-height: 20vh; /* Garante que o body ocupe a altura total da viewport */
+    }
+  }
 }
