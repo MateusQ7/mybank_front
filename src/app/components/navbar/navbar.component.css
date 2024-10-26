@@ -15,9 +15,16 @@ nav {
 }
 
 .burger {
-  display: none; /* Oculta por padrão */
+  display: none;
   flex-direction: column;
   cursor: pointer;
+}
+
+.nav-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
 }
 
 .line {
@@ -50,12 +57,19 @@ button:hover {
     gap: 40px;
     padding: 0 10px;
   }
+
+  .nav-links{
+    gap: 30px;
+  }
 }
 
 @media (max-width: 768px) {
   nav {
-    gap: 20px;
+    gap: 10px;
     padding: 0 5px;
+  }
+  .nav-links {
+    gap: 20px;
   }
   button {
     font-size: 14px;
