@@ -51,7 +51,6 @@ button:hover {
   color: #1b263b;
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   nav {
     gap: 40px;
@@ -89,20 +88,20 @@ button:hover {
     font-size: 13px;
   }
   .burger {
-    display: flex; /* Mostra o botão burger */
+    display: flex;
   }
   .close-button {
     display: block;
   }
 
   .nav-links {
-    display: none; /* Oculta links por padrão */
-    flex-direction: column; /* Empilha os links */
-    position: absolute; /* Coloca os links em uma posição absoluta */
-    top: 57px; /* Ajusta para ficar abaixo do navbar */
-    background-color: #495057; /* Fundo igual ao navbar */
-    width: 100%; /* Largura total */
-    z-index: 1; /* Coloca acima de outros elementos */
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 57px;
+    background-color: #495057;
+    width: 100%;
+    z-index: 1;
   }
 
   .nav-links.show {
