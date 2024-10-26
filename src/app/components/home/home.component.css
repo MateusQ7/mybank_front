@@ -9,32 +9,31 @@
   padding: 20px;
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   .main-home {
-    height: 120vh;
+    height: 110vh;
     padding: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .main-home {
-    height: 120vh;
-    flex-direction: column; /* Muda para coluna para facilitar a organização em telas menores */
+    height: 110vh;
+    flex-direction: column;
   }
 }
 
 @media (max-width: 490px) {
   .main-home {
-    height: auto; /* Adapta à altura do conteúdo */
+    height: 105vh;
     padding: 5px;
   }
 }
 
 @media (max-width: 400px) {
   .main-home {
-    height: auto;
+    height: 95vh;
     padding: 0;
-    align-items: flex-start; /* Alinha ao topo para melhorar a visualização em telas muito pequenas */
+    align-items: flex-start;
   }
 }
