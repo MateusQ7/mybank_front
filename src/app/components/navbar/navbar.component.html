@@ -4,8 +4,8 @@
     <div class="line"></div>
     <div class="line"></div>
   </div>
-  <div class="nav-links" [class.show]="isMenuOpen"> <!-- Classe para mostrar/ocultar links -->
-    <button class="close-button" (click)="toggleMenu()">✖</button> <!-- Botão para fechar -->
+  <div class="nav-links" [class.show]="isMenuOpen">
+    <button class="close-button" (click)="toggleMenu()">✖</button>
     <button type="button" [routerLink]="['/account']" (click)="closeMenu()">Conta</button>
     <button type="button" [routerLink]="['/invoice']" (click)="closeMenu()">Fatura</button>
     <button type="button" [routerLink]="['/card']" (click)="closeMenu()">Cartões</button>

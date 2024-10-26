@@ -12,10 +12,17 @@ export class NavbarComponent {
   isMenuOpen = false;
 
   toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen; // Alterna o estado do menu
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   closeMenu() {
-    this.isMenuOpen = false; // Fecha o menu
+    this.isMenuOpen = false;
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.toggleMenu();
+      event.preventDefault();
+    }
   }
 }
