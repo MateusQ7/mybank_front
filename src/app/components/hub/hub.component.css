@@ -13,16 +13,13 @@
   .main-div {
     width: 80vw;
     height: auto;
-    padding: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .main-div {
-    height: 100vh;
     width: 90vw;
     height: auto;
-    padding-top: 50px;
   }
 }
 
@@ -30,7 +27,6 @@
   .main-div {
     width: 95vw;
     height: auto;
-    padding: 5px;
   }
 }
 
@@ -39,6 +35,6 @@
     width: 100vw;
     height: auto;
     padding: 0;
-    border-radius: 0; /* Remove o border-radius para maximizar o espaço na tela pequena */
+    border-radius: 0;
   }
 }
