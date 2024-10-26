@@ -92,7 +92,7 @@ button:hover {
   }
 
   .nav-links.show {
-    display: flex; /* Mostra os links quando a classe 'show' é adicionada */
+    display: flex;
     margin-top: 100px;
   }
 }
