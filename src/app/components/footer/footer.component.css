@@ -6,9 +6,35 @@ footer {
   width: 100%;
   height: 92px;
   color: #e0e1dd;
+  padding: 10px; /* Adiciona padding para espaçamento em telas menores */
 }
 
 p {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
+  font-size: 1rem; /* Tamanho de fonte padrão */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  footer {
+    height: 70px; /* Reduz a altura para telas médias */
+    padding: 8px;
+  }
+
+  p {
+    font-size: 0.9rem; /* Reduz levemente o tamanho da fonte */
+  }
+}
+
+@media (max-width: 490px) {
+  footer {
+    height: auto; /* Altura adaptável */
+    padding: 5px; /* Reduz padding em telas menores */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  p {
+    font-size: 0.8rem; /* Ajusta o tamanho da fonte para caber melhor */
+  }
 }

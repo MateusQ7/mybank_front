@@ -1,10 +1,11 @@
 .main {
   display: flex;
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: auto;
-  height: 55vh;
+  height: auto; /* Altura adaptável */
   padding: 20px;
-  justify-content: center; /* Corrigido de 'c' para 'center' */
+  justify-content: center;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   font-family: "Poppins", sans-serif;
@@ -27,7 +28,7 @@
 }
 
 .bottom-side {
-  margin-top:70px;
+  margin-top: 70px;
 }
 
 .balance-title,
@@ -41,7 +42,7 @@
 .balance-money-status {
   font-size: 2rem;
   font-weight: bold;
-  color: #4caf50; /* Cor verde */
+  color: #4caf50;
   font-family: "Poppins", sans-serif;
 }
 
@@ -112,5 +113,55 @@
 
 .value-h {
   font-weight: bold;
-  color:#212529;
+  color: #212529;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column; /* Muda para coluna */
+    height: auto;
+    padding: 15px;
+  }
+
+  .left-side,
+  .right-side {
+    margin: 10px 0;
+    width: 100%; /* Ocupa 100% da largura */
+  }
+
+  .buttons {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .balance-title,
+  .historic-title {
+    font-size: 1.3rem;
+  }
+  .balance-money-status {
+    font-size: 1.8rem;
+  }
+  .buttons {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 10px;
+  }
+  .left-side,
+  .right-side {
+    padding: 15px;
+    width: 100%;
+  }
+  .balance-button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  .balance-money-status {
+    font-size: 1.5rem;
+  }
 }

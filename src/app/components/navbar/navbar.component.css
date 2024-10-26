@@ -7,6 +7,24 @@ nav {
   gap: 80px;
   border-bottom: solid 2px #1b263b;
   border-top: #e0e1dd solid 1px;
+  padding: 0 15px;
+}
+
+.close-button {
+  display: none;
+}
+
+.burger {
+  display: none; /* Oculta por padrão */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.line {
+  width: 25px;
+  height: 3px;
+  background-color: #e0e1dd;
+  margin: 4px 0;
 }
 
 button {
@@ -24,4 +42,68 @@ button:hover {
   transition: 0.5s;
   background-color: #6c757d;
   color: #1b263b;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  nav {
+    gap: 40px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    gap: 20px;
+    padding: 0 5px;
+  }
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  button {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+  }
+  .burger {
+    display: flex; /* Mostra o botão burger */
+  }
+  .close-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none; /* Oculta links por padrão */
+    flex-direction: column; /* Empilha os links */
+    position: absolute; /* Coloca os links em uma posição absoluta */
+    top: 57px; /* Ajusta para ficar abaixo do navbar */
+    background-color: #495057; /* Fundo igual ao navbar */
+    width: 100%; /* Largura total */
+    z-index: 1; /* Coloca acima de outros elementos */
+  }
+
+  .nav-links.show {
+    display: flex; /* Mostra os links quando a classe 'show' é adicionada */
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 400px) {
+  nav {
+    width: 100%;
+    padding: 5px;
+  }
+  button {
+    padding: 10px;
+    font-size: 12px;
+  }
 }
