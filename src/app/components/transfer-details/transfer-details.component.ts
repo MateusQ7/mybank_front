@@ -8,13 +8,12 @@ import { ToastrService } from 'ngx-toastr';
 import { AccountDetailsService } from '../account-details/account-details.service';
 import { Account } from '../../shared/models/accountModel';
 
-
 @Component({
   selector: 'app-transfer-details',
   standalone: true,
   imports: [MatDialogModule, NgForOf, CommonModule],
   templateUrl: './transfer-details.component.html',
-  styleUrls: ['./transfer-details.component.css']
+  styleUrls: ['./transfer-details.component.css'],
 })
 export class TransferDetailsComponent implements OnInit {
   transferences: TransferenceModel[] = [];
@@ -27,7 +26,7 @@ export class TransferDetailsComponent implements OnInit {
     private readonly transferenceDetailsService: TransferDetailsService,
     private readonly toastr: ToastrService,
     private readonly accountService: AccountDetailsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadTransactions();
@@ -41,7 +40,7 @@ export class TransferDetailsComponent implements OnInit {
       this.transferenceDetailsService.getTransactions(cpf).subscribe({
         next: (transferences) => {
           if (transferences && transferences.length > 0) {
-            transferences.forEach(transference => {
+            transferences.forEach((transference) => {
               console.log('cpfSender:', transference.cpfSender);
             });
             this.transferences = transferences;
@@ -54,7 +53,7 @@ export class TransferDetailsComponent implements OnInit {
         },
         complete: () => {
           console.log('Carregamento de transações concluído.');
-        }
+        },
       });
     } else {
       console.log('Não há transações.');
@@ -66,12 +65,11 @@ export class TransferDetailsComponent implements OnInit {
       width: '580px',
       height: '620px',
       data: { name: 'Angular' },
-      panelClass: 'custom-dialog'
+      panelClass: 'custom-dialog',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result?.success) {
-        this.toastr.success('Transação realizada com sucesso!');
         this.loadTransactions();
       }
     });
@@ -85,7 +83,10 @@ export class TransferDetailsComponent implements OnInit {
         next: (data: Account) => {
           this.account = data;
 
-          sessionStorage.setItem('userName', data.user.name || 'Não disponível');
+          sessionStorage.setItem(
+            'userName',
+            data.user.name || 'Não disponível'
+          );
           sessionStorage.setItem('NOME', data.user.cpf || 'Não disponível');
         },
         error: (error) => {
@@ -94,7 +95,7 @@ export class TransferDetailsComponent implements OnInit {
         },
         complete: () => {
           console.log('Busca de conta concluída.');
-        }
+        },
       });
     } else {
       console.error('CPF não encontrado no sessionStorage.');
