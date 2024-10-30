@@ -7,6 +7,7 @@
   justify-content: center;
   border-radius: 8px;
   font-family: "Poppins", sans-serif;
+  gap: 20px;
 }
 
 .left-side {
@@ -25,7 +26,6 @@
   height: 50vh;
   border-radius: 8px;
   background: #f8f8f8;
-  font-family: "Poppins", sans-serif;
 }
 
 .card {
@@ -35,11 +35,8 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-contain {
-  margin-bottom: 20px;
-}
-
-.historic-title {
+.historic-title,
+.title {
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: bold;
@@ -106,13 +103,6 @@
   background-color: #6c757d;
 }
 
-.title {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
 .text {
   color: #333;
   font-size: 17px;
@@ -121,4 +111,46 @@
 .li-transfers {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+  .left-side,
+  .right-side {
+    width: 90%;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 10px;
+  }
+  .historic-title,
+  .title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .left-side,
+  .right-side {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+  }
+  .historic-title,
+  .title {
+    font-size: 1.2rem;
+  }
+  .balance-button {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+  .text {
+    font-size: 15px;
+  }
 }
