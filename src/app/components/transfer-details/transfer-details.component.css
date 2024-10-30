@@ -2,7 +2,7 @@
   display: flex;
   max-width: 1200px;
   margin: auto;
-  height: 55vh;
+  height: 542px;
   padding: 20px;
   justify-content: center;
   border-radius: 8px;
@@ -13,6 +13,7 @@
   flex: 1;
   padding: 20px;
   margin: 10px;
+  height: 50vh;
   border-radius: 8px;
   background: #f8f8f8;
 }
@@ -21,6 +22,7 @@
   flex: 1;
   padding: 20px;
   margin: 10px;
+  height: 50vh;
   border-radius: 8px;
   background: #f8f8f8;
   font-family: "Poppins", sans-serif;

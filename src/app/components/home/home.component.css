@@ -25,14 +25,14 @@
 
 @media (max-width: 490px) {
   .main-home {
-    height: 105vh;
+    height: auto;
     padding: 5px;
   }
 }
 
 @media (max-width: 400px) {
   .main-home {
-    height: auto;
+    min-height: 75vh;
     padding: 0;
     align-items: flex-start;
   }

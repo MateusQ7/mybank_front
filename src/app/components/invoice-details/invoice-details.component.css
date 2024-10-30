@@ -2,7 +2,7 @@
   display: flex;
   max-width: 1200px;
   margin: auto;
-  height: auto; /* Ajuste de altura para responsividade */
+  height: auto;
   padding: 20px;
   justify-content: center;
   border-radius: 8px;
@@ -15,6 +15,7 @@
   padding: 20px;
   margin: 10px;
   border-radius: 8px;
+  height: 50vh;
   background: #f8f8f8;
 }
 
@@ -104,7 +105,6 @@
   background-color: #6c757d;
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   .main {
     flex-direction: column;
@@ -137,7 +137,7 @@
 @media (max-width: 480px) {
   .main {
     padding: 10px;
-    min-height: 70vh; /* Garante que o body ocupe a altura total da viewport */
+    min-height: 70vh;
   }
 
   .buttons {
