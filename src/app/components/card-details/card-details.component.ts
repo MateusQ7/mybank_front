@@ -63,27 +63,31 @@ export class CardDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('O diálogo foi fechado');
       this.loadCards();
     });
   }
 
-  deleteCard(cardId: number): void {
+  disableCard(cardId: number): void {
     if (confirm('Você tem certeza que deseja deletar este cartão?')) {
-      this.cardDetailsService.deleteCard(cardId).subscribe(
-        () => {
+      this.cardDetailsService.disableCard(cardId).subscribe({
+        next: (response) => {
+          console.log('Resposta do servidor:', response);
           this.loadCards();
           this.snackBar.open('Cartão deletado com sucesso!', 'Fechar', {
             duration: 3000,
           });
         },
-        (error) => {
+        error: (error) => {
           console.error('Erro ao deletar cartão', error);
           this.snackBar.open('Erro ao deletar cartão.', 'Fechar', {
             duration: 3000,
           });
-        }
-      );
+        },
+        complete: () => {
+          console.log('Deleção de cartão concluída.');
+        },
+      });
     }
   }
+
 }
