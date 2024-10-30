@@ -3,6 +3,7 @@
   flex-direction: column;
   max-width: 1200px;
   margin: auto;
+  height: 443px;
   padding: 20px;
   border-radius: 8px;
   font-family: "Poppins", sans-serif;
@@ -45,7 +46,7 @@
   padding: 20px;
   width: 100%;
   max-width: 320px;
-  min-width: 320px; /* Define largura mínima e máxima como 320px */
+  min-width: 320px;
   height: 180px;
   border-radius: 15px;
   background-color: #212529;
@@ -125,9 +126,7 @@
   background-color: #495057be;
 }
 
-/* Responsividade */
 
-/* Ajuste para tablets */
 @media (max-width: 1024px) {
   .cards-container {
     grid-template-columns: repeat(2, 1fr);
@@ -139,7 +138,6 @@
   }
 }
 
-/* Ajuste para celulares */
 @media (max-width: 950px) {
   .cards-container {
     grid-template-columns: 1fr;
@@ -157,7 +155,7 @@
   }
 
   .card-add {
-    min-height: 15vh; /* Garante que o body ocupe a altura total da viewport */
+    min-height: 15vh;
   }
 
   @media (max-width: 350px) {
@@ -184,7 +182,7 @@
     }
 
     .card-add {
-      min-height: 20vh; /* Garante que o body ocupe a altura total da viewport */
+      min-height: 20vh;
     }
   }
 }

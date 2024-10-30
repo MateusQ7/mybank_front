@@ -7,4 +7,5 @@ export interface CardModel {
   expirationDate: string;
   cardType: string;
   cardLimit: number;
+  isActive: boolean;
 }

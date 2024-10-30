@@ -2,7 +2,7 @@
   display: flex;
   max-width: 1200px;
   margin: auto;
-  height: auto;
+  height: 542px;
   padding: 20px;
   justify-content: center;
   border-radius: 8px;
@@ -10,11 +10,20 @@
   gap: 20px;
 }
 
-.left-side,
+.left-side {
+  flex: 1;
+  padding: 20px;
+  margin: 10px;
+  height: 50vh;
+  border-radius: 8px;
+  background: #f8f8f8;
+}
+
 .right-side {
   flex: 1;
   padding: 20px;
   margin: 10px;
+  height: 50vh;
   border-radius: 8px;
   background: #f8f8f8;
 }
@@ -104,7 +113,6 @@
   flex-direction: column;
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   .main {
     flex-direction: column;

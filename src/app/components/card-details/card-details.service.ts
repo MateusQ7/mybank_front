@@ -28,18 +28,22 @@ export class CardDetailsService {
   }
 
 
-  deleteCard(cardId: number): Observable<void> {
+  disableCard(cardId: number): Observable<void> {
     const token = sessionStorage.getItem('auth-token');
     let headers = new HttpHeaders();
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.delete<void>(`${environment.apiUrl}/card/${cardId}`, { headers }).pipe(
+    return this.http.post<void>(`${environment.apiUrl}/card/disable/${cardId}`, {} , { headers }).pipe(
       catchError(error => {
         console.error('Erro ao deletar cartão', error);
-        return throwError(() => new Error(error));
+
+        const errorMessage = error.error?.message || 'Erro ao deletar cartão';
+
+        return throwError(() => new Error(errorMessage));
       })
     );
   }
+
 }
