@@ -1,12 +1,12 @@
 .title-div {
   display: flex;
   align-items: center;
-  padding: 22px 0 0 20px;
+  padding: 2rem 0 0 2rem; /* Altere para rem */
   height: 7vh;
 }
 
 .title {
-  margin-bottom: 20px;
+  margin-bottom: 2rem; /* Altere para rem */
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
@@ -15,17 +15,19 @@
 
 .card-form {
   color: #525252;
-  padding-left: 29px;
   font-family: "Poppins", sans-serif;
   height: 45vh;
   background-color: #ffffff;
+  display: flex;
+  justify-content: center;
 }
 
 .input-wrapper {
   color: #525252;
-  width: 410px;
+  width: 100%; /* Mude para 100% */
+  max-width: 410px; /* Defina um max-width */
   text-align: start;
-  gap: 10px;
+  gap: 1rem; /* Altere para rem */
   display: flex;
   flex-direction: column;
 }
@@ -37,7 +39,7 @@ label {
 }
 
 .first-label {
-  margin-top: 16px;
+  margin-top: 1rem; /* Altere para rem */
 }
 
 input,
@@ -45,17 +47,19 @@ select {
   border: 1px solid #ced4da;
   border-radius: 8px;
   color: #818181;
-  font-size: 16px;
-  padding: 12px 12px 12px 12px;
-  width: 500px;
+  font-size: 1rem; /* Altere para rem */
+  padding: 1rem; /* Altere para rem */
+  width: 100%; /* Mude para 100% */
+  max-width: 500px; /* Defina um max-width */
   font-family: "Poppins", sans-serif;
   outline: none;
 }
 
 .buttons {
-  width: 500px;
+  width: 100%; /* Mude para 100% */
+  max-width: 500px; /* Defina um max-width */
   display: flex;
-  gap: 35px;
+  gap: 2rem; /* Altere para rem */
   align-items: center;
 }
 
@@ -86,28 +90,26 @@ select {
   color: white;
 }
 
-.buttons-create {
-  border: #212529;
-  border-radius: 7px;
-  font-weight: 400;
-  font-size: 18px;
-  width: 158px;
-  height: 52px;
-  background-color: #212529;
-  color: #f0f3fa;
-  cursor: pointer;
-}
-
+.buttons-create,
 .buttons-close {
   border: 1px solid #212529;
   border-radius: 7px;
   font-weight: 400;
-  font-size: 18px;
-  width: 158px;
+  font-size: 1rem; /* Altere para rem */
+  width: 100%; /* Mude para 100% */
+  max-width: 158px; /* Defina um max-width */
   height: 52px;
+  cursor: pointer;
+}
+
+.buttons-create {
+  background-color: #212529;
+  color: #f0f3fa;
+}
+
+.buttons-close {
   background-color: #ffffff;
   color: #212529;
-  cursor: pointer;
 }
 
 .buttons-card2:first-of-type {
@@ -118,7 +120,126 @@ select {
 .close {
   display: flex;
   justify-content: center;
-  align-items: end;
-  gap: 33px;
+  align-items: flex-end; /* Use flex-end para alinhar na parte inferior */
+  gap: 2rem; /* Altere para rem */
   height: 10vh;
+
+  margin: 55px 5px;
+}
+
+@media (max-width: 519px) {
+  input,
+  select {
+    max-width: 90%; /* Aumente o tamanho para telas menores */
+  }
+
+  .buttons-card {
+    width: 80px;
+    height: 50px;
+  }
+
+  .buttons-create,
+  .buttons-close {
+    border: 1px solid #212529;
+    border-radius: 7px;
+    font-weight: 400;
+    font-size: 1rem; /* Altere para rem */
+    width: 100%; /* Mude para 100% */
+    max-width: 158px; /* Defina um max-width */
+    height: 52px;
+    cursor: pointer;
+  }
+
+  .close {
+    margin: 55px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem; /* Ajuste para tamanhos menores */
+  }
+
+  .card-form {
+    padding-left: 1rem; /* Ajuste para tamanhos menores */
+  }
+
+  input,
+  select {
+    max-width: 90%; /* Aumente o tamanho para telas menores */
+  }
+
+  .buttons-card {
+    width: 50px;
+    height: 50px;
+    font-size: 13px;
+    margin-left: 16px;
+  }
+
+  .buttons-create,
+  .buttons-close {
+    max-width: 90%; /* Ajuste a largura para telas menores */
+  }
+
+  .close {
+    margin: 55px 5px;
+  }
+}
+
+/* Media queries para tamanhos de tela menores */
+@media (max-width: 440px) {
+  .title {
+    font-size: 1.5rem; /* Ajuste para tamanhos menores */
+  }
+
+  .card-form {
+    padding-left: 1rem; /* Ajuste para tamanhos menores */
+  }
+
+  input,
+  select {
+    max-width: 90%; /* Aumente o tamanho para telas menores */
+  }
+
+  .buttons-card {
+    width: 60px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .buttons-create,
+  .buttons-close {
+    max-width: 90%; /* Ajuste a largura para telas menores */
+  }
+
+  .close {
+    margin: 55px 5px;
+  }
+}
+
+@media (max-width: 370px) {
+  .title {
+    font-size: 1.2rem; /* Ajuste para tamanhos menores */
+  }
+
+  .input-wrapper {
+    max-width: 90%; /* Aumente o tamanho para telas menores */
+  }
+
+  .buttons-card {
+    width: 55px;
+    height: 45px;
+    font-size: 10px; /* Ajuste o tamanho da fonte */
+    margin-left: 1px;
+  }
+
+  .buttons-create,
+  .buttons-close {
+    width: 90px;
+    height: 50px;
+  }
+
+  .close {
+    margin: 45px 5px;
+  }
 }
