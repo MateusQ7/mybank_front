@@ -15,10 +15,11 @@
 
 .card-form {
   color: #525252;
-  padding-left: 2rem; /* Altere para rem */
   font-family: "Poppins", sans-serif;
   height: 45vh;
   background-color: #ffffff;
+  display: flex;
+  justify-content: center;
 }
 
 .input-wrapper {
