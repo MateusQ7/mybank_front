@@ -10,21 +10,19 @@
             <p class="text">
               {{ transference.senderName }} ({{ transference.cpfSender }}) para
               {{ transference.receiverName || "Desconhecido" }} ({{
-                transference.cpfReceiver
+              transference.cpfReceiver
               }}): <br />
-              <span class="receiving"
-                >R$ {{ transference.amount | number : "1.2-2" }}</span
-              >
+              <span class="receiving">R$ {{ transference.amount | number : "1.2-2" }}</span>
             </p>
             <p>Descrição: {{ transference.paymentDescription }}</p>
           </li>
         </ul>
       </div>
-      <div class="buttons">
-        <button class="balance-button" type="button" (click)="openDialog()">
-          Nova Transferência
-        </button>
-      </div>
+    </div>
+    <div class="buttons">
+      <button class="balance-button" type="button" (click)="openDialog()">
+        Nova Transferência
+      </button>
     </div>
   </div>
 
