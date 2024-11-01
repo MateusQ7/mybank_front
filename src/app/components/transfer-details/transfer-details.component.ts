@@ -68,7 +68,6 @@ export class TransferDetailsComponent implements OnInit {
     }
   }
 
-  // Máscara para CPF
   private cpfMask = '###.###.###-##';
   private formatter = new StringMask(this.cpfMask);
 
