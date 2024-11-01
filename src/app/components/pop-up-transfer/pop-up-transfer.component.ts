@@ -74,9 +74,12 @@ export class PopUpTransferComponent implements OnInit {
 
   async onCreate(): Promise<void> {
     if (this.transferForm.invalid) {
-      this.toastr.error(
-        'Por favor, preencha todos os campos obrigatórios e verifique se os CPFs são diferentes.'
-      );
+      this.toastr.error('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    const transferValue = this.transferForm.get('transferValue')?.value;
+    if (!transferValue || parseFloat(transferValue) <= 0) {
+      this.toastr.error('Você não pode transferir R$ 0,00');
       return;
     }
 

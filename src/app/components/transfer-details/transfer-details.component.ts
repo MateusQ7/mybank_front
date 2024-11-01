@@ -7,11 +7,19 @@ import { PopUpTransferComponent } from '../pop-up-transfer/pop-up-transfer.compo
 import { ToastrService } from 'ngx-toastr';
 import { AccountDetailsService } from '../account-details/account-details.service';
 import { Account } from '../../shared/models/accountModel';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import StringMask from 'string-mask';
 
 @Component({
   selector: 'app-transfer-details',
   standalone: true,
-  imports: [MatDialogModule, NgForOf, CommonModule],
+  imports: [
+    MatDialogModule,
+    NgForOf,
+    CommonModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+  ],
   templateUrl: './transfer-details.component.html',
   styleUrls: ['./transfer-details.component.css'],
 })
@@ -58,6 +66,18 @@ export class TransferDetailsComponent implements OnInit {
     } else {
       console.log('Não há transações.');
     }
+  }
+
+  // Máscara para CPF
+  private cpfMask = '###.###.###-##';
+  private formatter = new StringMask(this.cpfMask);
+
+  formatCPF(cpf?: string): string {
+    if (!cpf) return '';
+
+    const maskedCPF = this.formatter.apply(cpf);
+
+    return `${maskedCPF.substring(0, 4)}***.***-${maskedCPF.substring(9, 11)}`;
   }
 
   openDialog(): void {

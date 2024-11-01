@@ -7,13 +7,11 @@
       <div class="card-hist">
         <ul class="list-items">
           <li *ngFor="let transference of transferences" class="li-transfers">
-            <p class="text">
-              {{ transference.senderName }} ({{ transference.cpfSender }}) para
-              {{ transference.receiverName || "Desconhecido" }} ({{
-              transference.cpfReceiver
-              }}): <br />
-              <span class="receiving">R$ {{ transference.amount | number : "1.2-2" }}</span>
-            </p>
+            {{ transference.senderName }} ({{ formatCPF(transference.cpfSender) }}) para
+            {{ transference.receiverName || "Desconhecido" }} ({{
+            formatCPF(transference.cpfReceiver)
+            }}): no dia {{transference.transferenceDate | date: 'dd-MM-YYYY' }} <br />
+            <span class="receiving">R$ {{ transference.amount | number : "1.2-2" }}</span>
             <p>Descrição: {{ transference.paymentDescription }}</p>
           </li>
         </ul>
