@@ -6,29 +6,37 @@
     <div class="card-form">
       <div class="input-wrapper">
 
-        <label for="cardName">Nome do cartão:</label>
+        <div class="label-wrapper">
+          <label for="cardName">Nome do cartão:</label>
+          <div *ngIf="cardForm.get('cardName')?.hasError('required') && cardForm.get('cardName')?.touched"
+            class="error">
+            Nome do cartão é obrigatório
+          </div>
+        </div>
         <input id="cardName" formControlName="cardName" placeholder="Nome do cartão" class="custom-input" />
-        <div *ngIf="cardForm.get('cardName')?.hasError('required') && cardForm.get('cardName')?.touched" class="error">
-          Nome do cartão é obrigatório
-        </div>
 
-        <label for="cardValue">Limite de compra:</label>
-        <input id="cardValue" formControlName="cardValue" placeholder="R$ 120.00" class="custom-input" />
-        <div *ngIf="cardForm.get('cardValue')?.hasError('required') && cardForm.get('cardValue')?.touched"
-          class="error">
-          Limite da compra é obrigatório
-        </div>
-        <div *ngIf="cardForm.get('cardValue')?.hasError('pattern') && cardForm.get('cardValue')?.touched" class="error">
-          Deve ser um número válido com até duas casas decimais
-        </div>
 
-        <label for="cardPassword">Crie uma senha para o cartão:</label>
+        <div class="label-wrapper">
+
+          <label for="cardValue">Limite de compra:</label>
+          <div *ngIf="cardForm.get('cardValue')?.hasError('required') && cardForm.get('cardValue')?.touched"
+            class="error">
+            Limite da compra é obrigatório
+          </div>
+        </div>
+        <input (input)="formatCurrency()" id="cardValue" formControlName="cardValue" placeholder="R$"
+          class="custom-input" />
+        <div class="label-wrapper">
+          <label for=" cardPassword">Senha para o cartão:</label>
+          <div class="cardPassword"
+            *ngIf="cardForm.get('cardPassword')?.hasError('required') && cardForm.get('cardPassword')?.touched"
+            class="error">
+            Senha é obrigatória
+          </div>
+        </div>
         <input id="cardPassword" type="password" formControlName="cardPassword" placeholder="••••"
           class="custom-input" />
-        <div *ngIf="cardForm.get('cardPassword')?.hasError('required') && cardForm.get('cardPassword')?.touched"
-          class="error">
-          Senha é obrigatória
-        </div>
+
 
 
       </div>

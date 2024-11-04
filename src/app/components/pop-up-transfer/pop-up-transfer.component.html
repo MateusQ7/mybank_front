@@ -7,18 +7,21 @@
       <div class="input-wrapper">
         <label for="cpf">CPF do Destinatário:</label>
         <input mask="000.000.000-00" type="text" placeholder="Digite o CPF" id="cpf" formControlName="cpf">
-        <div
+        <div class="error-messages"
           *ngIf="transferForm.get('cpf')?.invalid && (transferForm.get('cpf')?.touched || transferForm.get('cpf')?.dirty)">
           <small *ngIf="transferForm.get('cpf')?.errors?.['required']">CPF é obrigatório.</small>
-          <small *ngIf="transferForm.get('cpf')?.errors?.['pattern']">CPF inválido.</small>
         </div>
 
         <label for="card-value">Valor para a Transferência:</label>
-        <input (input)="formatCurrency()" type="text" placeholder="R$ 120.00" id="card-value"
-          formControlName="transferValue">
+        <input (input)="formatCurrency()" type="text" placeholder="R$" id="card-value" formControlName="transferValue">
+        <div class="error-messages" *ngIf=" transferForm.get('transferValue')?.invalid && (transferForm.get('transferValue')?.touched ||
+          transferForm.get('transferValue')?.dirty)">
+          <small *ngIf="transferForm.get('transferValue')?.errors?.['required']">Valor obrigatorio.</small>
+        </div>
+
 
         <label for="description">Descrição da Transferência:</label>
-        <input type="text" placeholder="Descrição" id="description" formControlName="description">
+        <input type="text" placeholder="Descrição(Opcional)" id="description" formControlName="description">
 
         <label for="purchase-type">Tipo da Transferência:</label>
         <div class="buttons">
