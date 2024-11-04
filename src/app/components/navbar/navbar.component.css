@@ -57,7 +57,7 @@ button:hover {
     padding: 0 10px;
   }
 
-  .nav-links{
+  .nav-links {
     gap: 30px;
   }
 }
@@ -113,7 +113,6 @@ button:hover {
 @media (max-width: 400px) {
   nav {
     width: 100%;
-    padding: 5px;
   }
   button {
     padding: 10px;
