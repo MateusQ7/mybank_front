@@ -77,6 +77,7 @@ export class PopUpTransferComponent implements OnInit {
       this.toastr.error('Por favor, preencha todos os campos obrigatórios.');
       return;
     }
+
     const transferValue = this.transferForm.get('transferValue')?.value;
     if (!transferValue || parseFloat(transferValue) <= 0) {
       this.toastr.error('Você não pode transferir R$ 0,00');
