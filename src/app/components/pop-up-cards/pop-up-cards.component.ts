@@ -69,11 +69,33 @@ export class PopUpCardsComponent {
 
       this.popUpCardService.createCard(cardModelCreate).subscribe({
         next: (response) => {
-          console.log('Cartão criado com sucesso!');
+          console.log('Cartão criado com sucesso!', response);
+          this.toastr.success('cartao criado com sucesso');
           this.dialogRef.close();
         },
         error: (error) => {
-          console.error('Erro ao criar cartão', error);
+          console.error('Erro ao criar cartão: ', error);
+          console.log(error);
+          let teste = error;
+          console.log(teste + 'sadsadsa');
+          if (
+            error.includes('Card value cannot exceed account credit limit.')
+          ) {
+            this.toastr.error(
+              'O limite do cartão está superior ao limite da conta.'
+            );
+          } else if (
+            error.includes(
+              'Card value cannot exceed actual account credit limit.'
+            )
+          ) {
+            this.toastr.error(
+              'O limite do cartao esta superior ao limite atual'
+            );
+          } else {
+            this.toastr.error(error);
+          }
+
           this.dialogRef.close();
         },
       });
