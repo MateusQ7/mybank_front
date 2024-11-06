@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
+import { checkPasswordMatch } from '../../security/validators/checkPasswordMatch';
 
 @Component({
   selector: 'app-register',
@@ -33,10 +34,14 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      password_confirm: ['', [Validators.required, Validators.minLength(6)]],
+      password_confirm: ['', [Validators.required, Validators.minLength(6), checkPasswordMatch('password')]],
       cpf: ['', Validators.required],
       birthdate: ['', Validators.required],
     });
+
+    this.form.get('password')?.valueChanges.subscribe(() => {
+      this.form.get('password_confirm')?.updateValueAndValidity()
+    })
   }
 
   async submit(): Promise<void> {
