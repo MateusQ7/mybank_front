@@ -13,10 +13,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   imports: [CommonModule, TranslateModule],
   providers: [AccountDetailsService, HttpClient, CurrencyPipe],
   templateUrl: './account-details.component.html',
-  styleUrls: ['./account-details.component.css']
+  styleUrls: ['./account-details.component.css'],
 })
 export class AccountDetailsComponent implements OnInit {
-
   accounts: Account[] = [];
   account: Account | undefined;
   invoices: Invoice[] = [];
@@ -46,8 +45,10 @@ export class AccountDetailsComponent implements OnInit {
         next: (data: Account) => {
           this.account = data;
 
-          sessionStorage.setItem('userName', data.user.name || 'Não disponível');
-          sessionStorage.setItem('NOME', data.user.cpf || 'Não disponível');
+          sessionStorage.setItem(
+            'userName',
+            data.user.name || 'Não disponível'
+          );
         },
         error: (error) => {
           console.error('Erro ao buscar conta', error);
@@ -55,7 +56,7 @@ export class AccountDetailsComponent implements OnInit {
         },
         complete: () => {
           console.log('Busca de conta concluída.');
-        }
+        },
       });
     } else {
       console.error('CPF não encontrado no sessionStorage.');
@@ -76,7 +77,7 @@ export class AccountDetailsComponent implements OnInit {
         },
         complete: () => {
           console.log('Busca de faturas concluída.');
-        }
+        },
       });
     } else {
       console.error('CPF não encontrado no sessionStorage.');
@@ -90,10 +91,15 @@ export class AccountDetailsComponent implements OnInit {
 
   formatCurrency(value: number): string | null {
     const currentLang = this.translate.currentLang;
-    return this.currencyPipe.transform(value, currentLang === 'pt' ? 'BRL' : 'USD', 'symbol', '1.2-2');
+    return this.currencyPipe.transform(
+      value,
+      currentLang === 'pt' ? 'BRL' : 'USD',
+      'symbol',
+      '1.2-2'
+    );
   }
 
-  addValueToAccount(value: number){
+  addValueToAccount(value: number) {
     const storageCpf = sessionStorage.getItem('cpf');
 
     if (storageCpf) {
@@ -106,7 +112,7 @@ export class AccountDetailsComponent implements OnInit {
         },
         complete: () => {
           console.log('Deu certo.');
-        }
+        },
       });
     } else {
       console.error('CPF não encontrado no sessionStorage.');
