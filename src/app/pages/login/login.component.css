@@ -172,8 +172,7 @@ label {
   }
 }
 
-@media (max-width: 400px) {
-
+@media (max-width: 479px) {
   .loginAndSignup {
     width: 300px;
   }
