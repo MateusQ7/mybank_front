@@ -124,13 +124,12 @@ export class AccountDetailsComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(PopUpAccountDetaisComponent),
-      {
-        min: '558px',
-        height: '462px',
-        data: { name: 'Angular' },
-        panelClass: 'custom-dialog',
-      };
+    this.dialog.open(PopUpAccountDetaisComponent, {
+      width: '508px',
+      height: '300px',
+      data: { name: 'Angular' },
+      panelClass: 'custom-dialog'
+    });
     console.log('Dialog opened');
   }
 }
