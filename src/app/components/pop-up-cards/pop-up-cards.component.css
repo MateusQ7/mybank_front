@@ -5,6 +5,33 @@
   margin: 0 auto;
 }
 
+.input-content .has-error {
+  height: 50px;
+}
+
+.input-content {
+  display: flex;
+  padding-bottom: 20px;
+  height: 70px;
+}
+
+.has-error input {
+  border: 2px solid red;
+  margin: 0;
+}
+
+.top-input {
+  display: flex;
+  height: 24px;
+}
+
+.error-message {
+  color: red;
+  display: block;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
 .title-div {
   display: flex;
   align-items: center;
@@ -125,12 +152,12 @@ input {
 }
 
 .buttons-create {
-  background-color: #1b263b;
+  background-color: #212529;
   color: #f0f3fa;
 }
 
 .buttons-close {
-  border: 1px solid #1b263b;
+  border: 1px solid #212529;
   background-color: #ffffff;
   color: #1b263b;
 }
@@ -140,10 +167,8 @@ input {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-top: 1rem;
+  margin-top: 70px;
 }
-
-/* Media Queries for Responsiveness */
 
 @media (max-width: 768px) {
   .title {

@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { Account } from '../../shared/models/accountModel';
 import { AccountDetailsService } from '../account-details/account-details.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-pop-up-transfer',
@@ -33,7 +34,7 @@ import { AccountDetailsService } from '../account-details/account-details.servic
 export class PopUpTransferComponent implements OnInit {
   senderCpf: string | undefined;
   transferForm!: FormGroup;
-  account: Account | null = null; // Inicializando como null
+  account: Account | null = null;
   error: string | undefined;
 
   constructor(
@@ -92,7 +93,6 @@ export class PopUpTransferComponent implements OnInit {
       transferenceType: this.transferForm.value.transferenceType,
     };
 
-    // Aguarda a resposta de loadAccountByCpf
     const account = await this.loadAccountByCpf();
 
     if (!account) {
@@ -136,9 +136,9 @@ export class PopUpTransferComponent implements OnInit {
 
     if (receiverCpf) {
       try {
-        const data: Account | undefined = await this.accountService
-          .getAccountByCpf(receiverCpf)
-          .toPromise();
+        const data: Account | undefined = await firstValueFrom(
+          this.accountService.getAccountByCpf(receiverCpf)
+        );
 
         if (!data) {
           this.error = 'Conta não encontrada ou erro na requisição.';

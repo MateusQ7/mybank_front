@@ -1,5 +1,3 @@
-// ConfigDetailsComponent
-
 import { Component, OnInit } from '@angular/core';
 import { ConfigDetailsService } from './config-details.service';
 import { FormatedFormUser } from '../../shared/models/FormatedFormUser';
@@ -25,15 +23,15 @@ export class ConfigDetailsComponent implements OnInit {
 
 
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private configDetailsService: ConfigDetailsService,
-    private toastr: ToastrService
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router,
+    private readonly configDetailsService: ConfigDetailsService,
+    private readonly toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.userName = sessionStorage.getItem('userName') || 'Não disponível';
-    this.cpf = sessionStorage.getItem('cpf') || 'Não disponível';
+    this.userName = sessionStorage.getItem('userName') ?? 'Não disponível';
+    this.cpf = sessionStorage.getItem('cpf') ?? 'Não disponível';
     this.maskedCPF = this.getMaskedCPF();
 
 

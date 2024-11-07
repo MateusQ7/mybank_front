@@ -149,6 +149,10 @@ label {
     display: none;
   }
 
+  .logo {
+    margin-top: 80px;
+  }
+
   button {
     font-size: 14px;
   }
@@ -175,6 +179,10 @@ label {
 @media (max-width: 479px) {
   .loginAndSignup {
     width: 300px;
+  }
+
+  .logo {
+    margin-top: 80px;
   }
 
   .buttomLogin {

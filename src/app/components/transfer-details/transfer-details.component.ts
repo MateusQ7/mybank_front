@@ -68,8 +68,8 @@ export class TransferDetailsComponent implements OnInit {
     }
   }
 
-  private cpfMask = '###.###.###-##';
-  private formatter = new StringMask(this.cpfMask);
+  private readonly cpfMask = '###.###.###-##';
+  private readonly formatter = new StringMask(this.cpfMask);
 
   formatCPF(cpf?: string): string {
     if (!cpf) return '';

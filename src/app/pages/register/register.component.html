@@ -9,7 +9,7 @@
           <div class="top-input">
             <label for="name">Nome:</label>
             <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid" class="error-message">
-              <small *ngIf="form.get('name')?.errors?.['required']">O nome é obrigatório.</small>
+              <small *ngIf="form.get('name')?.errors?.['required']">*Campo obrigatório</small>
             </div>
           </div>
           <div class="input-content" [ngClass]="{'has-error': form.get('name')?.touched && form.get('name')?.invalid}">
@@ -21,7 +21,7 @@
           <div class="top-input">
             <label for="email">Email:</label>
             <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="error-message">
-              <small *ngIf="form.get('email')?.errors?.['required']">O email é obrigatório.</small>
+              <small *ngIf="form.get('email')?.errors?.['required']">*Campo obrigatório</small>
               <small *ngIf="form.get('email')?.errors?.['email']">Email inválido.</small>
             </div>
           </div>
@@ -34,7 +34,7 @@
           <div class="top-input">
             <label for="telefone">Telefone:</label>
             <div *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid" class="error-message">
-              <small *ngIf="form.get('phone')?.errors?.['required']">O telefone é obrigatório.</small>
+              <small *ngIf="form.get('phone')?.errors?.['required']">*Campo obrigatório</small>
             </div>
           </div>
           <div class="input-content" [ngClass]="{'has-error': form.get('phone')?.touched && form.get('phone')?.invalid}">
@@ -46,7 +46,7 @@
           <div class="top-input">
             <label for="password">Senha:</label>
             <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" class="error-message">
-              <small *ngIf="form.get('password')?.errors?.['required']">A senha é obrigatória.</small>
+              <small *ngIf="form.get('password')?.errors?.['required']">*Campo obrigatório</small>
               <small *ngIf="form.get('password')?.errors?.['minlength']">A senha deve ter pelo menos 6 caracteres.</small>
             </div>
           </div>
@@ -59,8 +59,9 @@
           <div class="top-input">
             <label for="password_confirm">Confirme sua senha:</label>
             <div *ngIf="form.get('password_confirm')?.touched && form.get('password_confirm')?.invalid" class="error-message">
-              <small *ngIf="form.get('password_confirm')?.errors?.['required']">A confirmação é obrigatória.</small>
+              <small *ngIf="form.get('password_confirm')?.errors?.['required']">*Campo obrigatório</small>
               <small *ngIf="form.get('password_confirm')?.errors?.['minlength']">A confirmação deve ter pelo menos 6 caracteres.</small>
+              <small *ngIf="form.get('password_confirm')?.errors?.['mismatch']">As senhas não coincidem</small>
             </div>
           </div>
           <div class="input-content" [ngClass]="{'has-error': form.get('password_confirm')?.touched && form.get('password_confirm')?.invalid}">
@@ -72,7 +73,7 @@
           <div class="top-input">
             <label for="cpf">CPF:</label>
             <div *ngIf="form.get('cpf')?.touched && form.get('cpf')?.invalid" class="error-message">
-              <small *ngIf="form.get('cpf')?.errors?.['required']">O CPF é obrigatório.</small>
+              <small *ngIf="form.get('cpf')?.errors?.['required']">*Campo obrigatório</small>
             </div>
           </div>
           <div class="input-content" [ngClass]="{'has-error': form.get('cpf')?.touched && form.get('cpf')?.invalid}">
@@ -81,10 +82,12 @@
           </div>
         </div>
         <div class="input-wrapper">
+          <div class="top-input">
             <label for="birthdate">Data de Nascimento:</label>
-            <div *ngIf="form.get('birthdate')?.touched && form.get('birthdate')?.invalid" class="error-message-date">
-              <small *ngIf="form.get('birthdate')?.errors?.['required']">A data de nascimento é obrigatória.</small>
+            <div *ngIf="form.get('birthdate')?.touched && form.get('birthdate')?.invalid" class="error-message">
+              <small *ngIf="form.get('birthdate')?.errors?.['required']">*Campo obrigatório</small>
             </div>
+          </div>
           <div class="input-content" [ngClass]="{'has-error': form.get('birthdate')?.touched && form.get('birthdate')?.invalid}">
             <input type="date" placeholder="01/01/1901" formControlName="birthdate" />
             <img src="../../../assets/calendar.svg" alt="" />
