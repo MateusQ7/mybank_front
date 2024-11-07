@@ -2,29 +2,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 446px;
-  text-align: center;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
 }
-.title {
-  text-align: center;
+
+.title-div {
   font-family: "Poppins", sans-serif;
   color: #495057;
-  font-size: 24px;
-  margin-bottom: 20px;
 }
 
-h2 {
-  margin: 0;
+.form {
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  color: #525252;
+  padding-top: 17px;
+  padding-left: 17px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
 .simulated {
-  margin-bottom: 20px;
   font-family: "Poppins", sans-serif;
   display: flex;
-  flex-direction: column; /* Garante que a label e o input fiquem em coluna */
-  align-items: center; /* Centraliza o conteúdo dentro do formulário */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-top: 40px;
 }
 
 input {
@@ -32,30 +40,29 @@ input {
   border-radius: 8px;
   color: #818181;
   font-size: 16px;
-  padding: 12px;
-  width: 100%;
+  padding: 10px;
+  width: 250px;
   max-width: 500px;
   font-family: "Poppins", sans-serif;
   outline: none;
 }
 
-.custom-input {
-  width: 250px;
-  padding: 10px;
-  font-size: 16px;
-  text-align: center;
-  margin: 0 auto;
+.button-save {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
-  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   background-color: #495057;
   color: white;
-  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -69,9 +76,6 @@ label {
   color: #525252;
   font-weight: bold;
   font-size: 16px;
-  margin-bottom: 50px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 @media (max-width: 768px) {
