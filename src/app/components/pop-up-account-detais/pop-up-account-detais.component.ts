@@ -6,15 +6,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
-import { PopUpAccountDetaisService } from './pop-up-account-detais.service'; // Certifique-se de importar o serviço correto
+import { PopUpAccountDetaisService } from './pop-up-account-detais.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pop-up-account-detais',
   standalone: true,
-  imports: [NgxMaskDirective, CommonModule, ReactiveFormsModule, NgxMaskPipe],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './pop-up-account-detais.component.html',
   styleUrls: ['./pop-up-account-detais.component.css'],
 })
@@ -27,7 +26,6 @@ export class PopUpAccountDetaisComponent {
     private readonly accountService: PopUpAccountDetaisService,
     public dialogRef: MatDialogRef<PopUpAccountDetaisComponent>
   ) {
-    // Inicializa o FormGroup com os controles
     this.money = this.fb.group({
       valueToAdd: ['', [Validators.required, Validators.min(0.01)]],
     });
@@ -77,5 +75,9 @@ export class PopUpAccountDetaisComponent {
     this.money
       .get('valueToAdd')
       ?.setValue(formattedValue, { emitEvent: false });
+  }
+
+  onClose(): void {
+    this.dialogRef.close();
   }
 }
