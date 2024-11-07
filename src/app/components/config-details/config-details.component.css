@@ -60,7 +60,7 @@ label {
   cursor: pointer;
   background-color: #495057;
   color: white;
-  border-radius: 50px;
+  border-radius: 8px;
   border: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.3s;
