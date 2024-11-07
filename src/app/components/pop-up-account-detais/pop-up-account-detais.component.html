@@ -1,5 +1,8 @@
 <div class="main">
   <form [formGroup]="money" (ngSubmit)="onSubmit()">
+    <div class="title">
+      <h2>Simulação de Dinheiro</h2> <!-- Título adicionado -->
+    </div>
     <div class="simulated">
       <label>Insira a quantidade que você quer usar para simular</label>
       <input id="accountValue" formControlName="valueToAdd" (input)="formatCurrency()" placeholder="R$"
