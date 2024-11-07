@@ -1,4 +1,4 @@
-import { CommonModule, NgForOf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import {
   FormBuilder,
@@ -22,7 +22,6 @@ import { ToastrService } from 'ngx-toastr';
   standalone: true,
   imports: [
     MatDialogModule,
-    NgForOf,
     CommonModule,
     ReactiveFormsModule,
     MatSelectModule,
@@ -70,14 +69,11 @@ export class PopUpCardsComponent {
       this.popUpCardService.createCard(cardModelCreate).subscribe({
         next: (response) => {
           console.log('Cartão criado com sucesso!', response);
-          this.toastr.success('cartao criado com sucesso');
+          this.toastr.success('Cartão criado com sucesso!');
           this.dialogRef.close();
         },
         error: (error) => {
           console.error('Erro ao criar cartão: ', error);
-          console.log(error);
-          let teste = error;
-          console.log(teste + 'sadsadsa');
           if (
             error.includes('Card value cannot exceed account credit limit.')
           ) {
@@ -101,6 +97,7 @@ export class PopUpCardsComponent {
       });
     } else {
       console.log('Formulário inválido');
+      this.toastr.error("Formulário inválido!")
     }
   }
 
