@@ -14,7 +14,7 @@ export class PopUpAccountDetaisService {
     const token = sessionStorage.getItem('auth-token');
 
     if (!cpf || !token) {
-      return throwError('CPF ou Token não encontrado');
+      return throwError(() => new Error('CPF ou Token não encontrado'));
     }
 
     let headers = new HttpHeaders();
@@ -33,7 +33,7 @@ export class PopUpAccountDetaisService {
         catchError((error) => {
           console.error('Erro ao adicionar valor à conta', error);
           let errorMessage = 'Um erro desconhecido ocorreu';
-          return throwError(errorMessage);
+          return throwError(() => new Error(errorMessage));
         })
       );
   }
