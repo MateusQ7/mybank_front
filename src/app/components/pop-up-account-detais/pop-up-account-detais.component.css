@@ -75,6 +75,9 @@ label {
 }
 
 @media (max-width: 768px) {
+  h2 {
+    font: 32px;
+  }
   .main {
     height: auto;
   }
@@ -95,6 +98,9 @@ label {
 }
 
 @media (max-width: 480px) {
+  h2 {
+    font-size: 32px;
+  }
   .simulated {
     display: flex;
     flex-direction: column;
@@ -116,6 +122,9 @@ label {
 }
 
 @media (max-width: 425px) {
+  h2 {
+    font-size: 24px;
+  }
   .custom-input {
     width: 250px;
   }
