@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 446px;
+  text-align: center;
+}
+
+.simulated {
+  margin-bottom: 20px;
+}
+
+.custom-input {
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
