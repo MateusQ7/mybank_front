@@ -14,10 +14,9 @@ export class DynamicCardComponent implements OnInit {
   name$!: Observable<string>
   img$!: Observable<string>
 
-  constructor(private stateService: StateService) { }
+  constructor(private readonly stateService: StateService) { }
   ngOnInit(): void {
     this.name$ = this.stateService.name$;
     this.img$ = this.stateService.img$;
-
   }
 }
