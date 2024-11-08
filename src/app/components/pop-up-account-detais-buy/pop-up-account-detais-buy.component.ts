@@ -73,13 +73,15 @@ export class PopUpAccountDetaisBuyComponent {
           )
         ) {
           this.toastr.error('Limite insuficiente');
-        } else if (
+        }
+        if (
           error.error.includes(
             'The card is disabled and cannot be used for purchases.'
           )
         ) {
           this.toastr.error('Você está tentando usar um cartao deletado');
-        } else {
+        }
+        if (error.error.includes('Erro inesperado ao realizar a compra.')) {
           this.toastr.error('Cartão não existe');
         }
       },
