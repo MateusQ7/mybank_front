@@ -1,0 +1,15 @@
+<div class="main">
+  <form [formGroup]="money" (ngSubmit)="onSubmit()" class="form">
+    <div class="title-div">
+      <p class="title">Simule adicionar saldo a sua conta:</p>
+    </div>
+    <div class="simulated">
+      <label for="valueToAdd">Digite o valor:</label>
+      <input id="accountValue" formControlName="valueToAdd" (input)="formatCurrency()" placeholder="R$"/>
+    </div>
+    <div class="button-save">
+      <button type="button" class="close" (click)="onClose()">Fechar</button>
+      <button type="submit" class="open">Simular</button>
+    </div>
+  </form>
+</div>

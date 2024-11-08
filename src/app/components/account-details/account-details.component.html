@@ -18,28 +18,28 @@
         <span class="text-info" translate>Nome:</span>
         <span class="text-info-i">{{
           account?.user?.name || ('Não disponível' | translate)
-        }}</span>
+          }}</span>
       </div>
       <div class="info">
         <span class="text-info" translate>CPF:</span>
         <span class="text-info-i">{{
           account?.user?.cpf || ('Não disponível' | translate)
-        }}</span>
+          }}</span>
       </div>
       <div class="info">
         <span class="text-info" translate>Nascimento:</span>
         <span class="text-info-i">
           {{
-            account?.user?.birthdate
-              ? (account?.user?.birthdate | date : "dd/MM/yyyy")
-              : ('Não disponível' | translate)
+          account?.user?.birthdate
+          ? (account?.user?.birthdate | date : "dd/MM/yyyy")
+          : ('Não disponível' | translate)
           }}
         </span>
       </div>
     </div>
 
     <div class="buttons">
-      <button class="balance-button" translate>Guardar Dinheiro</button>
+      <button class="balance-button" (click)="openDialog()" translate>Simular dinheiro</button>
       <button class="balance-button" translate>Investir</button>
     </div>
   </div>

@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { InvoiceDetailsService } from '../invoice-details/invoice-details.service';
 import { Invoice } from '../../shared/models/invoiceModel';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpAccountDetaisComponent } from '../pop-up-account-detais/pop-up-account-detais.component';
 
 @Component({
   selector: 'account-details',
@@ -26,7 +28,8 @@ export class AccountDetailsComponent implements OnInit {
     private readonly accountService: AccountDetailsService,
     private readonly invoiceDetailsService: InvoiceDetailsService,
     private readonly translate: TranslateService,
-    private readonly currencyPipe: CurrencyPipe
+    private readonly currencyPipe: CurrencyPipe,
+    public readonly dialog: MatDialog
   ) {
     this.translate.setDefaultLang('pt');
     this.translate.use('pt');
@@ -118,5 +121,15 @@ export class AccountDetailsComponent implements OnInit {
       console.error('CPF não encontrado no sessionStorage.');
       this.error = 'CPF não encontrado.';
     }
+  }
+
+  openDialog(): void {
+    this.dialog.open(PopUpAccountDetaisComponent, {
+      width: '508px',
+      height: '300px',
+      data: { name: 'Angular' },
+      panelClass: 'custom-dialog'
+    });
+    console.log('Dialog opened');
   }
 }
