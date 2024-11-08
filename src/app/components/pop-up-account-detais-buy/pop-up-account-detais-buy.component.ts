@@ -21,7 +21,7 @@ import { PopUpAccountDetaisBuyService } from './pop-up-account-detais-buy.servic
   templateUrl: './pop-up-account-detais-buy.component.html',
   styleUrl: './pop-up-account-detais-buy.component.css',
 })
-export class PopUpAccountDetaisBuyComponent implements OnInit {
+export class PopUpAccountDetaisBuyComponent {
   money: FormGroup;
   cards: CardModel[] = [];
   cpf: string | undefined;
@@ -39,28 +39,6 @@ export class PopUpAccountDetaisBuyComponent implements OnInit {
       productName: ['', Validators.required],
       cardId: ['', Validators.required],
       valueToAdd: ['', [Validators.required, Validators.min(0.01)]],
-    });
-  }
-
-  ngOnInit(): void {
-    this.loadCards();
-  }
-
-  loadCards(): void {
-    const cpf = sessionStorage.getItem('cpf');
-    if (!cpf) {
-      console.error('CPF não encontrado.');
-      return;
-    }
-
-    this.cardService.getCards(cpf).subscribe({
-      next: (data: CardModel[]) => {
-        this.cards = data;
-      },
-      error: (error) => {
-        console.error('Erro ao buscar cartões', error);
-        this.toastr.error('Erro ao carregar cartões');
-      },
     });
   }
 
@@ -95,8 +73,7 @@ export class PopUpAccountDetaisBuyComponent implements OnInit {
           )
         ) {
           this.toastr.error('Limite insuficiente');
-        }
-        if (
+        } else if (
           error.error.includes(
             'The card is disabled and cannot be used for purchases.'
           )
