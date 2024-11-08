@@ -8,6 +8,7 @@
             {{ card.cardNumber.slice(0, 4) }} •••• ••••
             {{ card.cardNumber.slice(-4) }}
           </p>
+          {{"id do cartao: " + card.id}}
           <p class="card-limit">
             Limite: R$ {{ card.cardValue | number : "1.2-2" }}
           </p>
