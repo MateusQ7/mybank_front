@@ -8,6 +8,7 @@ import { Invoice } from '../../shared/models/invoiceModel';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpAccountDetaisComponent } from '../pop-up-account-detais/pop-up-account-detais.component';
+import { PopUpAccountDetaisBuyComponent } from '../pop-up-account-detais-buy/pop-up-account-detais-buy.component';
 
 @Component({
   selector: 'account-details',
@@ -128,8 +129,17 @@ export class AccountDetailsComponent implements OnInit {
       width: '508px',
       height: '300px',
       data: { name: 'Angular' },
-      panelClass: 'custom-dialog'
+      panelClass: 'custom-dialog',
     });
     console.log('Dialog opened');
+  }
+  openPurchaseDialog(): void {
+    this.dialog.open(PopUpAccountDetaisBuyComponent, {
+      width: '508px',
+      height: '300px',
+      data: { name: 'Purchase' },
+      panelClass: 'custom-dialog',
+    });
+    console.log('Purchase Dialog opened');
   }
 }
