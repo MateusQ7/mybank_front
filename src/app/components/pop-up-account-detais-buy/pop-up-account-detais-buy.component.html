@@ -1,0 +1,25 @@
+<div class="main">
+  <form [formGroup]="money" (ngSubmit)="onSubmit()" class="form">
+    <div class="title-div">
+      <p class="title">Simular uma compra:</p>
+    </div>
+    <div class="input-wrapper">
+      <div class="name">
+        <label for="productName">Digite o nome do produto:</label>
+        <input id="productName" formControlName="productName" placeholder="nome produto" />
+      </div>
+      <div class="money">
+        <label for="valueToAdd">Digite o valor:</label>
+        <input id="valueToAdd" formControlName="valueToAdd" placeholder="R$" />
+      </div>
+      <div class="card">
+        <label for="cardId">Digite o id do cartão:</label>
+        <input id="cardId" formControlName="cardId" placeholder="ID do cartão" />
+      </div>
+    </div>
+    <div class="button-save">
+      <button type="button" class="close">Fechar</button>
+      <button type="submit" class="open">Simular</button>
+    </div>
+  </form>
+</div>
