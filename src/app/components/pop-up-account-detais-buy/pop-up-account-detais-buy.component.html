@@ -7,18 +7,42 @@
       <div class="name">
         <label for="productName">Digite o nome do produto:</label>
         <input id="productName" formControlName="productName" placeholder="nome produto" />
+        <div class="error-messages"
+          *ngIf="money.get('productName')?.invalid && (money.get('productName')?.touched || money.get('productName')?.dirty)">
+          <small *ngIf="money.get('productName')?.errors?.['required']">Nome do produto é obrigatório.</small>
+        </div>
       </div>
+
       <div class="money">
         <label for="valueToAdd">Digite o valor:</label>
-        <input id="valueToAdd" formControlName="valueToAdd" placeholder="R$" />
+        <input (input)="formatCurrency()" id="valueToAdd" formControlName="valueToAdd" placeholder="R$" />
+        <div class="error-messages"
+          *ngIf="money.get('valueToAdd')?.invalid && (money.get('valueToAdd')?.touched || money.get('valueToAdd')?.dirty)">
+          <small *ngIf="money.get('valueToAdd')?.errors?.['required']">Valor é obrigatório.</small>
+        </div>
       </div>
+
       <div class="card">
         <label for="cardId">Digite o id do cartão:</label>
         <input id="cardId" formControlName="cardId" placeholder="ID do cartão" />
+        <div class="error-messages"
+          *ngIf="money.get('cardId')?.invalid && (money.get('cardId')?.touched || money.get('cardId')?.dirty)">
+          <small *ngIf="money.get('cardId')?.errors?.['required']">ID do cartão é obrigatório.</small>
+        </div>
+      </div>
+
+      <div class="card-password">
+        <label for="cardPassword">Digite a senha do cartão:</label>
+        <input id="cardPassword" type="password" formControlName="cardPassword" placeholder="Senha do cartão" />
+        <div class="error-messages"
+          *ngIf="money.get('cardPassword')?.invalid && (money.get('cardPassword')?.touched || money.get('cardPassword')?.dirty)">
+          <small *ngIf="money.get('cardPassword')?.errors?.['required']">Senha do cartão é obrigatória.</small>
+        </div>
       </div>
     </div>
+
     <div class="button-save">
-      <button type="button" class="close">Fechar</button>
+      <button type="button" (click)="onClose()" class="close">Fechar</button>
       <button type="submit" class="open">Simular</button>
     </div>
   </form>
