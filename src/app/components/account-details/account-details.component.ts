@@ -136,7 +136,7 @@ export class AccountDetailsComponent implements OnInit {
   openPurchaseDialog(): void {
     this.dialog.open(PopUpAccountDetaisBuyComponent, {
       width: '508px',
-      height: '300px',
+      height: '520px',
       data: { name: 'Purchase' },
       panelClass: 'custom-dialog',
     });
