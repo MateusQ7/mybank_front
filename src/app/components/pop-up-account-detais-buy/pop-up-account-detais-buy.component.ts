@@ -39,6 +39,7 @@ export class PopUpAccountDetaisBuyComponent {
       productName: ['', Validators.required],
       cardId: ['', Validators.required],
       valueToAdd: ['', [Validators.required, Validators.min(0.01)]],
+      cardPassword: ['', Validators.required],
     });
   }
 
@@ -47,6 +48,7 @@ export class PopUpAccountDetaisBuyComponent {
       this.productName = this.money.value.productName;
       const selectedCard = this.money.value.cardId;
       const purchaseAmount = this.money.value.valueToAdd;
+      const cardPassword = this.money.value.cardPassword;
       const cpf = sessionStorage.getItem('cpf');
 
       if (!cpf) {
@@ -54,14 +56,45 @@ export class PopUpAccountDetaisBuyComponent {
         return;
       }
 
-      this.buyWithCard(cpf, selectedCard, purchaseAmount);
+      this.buyWithCard(cpf, selectedCard, purchaseAmount, cardPassword);
     } else {
       console.error('formulario invalido');
     }
   }
 
-  buyWithCard(cpf: string, cardId: number, purchaseAmount: number): void {
-    this.buyService.buyWithCard(cpf, cardId, purchaseAmount).subscribe({
+  onClose(): void {
+    this.dialogRef.close();
+  }
+
+  formatCurrency() {
+    let inputValue = this.money.get('valueToAdd')?.value || '0.00';
+
+    inputValue = inputValue.replace(/\D/g, '').replace(',', '.');
+
+    while (inputValue.length < 3) {
+      inputValue = '0' + inputValue;
+    }
+
+    const integerPart = inputValue.slice(0, inputValue.length - 2);
+    const decimalPart = inputValue.slice(inputValue.length - 2);
+
+    const formattedValue = `${parseInt(integerPart, 10)}.${decimalPart}`;
+
+    this.money
+      .get('valueToAdd')
+      ?.setValue(formattedValue, { emitEvent: false });
+  }
+
+  buyWithCard(
+    cpf: string,
+    cardId: number,
+    purchaseAmount: number,
+    cardPassword: string
+  ): void {
+    const body = {
+      cardPassword: cardPassword,
+    };
+    this.buyService.buyWithCard(cpf, cardId, purchaseAmount, body).subscribe({
       next: (response) => {
         this.toastr.success('Compra realizada com sucesso!');
         this.dialogRef.close();
@@ -80,6 +113,12 @@ export class PopUpAccountDetaisBuyComponent {
           )
         ) {
           this.toastr.error('Você está tentando usar um cartao deletado');
+        }
+        if (error.error.includes('This card belongs to another account')) {
+          this.toastr.error('Cartão ultilizado não pertecte a esta conta!');
+        }
+        if (error.error.includes('Incorrect card password.')) {
+          this.toastr.error('Senha do cartão incorreta');
         }
         if (error.error.includes('Erro inesperado ao realizar a compra.')) {
           this.toastr.error('Cartão não existe');

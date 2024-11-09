@@ -13,7 +13,8 @@ export class PopUpAccountDetaisBuyService {
   buyWithCard(
     cpf: string,
     cardId: number,
-    purchaseAmount: number
+    purchaseAmount: number,
+    body: { cardPassword: string }
   ): Observable<CardModel> {
     const token = sessionStorage.getItem('auth-token');
 
@@ -28,7 +29,7 @@ export class PopUpAccountDetaisBuyService {
     return this.http
       .post<CardModel>(
         `${environment.apiUrl}/card/buy/${cpf}/${cardId}/${purchaseAmount}`,
-        {},
+        body,
         {
           headers,
         }
