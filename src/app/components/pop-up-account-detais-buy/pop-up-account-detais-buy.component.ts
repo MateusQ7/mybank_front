@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { CardModel } from '../../shared/models/cardModel';
 import { CardDetailsService } from '../card-details/card-details.service';
 import { PopUpAccountDetaisBuyService } from './pop-up-account-detais-buy.service';
+import { BuyModel } from '../../shared/models/buyModel';
 
 @Component({
   selector: 'app-pop-up-account-detais-buy',
@@ -21,11 +22,9 @@ import { PopUpAccountDetaisBuyService } from './pop-up-account-detais-buy.servic
   templateUrl: './pop-up-account-detais-buy.component.html',
   styleUrl: './pop-up-account-detais-buy.component.css',
 })
-export class PopUpAccountDetaisBuyComponent {
+export class PopUpAccountDetaisBuyComponent implements OnInit {
   money: FormGroup;
   cards: CardModel[] = [];
-  cpf: string | undefined;
-  productName: string = '';
 
   constructor(
     private readonly fb: FormBuilder,
@@ -36,38 +35,20 @@ export class PopUpAccountDetaisBuyComponent {
     private readonly buyService: PopUpAccountDetaisBuyService
   ) {
     this.money = this.fb.group({
-      productName: ['', Validators.required],
+      paymentDescription: ['', Validators.required],
       cardId: ['', Validators.required],
-      valueToAdd: ['', [Validators.required, Validators.min(0.01)]],
+      purchaseAmount: ['', [Validators.required, Validators.min(0.01)]],
       cardPassword: ['', Validators.required],
     });
   }
-
-  onSubmit(): void {
-    if (this.money.valid) {
-      this.productName = this.money.value.productName;
-      const selectedCard = this.money.value.cardId;
-      const purchaseAmount = this.money.value.valueToAdd;
-      const cardPassword = this.money.value.cardPassword;
-      const cpf = sessionStorage.getItem('cpf');
-
-      if (!cpf) {
-        console.error('CPF não encontrado');
-        return;
-      }
-
-      this.buyWithCard(cpf, selectedCard, purchaseAmount, cardPassword);
-    } else {
-      console.error('formulario invalido');
-    }
-  }
+  ngOnInit(): void {}
 
   onClose(): void {
     this.dialogRef.close();
   }
 
   formatCurrency() {
-    let inputValue = this.money.get('valueToAdd')?.value || '0.00';
+    let inputValue = this.money.get('purchaseAmount')?.value || '0.00';
 
     inputValue = inputValue.replace(/\D/g, '').replace(',', '.');
 
@@ -81,49 +62,57 @@ export class PopUpAccountDetaisBuyComponent {
     const formattedValue = `${parseInt(integerPart, 10)}.${decimalPart}`;
 
     this.money
-      .get('valueToAdd')
+      .get('purchaseAmount')
       ?.setValue(formattedValue, { emitEvent: false });
   }
 
-  buyWithCard(
-    cpf: string,
-    cardId: number,
-    purchaseAmount: number,
-    cardPassword: string
-  ): void {
-    const body = {
-      cardPassword: cardPassword,
-    };
-    this.buyService.buyWithCard(cpf, cardId, purchaseAmount, body).subscribe({
-      next: (response) => {
-        this.toastr.success('Compra realizada com sucesso!');
-        this.dialogRef.close();
-      },
-      error: (error) => {
-        if (
-          error.error.includes(
-            'Your card does not have enough value for this purchase!'
-          )
-        ) {
-          this.toastr.error('Limite insuficiente');
-        }
-        if (
-          error.error.includes(
-            'The card is disabled and cannot be used for purchases.'
-          )
-        ) {
-          this.toastr.error('Você está tentando usar um cartao deletado');
-        }
-        if (error.error.includes('This card belongs to another account')) {
-          this.toastr.error('Cartão ultilizado não pertecte a esta conta!');
-        }
-        if (error.error.includes('Incorrect card password.')) {
-          this.toastr.error('Senha do cartão incorreta');
-        }
-        if (error.error.includes('Erro inesperado ao realizar a compra.')) {
-          this.toastr.error('Cartão não existe');
-        }
-      },
-    });
+  buyWithCard() {
+    if (this.money.valid) {
+      const cpf = sessionStorage.getItem('cpf') ?? '';
+      const buy: BuyModel = {
+        cardId: this.money.value.cardId,
+        accountCpf: cpf,
+        purchaseAmount: this.money.value.purchaseAmount,
+        cardPassword: this.money.value.cardPassword,
+        paymentDescription: this.money.value.paymentDescription,
+      };
+      this.buyService.buyWithCard(buy).subscribe({
+        next: (response) => {
+          this.toastr.success('Compra realizada com sucesso!');
+          this.dialogRef.close();
+        },
+        error: (error) => {
+          // Garantir que error.error esteja definido antes de acessar
+          const errorMessage = error.error ? error.error : error.message; // Garantir que esteja pegando o erro correto
+
+          // Log para verificar a estrutura do erro
+          console.log('Erro recebido:', error);
+
+          if (
+            errorMessage.includes(
+              'Your card does not have enough value for this purchase!'
+            )
+          ) {
+            this.toastr.error('Limite insuficiente');
+          }
+          if (
+            errorMessage.includes(
+              'The card is disabled and cannot be used for purchases.'
+            )
+          ) {
+            this.toastr.error('Você está tentando usar um cartão deletado');
+          }
+          if (errorMessage.includes('This card belongs to another account')) {
+            this.toastr.error('Cartão utilizado não pertence a esta conta!');
+          }
+          if (errorMessage.includes('Incorrect card password.')) {
+            this.toastr.error('Senha do cartão incorreta');
+          }
+          if (errorMessage.includes('Erro inesperado ao realizar a compra.')) {
+            this.toastr.error('Cartão não existe');
+          }
+        },
+      });
+    }
   }
 }

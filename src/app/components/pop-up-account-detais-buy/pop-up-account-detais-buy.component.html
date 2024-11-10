@@ -1,24 +1,24 @@
 <div class="main">
-  <form [formGroup]="money" (ngSubmit)="onSubmit()" class="form">
+  <form [formGroup]="money" class="form">
     <div class="title-div">
       <p class="title">Simular uma compra:</p>
     </div>
     <div class="input-wrapper">
       <div class="name">
-        <label for="productName">Digite o nome do produto:</label>
-        <input id="productName" formControlName="productName" placeholder="nome produto" />
+        <label for="paymentDescription">Digite o nome do produto:</label>
+        <input id="paymentDescription" formControlName="paymentDescription" placeholder="nome produto" />
         <div class="error-messages"
-          *ngIf="money.get('productName')?.invalid && (money.get('productName')?.touched || money.get('productName')?.dirty)">
-          <small *ngIf="money.get('productName')?.errors?.['required']">Nome do produto é obrigatório.</small>
+          *ngIf="money.get('paymentDescription')?.invalid && (money.get('paymentDescription')?.touched || money.get('paymentDescription')?.dirty)">
+          <small *ngIf="money.get('paymentDescription')?.errors?.['required']">Nome do produto é obrigatório.</small>
         </div>
       </div>
 
       <div class="money">
         <label for="valueToAdd">Digite o valor:</label>
-        <input (input)="formatCurrency()" id="valueToAdd" formControlName="valueToAdd" placeholder="R$" />
+        <input (input)="formatCurrency()" id="valueToAdd" formControlName="purchaseAmount" placeholder="R$" />
         <div class="error-messages"
-          *ngIf="money.get('valueToAdd')?.invalid && (money.get('valueToAdd')?.touched || money.get('valueToAdd')?.dirty)">
-          <small *ngIf="money.get('valueToAdd')?.errors?.['required']">Valor é obrigatório.</small>
+          *ngIf="money.get('purchaseAmount')?.invalid && (money.get('purchaseAmount')?.touched || money.get('purchaseAmount')?.dirty)">
+          <small *ngIf="money.get('purchaseAmount')?.errors?.['required']">Valor é obrigatório.</small>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
 
     <div class="button-save">
       <button type="button" (click)="onClose()" class="close">Fechar</button>
-      <button type="submit" class="open">Simular</button>
+      <button type="submit" class="open" (click)="buyWithCard()">Simular</button>
     </div>
   </form>
 </div>

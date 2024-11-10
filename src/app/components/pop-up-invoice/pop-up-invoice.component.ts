@@ -29,7 +29,6 @@ import { Invoice } from '../../shared/models/invoiceModel';
     ReactiveFormsModule,
     CommonModule,
     NgxMaskDirective,
-    NgxMaskPipe,
   ],
   templateUrl: './pop-up-invoice.component.html',
   styleUrls: ['./pop-up-invoice.component.css'],
