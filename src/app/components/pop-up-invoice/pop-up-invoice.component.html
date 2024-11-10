@@ -12,6 +12,8 @@
           <small *ngIf="paymentConfirmationForm.get('cpf')?.errors?.['required']">CPF é obrigatório.</small>
           <small *ngIf="paymentConfirmationForm.get('cpf')?.errors?.['pattern']">CPF inválido.</small>
         </div>
+        <label for="invoice-value">Valor da fatura</label>
+        <input type="text" id="invoice-value" formControlName="invoiceValue" readonly>
 
         <label for="payment-value">Valor do Pagamento:</label>
         <input type="text" placeholder="Digite o valor" (input)="formatCurrency()" id="payment-value"
@@ -26,6 +28,7 @@
           <label for="payment-date">Data do Pagamento:</label>
           <input type="text" id="payment-date" formControlName="paymentDate"
             value="{{ currentDate | date:'dd/MM/yyyy' }}" readonly>
+
         </div>
       </div>
     </div>
