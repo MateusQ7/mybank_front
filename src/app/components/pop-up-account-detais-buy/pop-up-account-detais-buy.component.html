@@ -1,0 +1,49 @@
+<div class="main">
+  <form [formGroup]="money" class="form">
+    <div class="title-div">
+      <p class="title">Simular uma compra:</p>
+    </div>
+    <div class="input-wrapper">
+      <div class="name">
+        <label for="paymentDescription">Digite o nome do produto:</label>
+        <input id="paymentDescription" formControlName="paymentDescription" placeholder="nome produto" />
+        <div class="error-messages"
+          *ngIf="money.get('paymentDescription')?.invalid && (money.get('paymentDescription')?.touched || money.get('paymentDescription')?.dirty)">
+          <small *ngIf="money.get('paymentDescription')?.errors?.['required']">Nome do produto é obrigatório.</small>
+        </div>
+      </div>
+
+      <div class="money">
+        <label for="valueToAdd">Digite o valor:</label>
+        <input (input)="formatCurrency()" id="valueToAdd" formControlName="purchaseAmount" placeholder="R$" />
+        <div class="error-messages"
+          *ngIf="money.get('purchaseAmount')?.invalid && (money.get('purchaseAmount')?.touched || money.get('purchaseAmount')?.dirty)">
+          <small *ngIf="money.get('purchaseAmount')?.errors?.['required']">Valor é obrigatório.</small>
+        </div>
+      </div>
+
+      <div class="card">
+        <label for="cardId">Digite o id do cartão:</label>
+        <input id="cardId" formControlName="cardId" placeholder="ID do cartão" />
+        <div class="error-messages"
+          *ngIf="money.get('cardId')?.invalid && (money.get('cardId')?.touched || money.get('cardId')?.dirty)">
+          <small *ngIf="money.get('cardId')?.errors?.['required']">ID do cartão é obrigatório.</small>
+        </div>
+      </div>
+
+      <div class="card-password">
+        <label for="cardPassword">Digite a senha do cartão:</label>
+        <input id="cardPassword" type="password" formControlName="cardPassword" placeholder="Senha do cartão" />
+        <div class="error-messages"
+          *ngIf="money.get('cardPassword')?.invalid && (money.get('cardPassword')?.touched || money.get('cardPassword')?.dirty)">
+          <small *ngIf="money.get('cardPassword')?.errors?.['required']">Senha do cartão é obrigatória.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-save">
+      <button type="button" (click)="onClose()" class="close">Fechar</button>
+      <button type="submit" class="open" (click)="buyWithCard()">Simular</button>
+    </div>
+  </form>
+</div>

@@ -12,7 +12,7 @@ import { TransactionModel } from '../../shared/models/transactionModel';
   imports: [MatDialogModule, CommonModule],
   providers: [InvoiceDetailsService],
   templateUrl: './invoice-details.component.html',
-  styleUrls: ['./invoice-details.component.css']
+  styleUrls: ['./invoice-details.component.css'],
 })
 export class InvoiceDetailsComponent {
   invoices: Invoice[] = [];
@@ -21,7 +21,10 @@ export class InvoiceDetailsComponent {
   transactions: TransactionModel[] = [];
   transaction: TransactionModel | undefined;
 
-  constructor(public dialog: MatDialog, private readonly invoiceDetailsService: InvoiceDetailsService) {}
+  constructor(
+    public dialog: MatDialog,
+    private readonly invoiceDetailsService: InvoiceDetailsService
+  ) {}
 
   ngOnInit(): void {
     this.loadInvoiceByCpf();
@@ -40,7 +43,7 @@ export class InvoiceDetailsComponent {
         },
         complete: () => {
           console.log('Invoice search completed.');
-        }
+        },
       });
     } else {
       this.handleMissingCpf();
@@ -59,7 +62,7 @@ export class InvoiceDetailsComponent {
         },
         complete: () => {
           console.log('Transactions search completed.');
-        }
+        },
       });
     } else {
       this.handleMissingCpf();
@@ -70,8 +73,8 @@ export class InvoiceDetailsComponent {
     this.dialog.open(PopUpInvoiceComponent, {
       width: '558px',
       height: '462px',
-      data: { name: 'Angular' },
-      panelClass: 'custom-dialog'
+      data: { invoiceValue: this.invoice?.amount },
+      panelClass: 'custom-dialog',
     });
     console.log('Dialog opened');
   }

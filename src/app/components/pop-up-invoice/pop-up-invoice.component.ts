@@ -29,7 +29,6 @@ import { Invoice } from '../../shared/models/invoiceModel';
     ReactiveFormsModule,
     CommonModule,
     NgxMaskDirective,
-    NgxMaskPipe,
   ],
   templateUrl: './pop-up-invoice.component.html',
   styleUrls: ['./pop-up-invoice.component.css'],
@@ -61,6 +60,7 @@ export class PopUpInvoiceComponent implements OnInit {
         [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$')],
       ],
       paymentDate: [this.currentDate, Validators.required],
+      invoiceValue: [this.data.invoiceValue, Validators.required],
     });
   }
 
