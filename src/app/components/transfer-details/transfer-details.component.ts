@@ -48,9 +48,7 @@ export class TransferDetailsComponent implements OnInit {
       this.transferenceDetailsService.getTransactions(cpf).subscribe({
         next: (transferences) => {
           if (transferences && transferences.length > 0) {
-            transferences.forEach((transference) => {
-              console.log('cpfSender:', transference.cpfSender);
-            });
+            transferences.forEach((transference) => {});
             this.transferences = transferences;
           } else {
             console.log('Não há transações.');
