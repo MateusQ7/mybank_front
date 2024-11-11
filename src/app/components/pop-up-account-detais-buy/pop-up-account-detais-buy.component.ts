@@ -109,8 +109,12 @@ export class PopUpAccountDetaisBuyComponent implements OnInit {
 
           console.log('Erro recebido:', error);
 
-          if (errorMessage.includes('Insufficient Limit!')) {
-            this.toastr.error('Limite insuficiente');
+          if (
+            errorMessage.includes(
+              'Your card does not have enough value for this purchase!'
+            )
+          ) {
+            this.toastr.error('Seu cartão não tem limite o suficiente');
           }
           if (
             errorMessage.includes(
@@ -119,8 +123,8 @@ export class PopUpAccountDetaisBuyComponent implements OnInit {
           ) {
             this.toastr.error('Você está tentando usar um cartão deletado');
           }
-          if (errorMessage.includes('This card belongs to another account')) {
-            this.toastr.error('Cartão utilizado não pertence a esta conta!');
+          if (errorMessage.includes('Insufficient Limit!')) {
+            this.toastr.error('Limite da conta insuficiente');
           }
           if (errorMessage.includes('Incorrect card password.')) {
             this.toastr.error('Senha do cartão incorreta');
