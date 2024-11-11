@@ -100,19 +100,16 @@ export class PopUpAccountDetaisBuyComponent implements OnInit {
         next: (response) => {
           this.toastr.success('Compra realizada com sucesso!');
           this.dialogRef.close();
+          setTimeout(() => {
+            window.location.reload();
+          }, 1200);
         },
         error: (error) => {
-          // Garantir que error.error esteja definido antes de acessar
-          const errorMessage = error.error ? error.error : error.message; // Garantir que esteja pegando o erro correto
+          const errorMessage = error.error ? error.error : error.message;
 
-          // Log para verificar a estrutura do erro
           console.log('Erro recebido:', error);
 
-          if (
-            errorMessage.includes(
-              'Your card does not have enough value for this purchase!'
-            )
-          ) {
+          if (errorMessage.includes('Insufficient Limit!')) {
             this.toastr.error('Limite insuficiente');
           }
           if (
