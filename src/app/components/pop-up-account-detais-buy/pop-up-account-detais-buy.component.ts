@@ -14,6 +14,7 @@ import { CardModel } from '../../shared/models/cardModel';
 import { CardDetailsService } from '../card-details/card-details.service';
 import { PopUpAccountDetaisBuyService } from './pop-up-account-detais-buy.service';
 import { BuyModel } from '../../shared/models/buyModel';
+import { TesteModel } from '../../shared/models/testeModel';
 
 @Component({
   selector: 'app-pop-up-account-detais-buy',
@@ -36,15 +37,34 @@ export class PopUpAccountDetaisBuyComponent implements OnInit {
   ) {
     this.money = this.fb.group({
       paymentDescription: ['', Validators.required],
-      cardId: ['', Validators.required],
+      cardName: ['', Validators.required],
       purchaseAmount: ['', [Validators.required, Validators.min(0.01)]],
       cardPassword: ['', Validators.required],
     });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadCards();
+  }
 
   onClose(): void {
     this.dialogRef.close();
+  }
+
+  loadCards(): void {
+    const cpf = sessionStorage.getItem('cpf');
+    if (!cpf) {
+      this.toastr.error('CPF não encontrado');
+      return;
+    }
+
+    this.buyService.getCardsByAccount(cpf).subscribe({
+      next: (response: CardModel[]) => {
+        this.cards = response;
+      },
+      error: (error) => {
+        this.toastr.error('Erro ao carregar os cartões');
+      },
+    });
   }
 
   formatCurrency() {
@@ -69,8 +89,8 @@ export class PopUpAccountDetaisBuyComponent implements OnInit {
   buyWithCard() {
     if (this.money.valid) {
       const cpf = sessionStorage.getItem('cpf') ?? '';
-      const buy: BuyModel = {
-        cardId: this.money.value.cardId,
+      const buy: TesteModel = {
+        cardName: this.money.value.cardName,
         accountCpf: cpf,
         purchaseAmount: this.money.value.purchaseAmount,
         cardPassword: this.money.value.cardPassword,
