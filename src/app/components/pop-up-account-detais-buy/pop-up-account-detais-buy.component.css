@@ -56,7 +56,8 @@
   flex-direction: column;
 }
 
-input {
+input,
+select {
   border: 1px solid #ced4da;
   border-radius: 8px;
   color: #818181;
