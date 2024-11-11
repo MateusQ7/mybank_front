@@ -5,12 +5,10 @@ import { catchError, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PopUpInvoiceService {
-
-  constructor(
-    private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   payInvoice(payModel: PayInvoiceModel): Observable<PayInvoiceModel> {
     const token = sessionStorage.getItem('auth-token');
@@ -20,11 +18,15 @@ export class PopUpInvoiceService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    return this.http.post<PayInvoiceModel>(`${environment.apiUrl}/invoice/pay`, payModel, { headers }).pipe(
-      catchError(error => {
-        console.error('Error pay Invoice!', error);
-        throw error;
+    return this.http
+      .post<PayInvoiceModel>(`${environment.apiUrl}/invoice/pay`, payModel, {
+        headers,
       })
-    );
+      .pipe(
+        catchError((error) => {
+          console.error('Error pay Invoice!', error);
+          throw error;
+        })
+      );
   }
 }

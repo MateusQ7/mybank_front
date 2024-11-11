@@ -23,12 +23,12 @@
       </div>
 
       <div class="card">
-        <label for="cardId">Digite o id do cartão:</label>
-        <input id="cardId" formControlName="cardId" placeholder="ID do cartão" />
-        <div class="error-messages"
-          *ngIf="money.get('cardId')?.invalid && (money.get('cardId')?.touched || money.get('cardId')?.dirty)">
-          <small *ngIf="money.get('cardId')?.errors?.['required']">ID do cartão é obrigatório.</small>
-        </div>
+        <label for="cardName">Selecione o cartão:</label>
+        <select id="cardName" formControlName="cardName" placeholder="ID do cartão">
+          <option *ngFor="let card of cards" [value]="card.cardName">
+            {{ card.cardName }}
+          </option>
+        </select>
       </div>
 
       <div class="card-password">
