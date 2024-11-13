@@ -32,6 +32,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PopUpCardsComponent {
   cardForm: FormGroup;
+  isProcessing = false;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -51,6 +52,9 @@ export class PopUpCardsComponent {
   }
 
   onCreate(): void {
+    if (this.isProcessing) return;
+    this.isProcessing = true;
+
     if (this.cardForm.valid) {
       const strCpf = sessionStorage.getItem('cpf') ?? '';
       const cardModelCreate: CardModelCreate = {
@@ -97,7 +101,7 @@ export class PopUpCardsComponent {
       });
     } else {
       console.log('Formulário inválido');
-      this.toastr.error("Formulário inválido!")
+      this.toastr.error('Formulário inválido!');
     }
   }
 

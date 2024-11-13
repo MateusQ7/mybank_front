@@ -5,42 +5,53 @@
   <form [formGroup]="cardForm" (ngSubmit)="onCreate()">
     <div class="card-form">
       <div class="input-wrapper">
-        <div class="top-input" [ngClass]="{'has-error': cardForm.get('cardName')?.touched && cardForm.get('cardName')?.invalid}">
+        <div class="top-input"
+          [ngClass]="{'has-error': cardForm.get('cardName')?.touched && cardForm.get('cardName')?.invalid}">
           <label for="cardName">Nome do cartão:</label>
-          <div *ngIf="cardForm.get('cardName')?.hasError('required') && cardForm.get('cardName')?.touched" class="error-message">
+          <div *ngIf="cardForm.get('cardName')?.hasError('required') && cardForm.get('cardName')?.touched"
+            class="error-message">
             *Campo obrigatório
           </div>
         </div>
-        <div class="input-content" [ngClass]="{'has-error': cardForm.get('cardName')?.touched && cardForm.get('cardName')?.invalid}">
+        <div class="input-content"
+          [ngClass]="{'has-error': cardForm.get('cardName')?.touched && cardForm.get('cardName')?.invalid}">
           <input id="cardName" formControlName="cardName" placeholder="Nome do cartão" class="custom-input" />
         </div>
       </div>
       <div class="input-wrapper">
-        <div class="top-input" [ngClass]="{'has-error': cardForm.get('cardValue')?.touched && cardForm.get('cardValue')?.invalid}">
+        <div class="top-input"
+          [ngClass]="{'has-error': cardForm.get('cardValue')?.touched && cardForm.get('cardValue')?.invalid}">
           <label for="cardValue">Limite de compra:</label>
-          <div *ngIf="cardForm.get('cardValue')?.hasError('required') && cardForm.get('cardValue')?.touched" class="error-message">
+          <div *ngIf="cardForm.get('cardValue')?.hasError('required') && cardForm.get('cardValue')?.touched"
+            class="error-message">
             *Campo obrigatório
           </div>
         </div>
-        <div class="input-content" [ngClass]="{'has-error': cardForm.get('cardValue')?.touched && cardForm.get('cardValue')?.invalid}">
-          <input (input)="formatCurrency()" id="cardValue" formControlName="cardValue" placeholder="R$" class="custom-input" />
+        <div class="input-content"
+          [ngClass]="{'has-error': cardForm.get('cardValue')?.touched && cardForm.get('cardValue')?.invalid}">
+          <input (input)="formatCurrency()" id="cardValue" formControlName="cardValue" placeholder="R$"
+            class="custom-input" />
         </div>
       </div>
       <div class="input-wrapper">
-        <div class="top-input" [ngClass]="{'has-error': cardForm.get('cardPassword')?.touched && cardForm.get('cardPassword')?.invalid}">
+        <div class="top-input"
+          [ngClass]="{'has-error': cardForm.get('cardPassword')?.touched && cardForm.get('cardPassword')?.invalid}">
           <label for="cardPassword">Senha para o cartão:</label>
-          <div *ngIf="cardForm.get('cardPassword')?.hasError('required') && cardForm.get('cardPassword')?.touched" class="error-message">
+          <div *ngIf="cardForm.get('cardPassword')?.hasError('required') && cardForm.get('cardPassword')?.touched"
+            class="error-message">
             *Campo obrigatória
           </div>
         </div>
-        <div class="input-content" [ngClass]="{'has-error': cardForm.get('cardPassword')?.touched && cardForm.get('cardPassword')?.invalid}">
-          <input id="cardPassword" type="password" formControlName="cardPassword" placeholder="••••" class="custom-input" />
+        <div class="input-content"
+          [ngClass]="{'has-error': cardForm.get('cardPassword')?.touched && cardForm.get('cardPassword')?.invalid}">
+          <input id="cardPassword" type="password" formControlName="cardPassword" placeholder="••••"
+            class="custom-input" />
         </div>
       </div>
     </div>
     <div class="close">
       <button type="button" class="buttons-close" (click)="onClose()">Fechar</button>
-      <button type="submit" class="buttons-create">Criar</button>
+      <button type="submit" [disabled]="isProcessing" class="buttons-create">Criar</button>
     </div>
   </form>
 </div>
